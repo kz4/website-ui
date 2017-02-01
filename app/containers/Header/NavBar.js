@@ -1,5 +1,10 @@
 import React from 'react';
-import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Link } from 'react-router';
+import { FormattedMessage } from 'react-intl';
+
+import NavItem from './NavItem';
+import messages from './messages';
 
 // export default styled.div`
 //   text-align: center;
@@ -7,31 +12,35 @@ import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-boots
 
 function NavBar() {
   return (
-      <Navbar collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="#">React-Bootstrap</a>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <NavItem eventKey={1} href="#">Link</NavItem>
-            <NavItem eventKey={2} href="#">Link</NavItem>
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Action</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-              <MenuItem eventKey={3.3}>Something else here</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={3.3}>Separated link</MenuItem>
-            </NavDropdown>
-          </Nav>
-          <Nav pullRight>
-            <NavItem eventKey={1} href="#">Link Right</NavItem>
-            <NavItem eventKey={2} href="#">Link Right</NavItem>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+    <Navbar collapseOnSelect>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <Link to={'/'}>React-Bootstrap</Link>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+      </Navbar.Header>
+      <Navbar.Collapse>
+        <Nav>
+          <NavItem to={'/'} eventKey={1}>
+            <FormattedMessage {...messages.home} />
+          </NavItem>
+          <NavItem to={'/features'} eventKey={2} >
+            <FormattedMessage {...messages.features} />
+          </NavItem>
+          <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+            <MenuItem eventKey={3.1}>Action</MenuItem>
+            <MenuItem eventKey={3.2}>Another action</MenuItem>
+            <MenuItem eventKey={3.3}>Something else here</MenuItem>
+            <MenuItem divider />
+            <MenuItem eventKey={3.3}>Separated link</MenuItem>
+          </NavDropdown>
+        </Nav>
+        <Nav pullRight>
+          <NavItem to={'/login'} eventKey={1}>Login</NavItem>
+          <NavItem to={'/register'} eventKey={2}>Register</NavItem>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 
