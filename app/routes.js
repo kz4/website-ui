@@ -39,6 +39,14 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/login',
+      name: 'login',
+      getComponent(nextState, cb) {
+        import('containers/Login')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '/features',
       name: 'features',
       getComponent(nextState, cb) {
