@@ -5,24 +5,28 @@ const envs = {
   TESTING: 'testing',
 };
 
-export { envs };
-
-export default function getConfig(env = trueEnv) {
-  let serverApi;
-
-  // I'm not sure what these will need to be, so making all of them '/' for now.
+function getServerBase(env = trueEnv) {
   switch (env) {
     case (envs.DEVELOPMENT):
-      serverApi = '/api';
-      break;
+      return '/';
     case (envs.TESTING):
-      serverApi = '/api';
-      break;
+      return '/';
     default:
-      serverApi = '/api';
-      break;
+      return '/';
   }
-  return {
-    serverApi,
-  };
 }
+
+function makeApiPath(path) {
+  const serverBase = getServerBase();
+  return `${serverBase}api/${path}`;
+}
+
+const paths = {
+  api: {
+    auth: {
+      LOGIN: makeApiPath('auth/login')
+    }
+  }
+};
+
+export { envs, paths };
