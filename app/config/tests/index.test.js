@@ -1,20 +1,18 @@
-import getConfig, { envs } from '../index';
+import _ from 'lodash';
+import { envs, getServerBase, makeApiPath, paths } from '../index';
 
 describe('apiRoutes', () => {
-  const expectedAttributes = ['serverApi'];
-
-  it('should have all the expected attributes for development env', () => {
-    const devConfig = getConfig(envs.DEVELOPMENT);
-    expectedAttributes.every((attr) => expect(devConfig[attr]).toBeDefined());
+  it('getServerBase should return the a string with \'/\'for any env', () => {
+    _.forOwn(envs, (env) => expect(getServerBase(env)).toMatch(new RegExp('/')));
   });
 
-  it('should have all the expected attributes for testing env', () => {
-    const prodConfig = getConfig(envs.PRODUCTION);
-    expectedAttributes.every((attr) => expect(prodConfig[attr]).toBeDefined());
+  it('makeApiPath should return a string with the passed path', () => {
+    const passedPath = 'foo/bar';
+    expect(makeApiPath(passedPath)).toMatch(new RegExp(passedPath));
   });
 
-  it('should have all the expected attributes for production env', () => {
-    const testConfig = getConfig(envs.TESTING);
-    expectedAttributes.every((attr) => expect(testConfig[attr]).toBeDefined());
+  it('paths should contain all expected paths', () => {
+    const expectedPaths = ['api.auth.LOGIN'];
+    expectedPaths.every((path) => expect(_.get(paths, path)).toBeDefined());
   });
 });

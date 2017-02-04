@@ -24,9 +24,9 @@ function makeApiPath(path) {
 const paths = {
   api: {
     auth: {
-      LOGIN: makeApiPath('auth/login')
-    }
-  }
+      LOGIN: makeApiPath('auth/login'),
+    },
+  },
 };
 
-export { envs, paths };
+export { envs, paths, makeApiPath, getServerBase };
