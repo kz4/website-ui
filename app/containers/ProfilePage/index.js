@@ -54,7 +54,6 @@ export class ProfilePage extends React.PureComponent { // eslint-disable-line re
                     </div>
                   </div>
                 </div>
-
               </div>
             </form>
           </div>
