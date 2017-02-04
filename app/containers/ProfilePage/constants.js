@@ -4,4 +4,4 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/ProfilePage/DEFAULT_ACTION';
+export const PROFILE_FORM_UPDATED = 'app/ProfilePage/PROFILE_FORM_UPDATED';

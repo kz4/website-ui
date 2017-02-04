@@ -16,7 +16,7 @@ const selectProfilePageDomain = () => (state) => state.get('profilePage');
 
 const makeSelectProfilePage = () => createSelector(
   selectProfilePageDomain(),
-  (substate) => substate.toJS()
+  (substate) => substate ? substate.toJS() : ''
 );
 
 export default makeSelectProfilePage;

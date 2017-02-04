@@ -5,11 +5,13 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  PROFILE_FORM_UPDATED,
 } from './constants';
 
-export function defaultAction() {
+export function profileFormUpdated(storeName, value) {
   return {
-    type: DEFAULT_ACTION,
+    type: PROFILE_FORM_UPDATED,
+    storeName,
+    value,
   };
 }
