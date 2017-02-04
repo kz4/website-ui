@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
-
+import { fromJS } from 'immutable';
 /**
  * Direct selector to the userLogin state domain
  */
 const selectUserLoginDomain = () => (state) => {
-  console.log('selectUserLogin', state);
-  return state.get('userLogin');
+  console.log('selectUserLogin', state.toJS());
+  return state.get('home').get('userLogin');
 };
 
 /**
@@ -17,12 +17,23 @@ const selectUserLoginDomain = () => (state) => {
  * Default selector used by UserLogin
  */
 
-const makeSelectUserLogin = () => createSelector(
+const makeSelectLoginCredentials = () => createSelector(
   selectUserLoginDomain(),
-  (substate) => console.log('UserLogin', substate)
+  (substate) => {
+    const loginCredentials = {
+      username: '',
+      password: '',
+    };
+    if (substate) {
+      loginCredentials.username = substate.get('username') || '';
+      loginCredentials.password = substate.get('password') || '';
+    }
+    return fromJS(loginCredentials);
+  }
 );
 
-export default makeSelectUserLogin;
+// export default makeSelectUserLogin;
 export {
+  makeSelectLoginCredentials,
   selectUserLoginDomain,
 };

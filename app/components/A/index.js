@@ -1,6 +1,5 @@
 /**
  * A link to a certain page, an anchor tag
- * HEY YA
  */
 
 import styled from 'styled-components';

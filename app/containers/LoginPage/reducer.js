@@ -5,6 +5,8 @@
  */
 
 import { fromJS } from 'immutable';
+import { combineReducers } from 'redux-immutable';
+import userLoginReducer from 'containers/UserLogin/reducer';
 import {
   DEFAULT_ACTION,
 } from './constants';
@@ -20,4 +22,9 @@ function loginReducer(state = initialState, action) {
   }
 }
 
-export default loginReducer;
+const allReducers = combineReducers({
+  loginPage: loginReducer,
+  userLogin: userLoginReducer,
+});
+
+export default allReducers;

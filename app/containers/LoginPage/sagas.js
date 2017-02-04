@@ -1,4 +1,5 @@
 // import { take, call, put, select } from 'redux-saga/effects';
+import userLoginSagas from 'containers/UserLogin/sagas';
 
 // Individual exports for testing
 export function* defaultSaga() {
@@ -8,4 +9,5 @@ export function* defaultSaga() {
 // All sagas to be loaded
 export default [
   defaultSaga,
+  ...userLoginSagas,
 ];
