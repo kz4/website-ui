@@ -67,7 +67,17 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-    }, {
+    },
+    {
+      path: '/landing',
+      name: 'landing',
+      getComponent(nextState, cb) {
+        import('containers/LandingPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },
+    {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
@@ -76,5 +86,6 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     },
+
   ];
 }
