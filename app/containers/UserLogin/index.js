@@ -7,6 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 // import { FormattedMessage } from 'react-intl';
+import { changeUsername } from './actions';
 import { createStructuredSelector } from 'reselect';
 import makeSelectUserLogin from './selectors';
 // import messages from './messages';
@@ -17,46 +18,35 @@ export class UserLogin extends React.PureComponent { // eslint-disable-line reac
       <div>
         <div className="container">
           <div className="row">
-            <form className="form-signin mg-btm">
-              <h3 className="heading-desc">
-                <button type="button" className="close pull-right" aria-hidden="true">×</button>
-                Login to Bootsnipp</h3>
-              <div className="social-box">
-                <div className="row mg-btm">
-                  <div className="col-md-12">
-                    <a href="https://www.google.com/" className="btn btn-primary btn-block">
-                      <i className="icon-facebook"></i>    Login with Facebook
-                    </a>
+            <div className="col-sm-6 col-sm-offset-3">
+              <div className="well">
+                <form id="loginForm" method="POST" action="/login/" noValidate="novalidate">
+                  <div className="form-group">
+                    <label htmlFor="username" className="control-label">Username</label>
+                    <input 
+                      type="text" 
+                      className="form-control" 
+                      id="username" 
+                      onChange={this.props.onChangeUsername}
+                    />
+                      <span className="help-block"></span>
                   </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-12">
-                    <a href="https://www.google.com/" className="btn btn-info btn-block" >
-                      <i className="icon-twitter"></i>    Login with Twitter
-                    </a>
+                  <div className="form-group">
+                    <label htmlFor="password" className="control-label">Password</label>
+                    <input type="password" className="form-control" id="password" />
+                      <span className="help-block"></span>
                   </div>
-                </div>
+                  <div id="loginErrorMsg" className="alert alert-error hide">Wrong username og password</div>
+                  <div className="checkbox">
+                    <label>
+                      <input type="checkbox" name="remember" id="remember" /> Remember login
+                    </label>
+                    <p className="help-block">(if this is a private computer)</p>
+                  </div>
+                  <button type="submit" className="btn btn-success btn-block">Login</button>
+                </form>
               </div>
-              <div className="main">
-                <input type="text" className="form-control" placeholder="Email" autoFocus />
-                <input type="password" className="form-control" placeholder="Password" />
-                    Are you a business? <a href=""> Get started here</a>
-                <span className="clearfix"></span>
-              </div>
-              <div className="login-footer">
-                <div className="row">
-                  <div className="col-xs-6 col-md-6">
-                    <div className="left-section">
-                      <a href="">Forgot your password?</a>
-                      <a href="">Sign up now</a>
-                    </div>
-                  </div>
-                  <div className="col-xs-6 col-md-6 pull-right">
-                    <button type="submit" className="btn btn-large btn-danger pull-right">Login</button>
-                  </div>
-                </div>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
@@ -66,6 +56,7 @@ export class UserLogin extends React.PureComponent { // eslint-disable-line reac
 
 UserLogin.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  onChangeUsername: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -74,7 +65,8 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    dispatch, // do we need this here?
+    onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value))
   };
 }
 

@@ -4,7 +4,6 @@ import { createSelector } from 'reselect';
  * Direct selector to the login state domain
  */
 const selectLoginDomain = () => (state) => state.get('login');
-
 /**
  * Other specific selectors
  */
@@ -16,7 +15,7 @@ const selectLoginDomain = () => (state) => state.get('login');
 
 const makeSelectLogin = () => createSelector(
   selectLoginDomain(),
-  (substate) => console.log(substate)
+  (substate) => console.log('makeSelectLogin', substate)
 );
 
 export default makeSelectLogin;

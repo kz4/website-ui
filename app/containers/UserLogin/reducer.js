@@ -6,15 +6,15 @@
 
 import { fromJS } from 'immutable';
 import {
-  DEFAULT_ACTION,
+  CHANGE_USERNAME,
 } from './constants';
 
 const initialState = fromJS({});
 
 function userLoginReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+    case CHANGE_USERNAME:
+      return state.set('username', action.username);
     default:
       return state;
   }

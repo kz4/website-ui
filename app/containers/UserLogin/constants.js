@@ -4,4 +4,4 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/UserLogin/DEFAULT_ACTION';
+export const CHANGE_USERNAME = 'app/UserLogin/CHANGE_USERNAME';

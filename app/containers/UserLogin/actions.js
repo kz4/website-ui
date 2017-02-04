@@ -5,11 +5,12 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  CHANGE_USERNAME,
 } from './constants';
 
-export function defaultAction() {
+export function changeUsername(username) {
   return {
-    type: DEFAULT_ACTION,
-  };
+    type: CHANGE_USERNAME,
+    username,
+  }
 }
