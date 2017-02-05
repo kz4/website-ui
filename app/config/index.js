@@ -1,9 +1,9 @@
-//test commit by shraddha
+//test commit2 by shraddha
 const trueEnv = process.env.NODE_ENV;
 const envs = {
   PRODUCTION: 'production',
   DEVELOPMENT: 'development',
-  TESTING: 'testing',
+  TESTING: 'testing'
 };
 
 function getServerBase(env = trueEnv) {
@@ -25,9 +25,9 @@ function makeApiPath(path) {
 const paths = {
   api: {
     auth: {
-      LOGIN: makeApiPath('auth/login'),
-    },
-  },
+      LOGIN: makeApiPath('auth/login')
+    }
+  }
 };
 
 export { envs, paths, makeApiPath, getServerBase };
