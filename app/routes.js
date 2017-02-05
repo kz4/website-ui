@@ -67,7 +67,15 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-    }, {
+    },{
+      path: '/projects',
+      name: 'projects',
+      getComponent(nextState, cb) {
+        import('containers/ProjectPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },{
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
