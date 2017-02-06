@@ -78,6 +78,16 @@ export default class ProjectPafe extends React.Component { // eslint-disable-lin
               <FormattedMessage {...messages.intlMessage} />
             </p>
           </ListItem>
+
+          <ListItem>
+            <ListItemTitle>
+              <FormattedMessage {...messages.listItemHeader} />
+            </ListItemTitle>
+            <p>
+              <FormattedMessage {...messages.listItemMessage} />
+            </p>
+          </ListItem>
+
         </List>
       </div>
     );

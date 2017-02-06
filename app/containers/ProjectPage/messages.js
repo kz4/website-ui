@@ -8,7 +8,7 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'boilerplate.containers.ProjectPage.header',
-    defaultMessage: 'Projects!!!!!',
+    defaultMessage: 'Projects!!',
   },
   scaffoldingHeader: {
     id: 'boilerplate.containers.FeaturePage.scaffolding.header',
@@ -92,4 +92,14 @@ export default defineMessages({
     id: 'boilerplate.containers.FeaturePage.internationalization.message',
     defaultMessage: 'Scalable apps need to support multiple languages, easily add and support multiple languages with `react-intl`.',
   },
+
+  listItemHeader: {
+    id: 'boilerplate.containers.FeaturePage.lists.message',
+    defaultMessage: 'Powerful Reducers',
+  },
+
+  listItemMessage: {
+    id: 'boilerplate.containers.FeaturePage.lists.message',
+    defaultMessage: 'Dynamically changing pages with powerful reducers, that optimize the code to the most granular level possible.',
+  }
 });
