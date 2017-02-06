@@ -9,14 +9,15 @@
     "source": "abc",
     "location": "abc"
   }],
-  "related_docs" : [{
+  "related_docs" : [[{
     "id": 1 ,
     "link":"www.googledocs.com/abc.pdf"
-  },
-    {
+  }],
+    [{
       "id":2,
       "link":"www.abc.com/123.png"
-    }],
+    }]
+  ],
   "datasets" : [
     [{
       "data_name" : "data 1",
