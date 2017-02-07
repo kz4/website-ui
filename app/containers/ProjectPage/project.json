@@ -21,16 +21,16 @@
   "datasets" : [
     [{
       "data_name" : "data 1",
-      "updated":02052017,
-      "start":01052008,
+      "updated":2052017,
+      "start":1052008,
       "end":12082016,
       "count":500,
       "size":2000
     }],
     [{
       "data_name" :"data 2",
-      "updated":02052012,
-      "start":01052007,
+      "updated":2052012,
+      "start":1052007,
       "end":12082011,
       "count":800,
       "size":3000

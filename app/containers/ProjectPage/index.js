@@ -23,16 +23,75 @@ const options = {
     alert(`You double click row id: ${row.id}`);
   },
 };
-var products = [{
-  id: 1,
-  name: 'Product1',
-  price: 120,
-}, {
-  id: 2,
-  name: 'Product2',
-  price: 80,
+// var products = [{
+//   id: 1,
+//   name: 'Product1',
+//   price: 120,
+// }, {
+//   id: 2,
+//   name: 'Product2',
+//   price: 80,
+// }];
+
+var project = [
+  {
+  "project_id": 1,
+  "description": "Project 1",
+  "project_name": "Project 1",
+  "img": "",
+  "essentials" : [{
+    "year":2010,
+    "budget": 10000,
+    "source": "abc",
+    "location": "abc"
+  }],
+  "related_docs" : [{
+    "id": 1 ,
+    "link":"www.googledocs.com/abc.pdf"
+  },
+    {
+      "id":2,
+      "link":"www.abc.com/123.png"
+    }
+  ],
+  "datasets" : [
+    {
+      "id" : "data 1",
+      "updated":2052017,
+      "start":1052008,
+      "end":12082016,
+      "count":500,
+      "size":2000
+    },
+    {
+      "id" :"data 2",
+      "updated":2052012,
+      "start":1052007,
+      "end":12082011,
+      "count":800,
+      "size":3000
+    }
+  ]
 }];
 
+var datasets = [
+  {
+    "id" : "data 1",
+    "updated":2052017,
+    "start":1052008,
+    "end":12082016,
+    "count":500,
+    "size":2000
+  },
+  {
+    "id" :"data 2",
+    "updated":2052012,
+    "start":1052007,
+    "end":12082011,
+    "count":800,
+    "size":3000
+  }
+];
 export default class ProjectPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   // Since state and props are static,
@@ -42,6 +101,7 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
   }
   render() {
     return (
+
       // <div>
       //   <Helmet
       //     title="Project Page"
@@ -99,10 +159,13 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
       //     </ListItem>
       //   </List>
       // </div>
-      <BootstrapTable data={products} options={options}>
-        <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-        <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+      <BootstrapTable data={datasets} options={options} search={ true }>
+        <TableHeaderColumn dataField="id" isKey>Dataset ID</TableHeaderColumn>
+        <TableHeaderColumn dataField="updated">Updated</TableHeaderColumn>
+        <TableHeaderColumn dataField="start">Start</TableHeaderColumn>
+        <TableHeaderColumn dataField="end">End</TableHeaderColumn>
+        <TableHeaderColumn dataField="count">Count</TableHeaderColumn>
+        <TableHeaderColumn dataField="size">Size</TableHeaderColumn>
       </BootstrapTable>
     );
   }
