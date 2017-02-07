@@ -101,5 +101,5 @@ export default defineMessages({
   listItemMessage: {
     id: 'boilerplate.containers.FeaturePage.lists.message',
     defaultMessage: 'Dynamically changing pages with powerful reducers, that optimize the code to the most granular level possible.',
-  }
+  },
 });
