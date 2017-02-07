@@ -25,11 +25,18 @@ const paths = {
   api: {
     auth: {
       LOGIN: makeApiPath('auth/login'),
+      REGISTER: makeApiPath('auth/register'),
     },
   },
   appPaths: {
     home: {
       path: '/',
+    },
+    login: {
+      path: '/login',
+    },
+    register: {
+      path: '/register',
     },
     user: {
       path: '/user',

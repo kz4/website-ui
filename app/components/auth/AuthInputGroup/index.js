@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 const AuthInputGroup = (props) => (
   <div className="form-group">
-    <label htmlFor={props.name} className="control-label">Username</label>
+    <label htmlFor={props.name} className="control-label">{props.name}</label>
     <input
       type="text"
       className="form-control"

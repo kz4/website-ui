@@ -4,6 +4,7 @@ const AuthPage = (props) => (
   <div className="container">
     <div className="row">
       <div className="col-sm-6 col-sm-offset-3">
+        <h1>{props.title}</h1>
         <div className="well">
           {props.children}
         </div>
@@ -14,6 +15,7 @@ const AuthPage = (props) => (
 
 AuthPage.propTypes = {
   children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default AuthPage;
