@@ -1,21 +1,47 @@
 /*
  * LandingPage
- * Attempting to recreate: https://bootstrapmaster.com/themes/free-bootstrap-themes/gotya-free-bootstrap-theme/
- *
  *
  */
-
+import H2 from 'components/H2';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import DaSlider from './slider/DaSlider'
-import {DaSlide, DaSlideH2, DaSlideCoolH2} from './slider/DaSlide';
-import { Button } from 'react-bootstrap';
+import { Button, Glyphicon, Col } from 'react-bootstrap';
+import { SliderPanel, SliderText, SliderImg, SliderWrapper } from './slider/Slider';
+import { Subtext } from './slider/Subtext';
+import { FeatureWrapper, FeatureIcon, FeatureText } from './slider/Features';
+
+
+const Slider = require('react-slick');
+
 export class LandingPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+
   render() {
+    const sliderSettings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+    };
+
+
     return (
       <div>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+        <script
+          src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        >
+        </script>
+        <link
+          rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
         <Helmet
           title="LandingPage"
           meta={[
@@ -23,154 +49,93 @@ export class LandingPage extends React.Component { // eslint-disable-line react/
           ]}
         />
 
-
-        <div className="slider-wrapper">
-          <DaSlideCoolH2> Hello </DaSlideCoolH2>
-          <DaSlider>
-            <DaSlide>
-              <DaSlideH2>Twitter Bootstrap</DaSlideH2>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-              <a href="https://www.google.com/" className="da-link">Read more</a>
-              <div className="da-img"><img src={require('./img/parallax-slider/twitter.png')} alt="image01" />
+        <Slider {...sliderSettings}>
+          <SliderPanel>
+            <Col xs={8}>
+              <SliderImg src="https://placeimg.com/640/300/tech" />
+            </Col>
+            <Col xs={4}>
+              <SliderText>Here&apos;s one reason Velo is the bomb.com.</SliderText>
+              <div className="text-center">
+                <Button bsStyle="success">Learn More!</Button>
               </div>
-            </DaSlide>
-            <DaSlide>
-              <DaSlideH2>Responsive Design</DaSlideH2>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-              <a href="https://www.google.com/" className="da-link">Read more</a>
-              <div className="da-img"><img src={require('./img/parallax-slider/responsive.png')} alt="image02" /></div>
-            </DaSlide>
-            <DaSlide>
-              <DaSlideH2>HTML5</DaSlideH2>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-              <a href="https://www.google.com/" className="da-link">Read more</a>
-              <div className="da-img"><img src={require('./img/parallax-slider/html5.png')} alt="image03" /></div>
-            </DaSlide>
-            <DaSlide>
-              <DaSlideH2>CSS3</DaSlideH2>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-              <a href="https://www.google.com/" className="da-link">Read more</a>
-              <div className="da-img"><img src={require('./img/parallax-slider/css3.png')} alt="image04" /></div>
-            </DaSlide>
-            <nav className="da-arrows">
-              <span className="da-arrows-prev"></span>
-              <span className="da-arrows-next"></span>
-            </nav>
-          </DaSlider>
+            </Col>
+          </SliderPanel>
+          <SliderPanel>
+            <Col xs={8}>
+              <SliderImg src="https://placeimg.com/640/300/tech" />
+            </Col>
+            <Col xs={4}>
+              <SliderText>Here&apos;s another reason Velo is super awesome!</SliderText>
+              <div className="text-center">
+                <Button bsStyle="success">Seriously, Learn More!</Button>
+              </div>
+            </Col>
+          </SliderPanel>
+        </Slider>
+
+        <Subtext>
+          <h3>
+            <i>Hello there! Velo is the greatest thing to ever exist on this planet.
+              You should really learn more about Velo. Why not click the button below?</i>
+          </h3>
+          <p><Button bsStyle="success">Learn more!</Button></p>
+        </Subtext>
+
+        <div className="container">
+          <FeatureWrapper>
+            <Col sm={4}>
+              <FeatureIcon>
+                <Glyphicon glyph="fire"></Glyphicon>
+              </FeatureIcon>
+              <FeatureText>Here&apos;s one neat feature we&apos;re awesome at.</FeatureText>
+            </Col>
+          </FeatureWrapper>
+          <FeatureWrapper>
+            <Col sm={4}>
+              <FeatureIcon>
+                <Glyphicon glyph="leaf"></Glyphicon>
+              </FeatureIcon>
+              <FeatureText>Here&apos;s another neat feature we&apos;re awesome at.</FeatureText>
+            </Col>
+          </FeatureWrapper>
+          <FeatureWrapper>
+            <Col sm={4}>
+              <FeatureIcon>
+                <Glyphicon glyph="cloud"></Glyphicon>
+              </FeatureIcon>
+              <FeatureText>Cloud storage is awesome! Wouldn&apos;t you agree?</FeatureText>
+            </Col>
+          </FeatureWrapper>
         </div>
 
-
-
-        <div id="wrapper">
-          <div className="container">
-            <div className="hero-unit">
-              <p>
-                This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-              </p>
-              <p><a className="btn btn-success btn-large">Learn more &raquo;</a></p>
-            </div>
-            <div className="row">
-              <div className="span4">
-                <div className="icons-box">
-                  <i className="ico-ok circle big"></i>
-                  <div className="title"><h3>Easy to use</h3></div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                  </p>
-                  <div className="clear"></div>
-                </div>
-              </div>
-
-              <div className="span4">
-                <div className="icons-box">
-                  <i className="ico-ipad circle big"></i>
-                  <div className="title"><h3>Responsive</h3></div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                  </p>
-                  <div className="clear"></div>
-                </div>
-              </div>
-              <div className="span4">
-                <div className="icons-box">
-                  <i className="ico-heart circle big"></i>
-                  <div className="title"><h3>User friendly</h3></div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                  </p>
-                  <div className="clear"></div>
-                </div>
-              </div>
-            </div>
-            <div className="clients-carousel">
-              <ul className="slides clients">
-                <li><img src={require('./img/logos/1.png')} alt="" /></li>
-                <li><img src={require('./img/logos/2.png')} alt="" /></li>
-                <li><img src={require('./img/logos/3.png')} alt="" /></li>
-                <li><img src={require('./img/logos/4.png')} alt="" /></li>
-                <li><img src={require('./img/logos/4.png')} alt="" /></li>
-                <li><img src={require('./img/logos/6.png')} alt="" /></li>
-                <li><img src={require('./img/logos/7.png')} alt="" /></li>
-                <li><img src={require('./img/logos/8.png')} alt="" /></li>
-                <li><img src={require('./img/logos/9.png')} alt="" /></li>
-                <li><img src={require('./img/logos/10.png')} alt="" /></li>
-              </ul>
-
-            </div>
-
-            <div className="row">
-
-              <div className="icons-box-vert-container">
-
-                <div className="span6">
-                  <div className="icons-box-vert">
-                    <i className="ico-ok ico-color circle-color big"></i>
-                    <div className="icons-box-vert-info">
-                      <h3>Easy to use</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    </div>
-                    <div className="clear"></div>
-                  </div>
-                </div>
-
-                <div className="span6">
-                  <div className="icons-box-vert">
-                    <i className="ico-cup  ico-white circle-color-full big-color"></i>
-                    <div className="icons-box-vert-info">
-                      <h3>Best choice</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    </div>
-                    <div className="clear"></div>
-                  </div>
-                </div>
-
-                <div className="span6">
-                  <div className="icons-box-vert">
-                    <i className="ico-ipad ico-color circle-color big"></i>
-                    <div className="icons-box-vert-info">
-                      <h3>Fully Responsive</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    </div>
-                    <div className="clear"></div>
-                  </div>
-                </div>
-
-                <div className="span6">
-                  <div className="icons-box-vert">
-                    <i className="ico-thumbs-up  ico-white circle-color-full big-color"></i>
-                    <div className="icons-box-vert-info">
-                      <h3>Social Network</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    </div>
-                    <div className="clear"></div>
-                  </div>
-                </div>
-
-              </div>
-              <div className="clear"></div>
-            </div>
-          </div>
-        </div>
+        <H2>See what users have to say...</H2>
+        <SliderWrapper>
+          <Slider {...sliderSettings}>
+            <SliderPanel>
+              <Col xs={4}>
+                <SliderImg src="https://placeimg.com/300/200/animals" />
+              </Col>
+              <Col xs={8}>
+                <SliderText>
+                  <i>&quot;Forget about Jello. Sign up for Velo.&quot;</i>
+                  <p>--Bowser, kidnapper of princesses</p>
+                </SliderText>
+              </Col>
+            </SliderPanel>
+            <SliderPanel>
+              <Col xs={4}>
+                <SliderImg src="https://placeimg.com/300/200/animals" />
+              </Col>
+              <Col xs={8}>
+                <SliderText>
+                  <i>&quot;With Velo in my life, I feel truly... #blessed.&quot;</i>
+                  <p> --Ned Stark, Lord of Winterfell</p>
+                </SliderText>
+              </Col>
+            </SliderPanel>
+          </Slider>
+        </SliderWrapper>
       </div>
 
     );
