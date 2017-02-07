@@ -27,6 +27,14 @@ const paths = {
       LOGIN: makeApiPath('auth/login'),
     },
   },
+  appPaths: {
+    home: {
+      path: '/',
+    },
+    user: {
+      path: '/user',
+    },
+  },
 };
 
 export { envs, paths, makeApiPath, getServerBase };

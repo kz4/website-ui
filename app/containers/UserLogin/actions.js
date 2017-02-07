@@ -8,6 +8,7 @@ import {
   DO_LOGIN,
   CHANGE_USERNAME,
   CHANGE_PASSWORD,
+  LOGIN_SUCCESS,
 } from './constants';
 
 export function onChangeUsername(username) {
@@ -27,5 +28,12 @@ export function onChangePassword(password) {
 export function onDoLogIn() {
   return {
     type: DO_LOGIN,
+  };
+}
+
+export function onLoginSuccess(loginResponse) {
+  return {
+    type: LOGIN_SUCCESS,
+    loginResponse,
   };
 }
