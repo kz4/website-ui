@@ -27,7 +27,7 @@ export default class BootstrapTable1 extends React.Component{
 
   render()
   {
-    return (<BootstrapTable data={this.datasets} search={ true }>
+    return (<BootstrapTable data={this.datasets} search={ true } striped = {true} hover = {true}>
       <TableHeaderColumn dataField="id" isKey>Dataset ID</TableHeaderColumn>
       <TableHeaderColumn dataField="updated">Updated</TableHeaderColumn>
       <TableHeaderColumn dataField="start">Start</TableHeaderColumn>
