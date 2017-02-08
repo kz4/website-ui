@@ -74,6 +74,12 @@ const options = {
 //   ]
 // }];
 
+var project = {
+  project_id: 12345,
+  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultricies metus at leo pellentesque rhoncus. Aliquam sodales orci non malesuada posuere. Donec convallis sapien erat, non molestie nisl interdum vitae. Morbi imperdiet congue tempus. Etiam porta tortor ligula, eu facilisis lorem consectetur condimentum.',
+  project_name: 'Astoria Atmospheric Data'
+}
+
 var datasets = [
   {id: 'data 1',
     updated: 2052017,
@@ -98,16 +104,23 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
   render() {
     return (
 
-      // <div>
-      //   <Helmet
-      //     title="Project Page"
-      //     meta={[
-      //       { name: 'description', content: 'Project page of React.js Boilerplate application' },
-      //     ]}
-      //   />
-      //   <H1>
-      //     <FormattedMessage {...messages.header} />
-      //   </H1>
+      <div>
+        {/*<div><h1>{project.project_id}</h1></div>*/}
+        {/*<div>*/}
+          {/*<Col xs={12} md={8}>*/}
+            {/*{project.description}*/}
+          {/*</Col>*/}
+        {/*</div>*/}
+        <BootstrapTable data={datasets} options={options} search={ true }>
+          <TableHeaderColumn dataField="id" isKey>Dataset ID</TableHeaderColumn>
+          <TableHeaderColumn dataField="updated">Updated</TableHeaderColumn>
+          <TableHeaderColumn dataField="start">Start</TableHeaderColumn>
+          <TableHeaderColumn dataField="end">End</TableHeaderColumn>
+          <TableHeaderColumn dataField="count">Count</TableHeaderColumn>
+          <TableHeaderColumn dataField="size">Size</TableHeaderColumn>
+        </BootstrapTable>
+        </div>
+
       //   <List>
       //     <ListItem>
       //       <ListItemTitle>
@@ -155,14 +168,7 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
       //     </ListItem>
       //   </List>
       // </div>
-      <BootstrapTable data={datasets} options={options} search={ true }>
-        <TableHeaderColumn dataField="id" isKey>Dataset ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="updated">Updated</TableHeaderColumn>
-        <TableHeaderColumn dataField="start">Start</TableHeaderColumn>
-        <TableHeaderColumn dataField="end">End</TableHeaderColumn>
-        <TableHeaderColumn dataField="count">Count</TableHeaderColumn>
-        <TableHeaderColumn dataField="size">Size</TableHeaderColumn>
-      </BootstrapTable>
+
     );
   }
 }
