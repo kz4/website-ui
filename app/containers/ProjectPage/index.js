@@ -1,3 +1,5 @@
+
+
 /*
  * FeaturePage
  *
@@ -6,13 +8,15 @@
 import React from 'react';
 // import Helmet from 'react-helmet';
 // import { FormattedMessage } from 'react-intl';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+//import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import Practice from '../../components/Practice/Practice.js'
+import BootstrapTable1 from '../../components/BootstrapTable/BootstrapTable1.js'
 
 // import H1 from 'components/H1';
 // import messages from './messages';
 // import List from './List';
 // import ListItem from './ListItem';
-// import ListItemTitle from './ListItemTitle';
+// import ListItemTitle from './ListItemTitle
 
 
 const options = {
@@ -22,10 +26,10 @@ const options = {
   onRowDoubleClick: function (row) {
     alert(`You double click row id: ${row.id}`);
   },
-};
+}
 // var products = [{
 //   id: 1,
-//   name: 'Product1',
+//  name: 'Product1',
 //   price: 120,
 // }, {
 //   id: 2,
@@ -74,13 +78,8 @@ const options = {
 //   ]
 // }];
 
-var project = {
-  project_id: 12345,
-  description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ultricies metus at leo pellentesque rhoncus. Aliquam sodales orci non malesuada posuere. Donec convallis sapien erat, non molestie nisl interdum vitae. Morbi imperdiet congue tempus. Etiam porta tortor ligula, eu facilisis lorem consectetur condimentum.',
-  project_name: 'Astoria Atmospheric Data'
-}
-
-var datasets = [
+/*var datasets = [
+>>>>>>> 234baf6ea075d64bc9ccf467e8d64d38a42623a1
   {id: 'data 1',
     updated: 2052017,
     start: 1052008,
@@ -93,7 +92,7 @@ var datasets = [
     end: 12082011,
     count: 800,
     size: 3000,},
-];
+];*/
 export default class ProjectPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   // Since state and props are static,
@@ -101,73 +100,50 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
   shouldComponentUpdate() {
     return false;
   }
+
+
+
   render() {
+
+
+
+    const title = "Welcome to the web dev team's project page";
+
+
+    const datasets = [
+      {id: 'data 1',
+        updated: 2052017,
+        start: 1052008,
+        end: 12082016,
+        count: 500,
+        size: 2000,},
+      {id:'data 2',
+        updated: 2052012,
+        start: 1052007,
+        end: 12082011,
+        count: 800,
+        size: 3000,},
+    ];
+
+
+
+
     return (
 
       <div>
-        {/*<div><h1>{project.project_id}</h1></div>*/}
-        {/*<div>*/}
-          {/*<Col xs={12} md={8}>*/}
-            {/*{project.description}*/}
-          {/*</Col>*/}
-        {/*</div>*/}
-        <BootstrapTable data={datasets} options={options} search={ true }>
-          <TableHeaderColumn dataField="id" isKey>Dataset ID</TableHeaderColumn>
-          <TableHeaderColumn dataField="updated">Updated</TableHeaderColumn>
-          <TableHeaderColumn dataField="start">Start</TableHeaderColumn>
-          <TableHeaderColumn dataField="end">End</TableHeaderColumn>
-          <TableHeaderColumn dataField="count">Count</TableHeaderColumn>
-          <TableHeaderColumn dataField="size">Size</TableHeaderColumn>
-        </BootstrapTable>
-        </div>
 
-      //   <List>
-      //     <ListItem>
-      //       <ListItemTitle>
-      //         <FormattedMessage {...messages.scaffoldingHeader} />
-      //       </ListItemTitle>
-      //       <p>
-      //         <FormattedMessage {...messages.scaffoldingMessage} />
-      //       </p>
-      //     </ListItem>
-      //
-      //     <ListItem>
-      //       <ListItemTitle>
-      //         <FormattedMessage {...messages.feedbackHeader} />
-      //       </ListItemTitle>
-      //       <p>
-      //         <FormattedMessage {...messages.feedbackMessage} />
-      //       </p>
-      //     </ListItem>
-      //
-      //     <ListItem>
-      //       <ListItemTitle>
-      //         <FormattedMessage {...messages.routingHeader} />
-      //       </ListItemTitle>
-      //       <p>
-      //         <FormattedMessage {...messages.routingMessage} />
-      //       </p>
-      //     </ListItem>
-      //
-      //     <ListItem>
-      //       <ListItemTitle>
-      //         <FormattedMessage {...messages.networkHeader} />
-      //       </ListItemTitle>
-      //       <p>
-      //         <FormattedMessage {...messages.networkMessage} />
-      //       </p>
-      //     </ListItem>
-      //
-      //     <ListItem>
-      //       <ListItemTitle>
-      //         <FormattedMessage {...messages.intlHeader} />
-      //       </ListItemTitle>
-      //       <p>
-      //         <FormattedMessage {...messages.intlMessage} />
-      //       </p>
-      //     </ListItem>
-      //   </List>
-      // </div>
+
+
+        <Practice title={"this is the first instance of the Practice component"}/>
+
+
+        <Practice title = {"this is the second instance of practice component"}/>
+
+
+
+        <BootstrapTable1 datasets = {datasets}/>
+
+        </div>
 
     );
   }
