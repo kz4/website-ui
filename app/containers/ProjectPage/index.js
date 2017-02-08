@@ -100,8 +100,29 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
     return false;
   }
 
+
+
   render() {
 
+
+
+    const title = "Welcome to the web dev team's project page";
+
+
+    const datasets = [
+      {id: 'data 1',
+        updated: 2052017,
+        start: 1052008,
+        end: 12082016,
+        count: 500,
+        size: 2000,},
+      {id:'data 2',
+        updated: 2052012,
+        start: 1052007,
+        end: 12082011,
+        count: 800,
+        size: 3000,},
+    ];
 
 
 
@@ -169,7 +190,15 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
       <div>
 
 
-        <BootstrapTable1/>
+
+        <Practice title={"this is the first instance of the Practice component"}/>
+
+
+        <Practice title = {"this is the second instance of practice component"}/>
+
+
+
+        <BootstrapTable1 datasets = {datasets}/>
 
         </div>
 

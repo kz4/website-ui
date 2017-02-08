@@ -5,15 +5,19 @@
 import React from 'react';
 
 export default class Practice extends React.Component{
-  constructor()
+  /*constructor()
   {
     super();
     this.message = "testing if constructor is written correctly";
-  }
+  }*/
   render()
   {
+    console.log(this.props);
     return(
-      <h4>Practising making external components and rendering it on one page, by importing. {this.message}</h4>
+      <div>
+      <h4>Hello World</h4>
+    {this.props.title}
+    </div>
     );
   }
 
