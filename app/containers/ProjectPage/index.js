@@ -6,20 +6,7 @@
  * List all the features
  */
 import React from 'react';
-// import Helmet from 'react-helmet';
-// import { FormattedMessage } from 'react-intl';
-//import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import Practice from '../../components/Practice/Practice.js'
-import BootstrapTable1 from '../../components/BootstrapTable/BootstrapTable1.js'
-import Well from 'react-bootstrap/lib/Well';
-import Button from 'react-bootstrap/lib/Button';
-import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-import Panel from 'react-bootstrap/lib/Panel';
-import PageHeader from 'react-bootstrap/lib/PageHeader';
-import Image from 'react-bootstrap/lib/Image';
-
+import Project from '../../components/Project/index.js'
 
 const options = {
   onRowClick: function (row) {
@@ -81,40 +68,10 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
 
   render() {
     //json used to display dataset table
-    const datasets = [
-      {id: 'data 1',
-        updated: 2052017,
-        start: 1052008,
-        end: 12082016,
-        count: 500,
-        size: 2000,},
-      {id:'data 2',
-        updated: 2052012,
-        start: 1052007,
-        end: 12082011,
-        count: 800,
-        size: 3000,},
-    ];
 
     return (
       <div>
-        <Grid fluid="true">
-          <Row className="show-grid">
-            <Col xs={12} md={8}><PageHeader>Astoria Atmospheric Data&nbsp;<small>Lorem ipsum lorem ipsum</small></PageHeader></Col>
-            <Col xs={6} md={4}> <Button bsStyle="primary" href={'/'}>Upload new file</Button></Col>
-          </Row>
-
-          <Row>
-            <Col xs={12} md={8}>
-              <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4>
-            </Col>
-            <Col xs={6} md={4}><Image src={require('../ProjectPage/astoria_test.jpg')} responsive></Image></Col>
-          </Row>
-
-          <Row>
-            <Col md={12}><Panel header="Data Sets"><BootstrapTable1 datasets = {datasets}/></Panel></Col>
-          </Row>
-        </Grid>
+        <Project></Project>
       </div>
 
     );
