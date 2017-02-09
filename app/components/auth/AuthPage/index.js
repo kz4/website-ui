@@ -15,7 +15,7 @@ const AuthPage = (props) => (
 
 AuthPage.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
 };
 
 export default AuthPage;

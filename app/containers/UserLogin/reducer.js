@@ -8,6 +8,7 @@ import { fromJS } from 'immutable';
 import {
   CHANGE_USERNAME,
   CHANGE_PASSWORD,
+  CHANGE_REMEMBER,
 } from './constants';
 
 const initialState = fromJS({});
@@ -18,6 +19,8 @@ function userLoginReducer(state = initialState, action) {
       return state.set('username', action.username);
     case CHANGE_PASSWORD:
       return state.set('password', action.password);
+    case CHANGE_REMEMBER:
+      return state.set('remember', action.remember);
     default:
       return state;
   }

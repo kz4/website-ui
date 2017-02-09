@@ -9,6 +9,7 @@ import {
   CHANGE_USERNAME,
   CHANGE_PASSWORD,
   LOGIN_SUCCESS,
+  CHANGE_REMEMBER,
 } from './constants';
 
 export function onChangeUsername(username) {
@@ -25,6 +26,13 @@ export function onChangePassword(password) {
   };
 }
 
+export function onChangeRemember(remember) {
+  return {
+    type: CHANGE_REMEMBER,
+    remember,
+  };
+}
+
 export function onDoLogIn() {
   return {
     type: DO_LOGIN,
@@ -37,3 +45,4 @@ export function onLoginSuccess(loginResponse) {
     loginResponse,
   };
 }
+

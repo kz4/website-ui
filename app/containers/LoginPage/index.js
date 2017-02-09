@@ -7,14 +7,16 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-// import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import UserLogin from 'containers/UserLogin';
-import makeSelectLogin from './selectors';
-// import messages from './messages';
+import AuthPage from 'components/auth/AuthPage';
+// import makeSelectLogin from './selectors';
+import messages from './messages';
 
 export class Login extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const titleMsg = (<FormattedMessage {...messages.header} />);
     return (
       <div>
         <Helmet
@@ -23,7 +25,9 @@ export class Login extends React.PureComponent { // eslint-disable-line react/pr
             { name: 'description', content: 'Description of Login' },
           ]}
         />
-        <UserLogin />
+        <AuthPage title={titleMsg}>
+          <UserLogin />
+        </AuthPage>
       </div>
     );
   }
@@ -34,7 +38,7 @@ Login.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  Login: makeSelectLogin(),
+  // Login: makeSelectLogin(),
 });
 
 function mapDispatchToProps(dispatch) {

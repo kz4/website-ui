@@ -5,7 +5,7 @@ import { fromJS } from 'immutable';
  */
 const selectUserLoginDomain = () => (state) => {
   console.log('selectUserLogin', state.toJS());
-  return state.get('home').get('userLogin');
+  return state.get('login').get('userLogin');
 };
 
 /**
@@ -27,6 +27,7 @@ const makeSelectLoginCredentials = () => createSelector(
     if (substate) {
       loginCredentials.username = substate.get('username') || '';
       loginCredentials.password = substate.get('password') || '';
+      loginCredentials.remember = substate.get('remember') || false;
     }
     return fromJS(loginCredentials);
   }

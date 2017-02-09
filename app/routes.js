@@ -52,7 +52,7 @@ export default function createRoutes(store) {
 
         importModules.then(([reducer, sagas, component]) => {
           // TODO change to login, this is probably why the store was in home :P
-          injectReducer('home', reducer.default);
+          injectReducer('login', reducer.default);
           injectSagas(sagas.default);
 
           renderRoute(component);

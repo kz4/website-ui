@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react';
 
 const AuthInputGroup = (props) => (
   <div className="form-group">
-    <label htmlFor={props.name} className="control-label">{props.name}</label>
+    <label htmlFor={props.uid} className="control-label">{props.display}</label>
     <input
       type="text"
       className="form-control"
-      id={props.name}
+      id={props.uid}
       onChange={props.onChange}
     />
     <span className="help-block"></span>
@@ -14,7 +14,8 @@ const AuthInputGroup = (props) => (
 );
 
 AuthInputGroup.propTypes = {
-  name: PropTypes.string.isRequired,
+  uid: PropTypes.string.isRequired,
+  display: PropTypes.node.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 

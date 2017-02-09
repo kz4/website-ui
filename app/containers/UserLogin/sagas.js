@@ -22,6 +22,7 @@ export function* getLoginResponse() {
       body: {
         username: loginCred.get('username'),
         password: loginCred.get('password'),
+        remember: loginCred.get('remember'),
       },
     });
     // browserHistory.push(paths.appPaths.user.path);
