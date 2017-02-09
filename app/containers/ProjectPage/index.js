@@ -80,12 +80,7 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
   }
 
   render() {
-
-
-
-    const title = "Welcome to the web dev team's project page";
-
-
+    //json used to display dataset table
     const datasets = [
       {id: 'data 1',
         updated: 2052017,
@@ -101,37 +96,26 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
         size: 3000,},
     ];
 
-
-
-
     return (
-
       <div>
-        <Grid>
-          <Row>
+        <Grid fluid="true">
+          <Row className="show-grid">
             <Col xs={12} md={8}><PageHeader>Astoria Atmospheric Data&nbsp;<small>Lorem ipsum lorem ipsum</small></PageHeader></Col>
             <Col xs={6} md={4}> <Button bsStyle="primary" href={'/'}>Upload new file</Button></Col>
           </Row>
+
           <Row>
             <Col xs={12} md={8}>
-              <Well>
-                <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4>
-              </Well>
+              <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4>
             </Col>
-            <Col xs={6} md={4}><Image src="/assets/astoria_test.jpeg" responsive></Image></Col>
+            <Col xs={6} md={4}><Image src={require('../ProjectPage/astoria_test.jpg')} responsive></Image></Col>
           </Row>
+
           <Row>
             <Col md={12}><Panel header="Data Sets"><BootstrapTable1 datasets = {datasets}/></Panel></Col>
           </Row>
         </Grid>
-
-
-
-
-
-
-
-        </div>
+      </div>
 
     );
   }
