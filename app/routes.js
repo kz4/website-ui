@@ -78,6 +78,26 @@ export default function createRoutes(store) {
       },
     },
     {
+      path: '/userconsole',
+      name: 'userConsole',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/UserConsole/reducer'),
+          import('containers/UserConsole/sagas'),
+          import('containers/UserConsole'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('userConsole', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

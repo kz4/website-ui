@@ -233,6 +233,7 @@
     "react-router-bootstrap": "^0.23.1",
     "react-router-redux": "4.0.6",
     "react-router-scroll": "0.4.1",
+    "react-sidebar": "^2.2.1",
     "redux": "3.6.0",
     "redux-immutable": "3.0.8",
     "redux-saga": "0.14.0",
