@@ -15,14 +15,13 @@ import AuthInputGroup from 'components/auth/AuthInputGroup';
 import { onChangeUsername, onDoLogIn, onChangePassword, onChangeRemember } from './actions';
 // import makeSelectUserLogin from './selectors';
 import messages from './messages';
+import LogInButton from './LogInButton';
+import RememberMeCheckbox from './RememberMeCheckbox';
 
 export class UserLogin extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     const usernameMsg = (<FormattedMessage {...messages.usernameInput} />);
     const passwordMsg = (<FormattedMessage {...messages.passwordInput} />);
-    const rememberMeMsg = (<FormattedMessage {...messages.rememberMe} />);
-    const isPrivateComputerMsg = (<FormattedMessage {...messages.isPrivateComputer} />);
-    const logInButtonMsg = (<FormattedMessage {...messages.logInButton} />);
     return (
       <div>
         <AuthInputGroup
@@ -36,19 +35,8 @@ export class UserLogin extends React.PureComponent { // eslint-disable-line reac
           onChange={this.props.onChangePassword}
         />
         <div id="loginErrorMsg" className="alert alert-error hide">Wrong username og password</div>
-        <div className="checkbox">
-          <label htmlFor="remember">
-            <input
-              type="checkbox"
-              name="remember"
-              id="remember"
-              onChange={this.props.onChangeRemember}
-            />
-            {rememberMeMsg}
-          </label>
-          <p className="help-block">({isPrivateComputerMsg})</p>
-        </div>
-        <Button bsStyle="success" onClick={this.props.onDoLogIn}> {logInButtonMsg} </Button>
+        <RememberMeCheckbox onChangeRemember={this.props.onChangeRemember} />
+        <LogInButton onDoLogIn={this.props.onDoLogIn} />
       </div>
     );
   }
