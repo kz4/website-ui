@@ -31,7 +31,7 @@ describe('UserLogin actions', () => {
       const expectedPassword = 'foo';
       const expected = {
         type: CHANGE_PASSWORD,
-        username: expectedPassword,
+        password: expectedPassword,
       };
       expect(onChangePassword(expectedPassword)).toEqual(expected);
     });
