@@ -12,24 +12,28 @@ import { createStructuredSelector } from 'reselect';
 import AuthInputGroup from 'components/auth/AuthInputGroup';
 
 import { onChangeUsername, onDoLogIn, onChangePassword, onChangeRemember } from './actions';
+import { USERNAME_UID, PASSWORD_UID } from './constants';
 // import makeSelectUserLogin from './selectors';
 import messages from './messages';
 import LogInButton from './LogInButton';
 import RememberMeCheckbox from './RememberMeCheckbox';
 
+// is there a better way? Will this have any problems?
+// export for testing
+export const usernameMsg = (<FormattedMessage {...messages.usernameInput} />);
+export const passwordMsg = (<FormattedMessage {...messages.passwordInput} />);
+
 export class UserLogin extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const usernameMsg = (<FormattedMessage {...messages.usernameInput} />);
-    const passwordMsg = (<FormattedMessage {...messages.passwordInput} />);
     return (
       <div>
         <AuthInputGroup
-          uid="username"
+          uid={USERNAME_UID}
           display={usernameMsg}
           onChange={this.props.onChangeUsername}
         />
         <AuthInputGroup
-          uid="password"
+          uid={PASSWORD_UID}
           display={passwordMsg}
           onChange={this.props.onChangePassword}
         />
@@ -48,11 +52,11 @@ UserLogin.propTypes = {
   onDoLogIn: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
+export const mapStateToProps = createStructuredSelector({
   // UserLogin: makeSelectUserLogin(),
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     onChangeUsername: (evt) => dispatch(onChangeUsername(evt.target.value)),
     onChangePassword: (evt) => dispatch(onChangePassword(evt.target.value)),
