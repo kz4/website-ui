@@ -8,7 +8,6 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import { Button } from 'react-bootstrap';
 
 import AuthInputGroup from 'components/auth/AuthInputGroup';
 
