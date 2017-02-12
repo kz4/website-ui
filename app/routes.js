@@ -68,6 +68,26 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/hello-world',
+      name: 'niviHelloWorld',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/NiviHelloWorld/reducer'),
+          import('containers/NiviHelloWorld/sagas'),
+          import('containers/NiviHelloWorld'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('niviHelloWorld', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
