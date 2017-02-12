@@ -18,4 +18,8 @@ export default defineMessages({
     id: 'boilerplate.components.Header.projects',
     defaultMessage: 'Projects',
   },
+  viewData: {
+    id: 'boilerplate.components.Header.viewData',
+    defaultMessage: 'View Data',
+  },
 });

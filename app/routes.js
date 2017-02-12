@@ -75,6 +75,14 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
+    },{
+      path: '/viewData',
+      name: 'view data',
+      getComponent(nextState, cb) {
+        import('containers/ViewDataPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
     }, {
       path: '*',
       name: 'notfound',
