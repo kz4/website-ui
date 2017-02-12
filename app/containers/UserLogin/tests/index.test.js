@@ -87,7 +87,7 @@ describe('<UserLogin />', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
       const action = onChangeRemember(true);
-      const evt = { target: { value: 'foo' } };
+      const evt = { target: { checked: true } };
       result.onChangeRemember(evt);
       expect(dispatch).toHaveBeenCalledWith(action);
     });

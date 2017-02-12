@@ -37,7 +37,7 @@ export class UserLogin extends React.PureComponent { // eslint-disable-line reac
           display={passwordMsg}
           onChange={this.props.onChangePassword}
         />
-        <div id="loginErrorMsg" className="alert alert-error hide">Wrong username og password</div>
+        <div id="loginErrorMsg" className="alert alert-error hide">Wrong username or password</div>
         <RememberMeCheckbox onChangeRemember={this.props.onChangeRemember} />
         <LogInButton onDoLogIn={this.props.onDoLogIn} />
       </div>
