@@ -3,7 +3,7 @@ import { fromJS } from 'immutable';
 /**
  * Direct selector to the userLogin state domain
  */
-const selectUserLoginDomain = () => (state) => {
+const makeSelectUserLoginDomain = () => (state) => {
   console.log('selectUserLogin', state.toJS());
   return state.get('login').get('userLogin');
 };
@@ -18,17 +18,16 @@ const selectUserLoginDomain = () => (state) => {
  */
 
 const makeSelectLoginCredentials = () => createSelector(
-  selectUserLoginDomain(),
+  makeSelectUserLoginDomain(),
   (substate) => {
     const loginCredentials = {
       username: '',
       password: '',
+      remember: false,
     };
-    if (substate) {
-      loginCredentials.username = substate.get('username') || '';
-      loginCredentials.password = substate.get('password') || '';
-      loginCredentials.remember = substate.get('remember') || false;
-    }
+    loginCredentials.username = substate.get('username') || '';
+    loginCredentials.password = substate.get('password') || '';
+    loginCredentials.remember = substate.get('remember') || false;
     return fromJS(loginCredentials);
   }
 );
@@ -36,5 +35,5 @@ const makeSelectLoginCredentials = () => createSelector(
 // export default makeSelectUserLogin;
 export {
   makeSelectLoginCredentials,
-  selectUserLoginDomain,
+  makeSelectUserLoginDomain,
 };
