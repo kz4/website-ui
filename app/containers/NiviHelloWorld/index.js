@@ -7,12 +7,10 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import { makeSelectIsEditable } from './selectors';
-import messages from './messages';
-import EditableField from './EditableField';
 import { Button } from 'react-bootstrap';
+import { makeSelectIsEditable } from './selectors';
+import EditableField from './EditableField';
 import { toggleIsEditableAction } from './actions';
 
 export class NiviHelloWorld extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -35,7 +33,6 @@ export class NiviHelloWorld extends React.PureComponent { // eslint-disable-line
 }
 
 NiviHelloWorld.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   isEditable: PropTypes.bool.isRequired,
   toggleIsEditable: PropTypes.func.isRequired,
 };
@@ -46,8 +43,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
-    toggleIsEditable: () => {console.log('toggleIsEditable') ; dispatch(toggleIsEditableAction())}
+    toggleIsEditable: () => { console.log('toggleIsEditable'); dispatch(toggleIsEditableAction()); },
   };
 }
 

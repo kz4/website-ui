@@ -9,16 +9,6 @@ const selectNiviHelloWorldDomain = () => (state) => state.get('niviHelloWorld');
  * Other specific selectors
  */
 
-
-/**
- * Default selector used by NiviHelloWorld
- */
-
-const makeSelectNiviHelloWorld = () => createSelector(
-  selectNiviHelloWorldDomain(),
-  (substate) => substate ? substate.toJS() : {}
-);
-
 /**
  * Default selector used by NiviHelloWorld
  */
@@ -27,7 +17,6 @@ const makeSelectIsEditable = () => createSelector(
   (substate) => substate.get('isEditable')
 );
 
-// export default makeSelectNiviHelloWorld;
 export {
   makeSelectIsEditable,
   selectNiviHelloWorldDomain,

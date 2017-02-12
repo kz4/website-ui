@@ -1,9 +1,8 @@
-import React, {PropTypes} from 'react';
-import { Button } from 'react-bootstrap';
+import React, { PropTypes } from 'react';
 
 const EditableField = (props) => {
   let inside;
-  if(props.isEditable) {
+  if (props.isEditable) {
     inside = (<input className="form-control" type="text" />);
   } else {
     inside = (<span>foo</span>);
@@ -12,7 +11,7 @@ const EditableField = (props) => {
     <div>
       {inside}
     </div>
-  )
+  );
 };
 
 EditableField.propTypes = {

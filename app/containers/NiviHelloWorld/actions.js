@@ -6,7 +6,7 @@
 
 import {
   DEFAULT_ACTION,
-  TOGGLE_IS_EDITABLE_ACTION
+  TOGGLE_IS_EDITABLE_ACTION,
 } from './constants';
 
 export function defaultAction() {
@@ -17,6 +17,6 @@ export function defaultAction() {
 
 export function toggleIsEditableAction() {
   return {
-    type: TOGGLE_IS_EDITABLE_ACTION
-  }
+    type: TOGGLE_IS_EDITABLE_ACTION,
+  };
 }

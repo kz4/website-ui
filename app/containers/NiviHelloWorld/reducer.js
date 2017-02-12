@@ -20,10 +20,12 @@ function niviHelloWorldReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
-    case TOGGLE_IS_EDITABLE_ACTION:
-      const newState = state.set(isEditableField, !state.get(isEditableField));
+    case TOGGLE_IS_EDITABLE_ACTION: {
+      const isEditable = !state.get(isEditableField);
+      const newState = state.set(isEditableField, isEditable);
       console.log('newState', newState.toJS());
       return newState;
+    }
     default:
       return state;
   }
