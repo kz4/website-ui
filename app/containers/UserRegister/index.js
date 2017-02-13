@@ -1,52 +1,68 @@
 /*
  *
- * UserRegister
+ * UserLogin
  *
  */
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-// import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import { Button } from 'react-bootstrap';
 
-import AuthPage from 'components/auth/AuthPage';
 import AuthInputGroup from 'components/auth/AuthInputGroup';
 
-import { onChangeUsername, onDoRegister, onChangePassword } from './actions';
-// import makeSelectUserRegister from './selectors';
-// import messages from './messages';
+import { onChangeUsername, onDoLogIn, onChangePassword, onChangeConfirmPassword } from './actions';
+import { USERNAME_UID, PASSWORD_UID } from './constants';
+// import makeSelectUserLogin from './selectors';
+import messages from './messages';
+import LogInButton from './LogInButton';
+import RememberMeCheckbox from './RememberMeCheckbox';
 
-export class UserRegister extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+// is there a better way? Will this have any problems?
+// export for testing
+export const usernameMsg = (<FormattedMessage {...messages.usernameInput} />);
+export const passwordMsg = (<FormattedMessage {...messages.passwordInput} />);
+
+export class UserLogin extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <AuthPage title="Register">
-        <AuthInputGroup name="Username" onChange={this.props.onChangeUsername} />
-        <AuthInputGroup name="Password" onChange={this.props.onChangePassword} />
-        <AuthInputGroup name="Verify Password" onChange={this.props.onChangePassword} />
-        <div id="registerErrorMsg" className="alert alert-error hide">Wrong username og password</div>
-        <Button bsStyle="success" onClick={this.props.onDoRegister}> Register </Button>
-      </AuthPage>
+      <div>
+        <AuthInputGroup
+          uid={USERNAME_UID}
+          display={usernameMsg}
+          onChange={this.props.onChangeUsername}
+        />
+        <AuthInputGroup
+          uid={PASSWORD_UID}
+          display={passwordMsg}
+          onChange={this.props.onChangePassword}
+        />
+        <div id="loginErrorMsg" className="alert alert-error hide">Wrong username or password</div>
+        <RememberMeCheckbox onChangeRemember={this.props.onChangeRemember} />
+        <LogInButton onDoLogIn={this.props.onDoLogIn} />
+      </div>
     );
   }
 }
 
-UserRegister.propTypes = {
+UserLogin.propTypes = {
   onChangeUsername: PropTypes.func.isRequired,
   onChangePassword: PropTypes.func.isRequired,
-  onDoRegister: PropTypes.func.isRequired,
+  onChangeRemember: PropTypes.func.isRequired,
+  onDoLogIn: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  // UserRegister: makeSelectUserRegister(),
+export const mapStateToProps = createStructuredSelector({
+  // UserLogin: makeSelectUserLogin(),
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     onChangeUsername: (evt) => dispatch(onChangeUsername(evt.target.value)),
     onChangePassword: (evt) => dispatch(onChangePassword(evt.target.value)),
-    onDoRegister: () => dispatch(onDoRegister()),
+    onChangeRemember: (evt) => dispatch(onChangeConfirmPassword(evt.target.checked)),
+    onDoLogIn: () => dispatch(onDoLogIn()),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserRegister);
+export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);

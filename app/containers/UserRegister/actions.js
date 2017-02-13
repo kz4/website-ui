@@ -1,14 +1,15 @@
 /*
  *
- * UserRegister actions
+ * UserLogin actions
  *
  */
 
 import {
-  DO_REGISTER,
+  DO_LOGIN,
   CHANGE_USERNAME,
   CHANGE_PASSWORD,
-  REGISTER_SUCCESS,
+  LOGIN_SUCCESS,
+  CHANGE_CONFIRM_REMEMBER,
 } from './constants';
 
 export function onChangeUsername(username) {
@@ -25,15 +26,23 @@ export function onChangePassword(password) {
   };
 }
 
-export function onDoRegister() {
+export function onChangeConfirmPassword(remember) {
   return {
-    type: DO_REGISTER,
+    type: CHANGE_CONFIRM_REMEMBER,
+    remember,
   };
 }
 
-export function onRegisterSuccess(registerResponse) {
+export function onDoLogIn() {
   return {
-    type: REGISTER_SUCCESS,
-    registerResponse,
+    type: DO_LOGIN,
   };
 }
+
+export function onLoginSuccess(loginResponse) {
+  return {
+    type: LOGIN_SUCCESS,
+    loginResponse,
+  };
+}
+
