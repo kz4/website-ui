@@ -6,7 +6,7 @@ import {
   DEFAULT_ACTION,
 } from '../constants';
 
-describe('Sidebar actions', () => {
+describe('UserDashboard actions', () => {
   describe('Default Action', () => {
     it('has a type of DEFAULT_ACTION', () => {
       const expected = {

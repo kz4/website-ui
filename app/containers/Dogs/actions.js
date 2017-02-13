@@ -1,6 +1,6 @@
 /*
  *
- * Sidebar actions
+ * Dogs actions
  *
  */
 

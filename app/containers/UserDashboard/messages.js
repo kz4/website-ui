@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.containers.UserConsole.header',
-    defaultMessage: 'This is UserConsole container !',
+    defaultMessage: 'This is UserDashboard container !',
   },
 });

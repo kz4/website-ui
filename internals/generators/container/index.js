@@ -46,11 +46,11 @@ module.exports = {
     message: 'Do you want i18n messages (i.e. will this component use text)?',
   }],
   actions: (data) => {
-    // Generate DaSlide.js and index.test.js
+    // Generate index.js and index.test.js
     const actions = [{
       type: 'add',
-      path: '../../app/containers/{{properCase name}}/DaSlide.js',
-      templateFile: './container/DaSlide.js.hbs',
+      path: '../../app/containers/{{properCase name}}/index.js',
+      templateFile: './container/index.js.hbs',
       abortOnFail: true,
     }, {
       type: 'add',

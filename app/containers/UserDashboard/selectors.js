@@ -11,7 +11,7 @@ const selectUserConsoleDomain = () => (state) => state.get('userConsole');
 
 
 /**
- * Default selector used by UserConsole
+ * Default selector used by UserDashboard
  */
 
 const makeSelectUserConsole = () => createSelector(

@@ -7,7 +7,7 @@ router.post('/login', (req, res) => {
   res.json({
     username: '123',
     token: 'dgdshdsgrs',
-    projects: [{id: 'proj1'}, {id: 'proj2'}]
+    projects: [{ id: 'proj1' }, { id: 'proj2' }],
   });
 });
 

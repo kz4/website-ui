@@ -1,6 +1,6 @@
 /*
  *
- * Sidebar reducer
+ * Dogs reducer
  *
  */
 
@@ -11,7 +11,7 @@ import {
 
 const initialState = fromJS({});
 
-function sidebarReducer(state = initialState, action) {
+function dogsReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -20,4 +20,4 @@ function sidebarReducer(state = initialState, action) {
   }
 }
 
-export default sidebarReducer;
+export default dogsReducer;
