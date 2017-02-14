@@ -1,8 +1,8 @@
 import { take, call, put, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
+import request from 'utils/request';
 import { LOAD_HELLO_WORLD_DATA_ACTION } from './constants';
 import { makeLoadHelloWorldDataAction, makeLoadSuccessHelloWorldDataAction } from './actions';
-import request from 'utils/request';
 
 export function* getHelloWorldData() {
   // in prod, should put all paths together, not have them hard coded.
