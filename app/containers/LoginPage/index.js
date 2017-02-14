@@ -11,7 +11,6 @@ import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import UserLogin from 'containers/UserLogin';
 import AuthPage from 'components/auth/AuthPage';
-// import makeSelectLogin from './selectors';
 import messages from './messages';
 
 export class Login extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function

@@ -28,6 +28,6 @@ export default defineMessages({
   },
   registerButton: {
     id: 'app.containers.register_page.log_in',
-    defaultMessage: 'Log In',
+    defaultMessage: 'Register',
   },
 });
