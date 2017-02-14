@@ -15,7 +15,7 @@ export class UserConsole extends React.Component { // eslint-disable-line react/
     const options =
       [
         { name: 'Profile', link: '/landing' },
-        { name: 'Projects', link: '/features' },
+        { name: 'Projects', link: '/dashboard/projects' },
         { name: 'Cats', link: '/dashboard/cats' },
         { name: 'Dogs', link: '/dashboard/dogs' },
       ];

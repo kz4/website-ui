@@ -139,6 +139,26 @@ export default function createRoutes(store) {
             importModules.catch(errorLoading);
           },
         },
+        {
+          path: '/dashboard/projects',
+          name: 'projects',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+            import('containers/ProjectList/reducer'),
+            import('containers/ProjectList/sagas'),
+            import('containers/ProjectList'),
+          ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, sagas, component]) => {
+              injectReducer('projects', reducer.default);
+              injectSagas(sagas.default);
+              renderRoute(component);
+            });
+            importModules.catch(errorLoading);
+          },
+        },
       ],
 
     }, {
