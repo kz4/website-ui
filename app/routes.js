@@ -110,6 +110,100 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
+    },
+    {
+      path: '/landing',
+      name: 'landing',
+      getComponent(nextState, cb) {
+        import('containers/LandingPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/UserDashboard/reducer'),
+          import('containers/UserDashboard/sagas'),
+          import('containers/UserDashboard'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('userConsole', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+
+      childRoutes: [
+        {
+          path: '/dashboard/dogs',
+          name: 'dogs',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Dogs/reducer'),
+              import('containers/Dogs/sagas'),
+              import('containers/Dogs'),
+            ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, sagas, component]) => {
+              injectReducer('dogs', reducer.default);
+              injectSagas(sagas.default);
+              renderRoute(component);
+            });
+            importModules.catch(errorLoading);
+          },
+        },
+        {
+          path: '/dashboard/cats',
+          name: 'cats',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Cats/reducer'),
+              import('containers/Cats/sagas'),
+              import('containers/Cats'),
+            ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, sagas, component]) => {
+              injectReducer('cats', reducer.default);
+              injectSagas(sagas.default);
+              renderRoute(component);
+            });
+            importModules.catch(errorLoading);
+          },
+        },
+        {
+          path: '/dashboard/projects',
+          name: 'projects',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+            import('containers/ProjectList/reducer'),
+            import('containers/ProjectList/sagas'),
+            import('containers/ProjectList'),
+          ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, sagas, component]) => {
+              injectReducer('projects', reducer.default);
+              injectSagas(sagas.default);
+              renderRoute(component);
+            });
+            importModules.catch(errorLoading);
+          },
+        },
+      ],
+
     }, {
       path: '*',
       name: 'notfound',
@@ -119,5 +213,6 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     },
+
   ];
 }

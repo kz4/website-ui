@@ -7,6 +7,7 @@ const Ul = styled.ul`
   max-height: 30em;
   overflow-y: auto;
   padding: 0 1em;
+  color: red;
 `;
 
 export default Ul;
