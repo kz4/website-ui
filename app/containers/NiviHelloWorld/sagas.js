@@ -22,8 +22,11 @@ export function* getHelloWorldData() {
 
 // Individual exports for testing
 export function* pageLoadSaga() {
+  
+  // setup a listener for LOAD_HELLO_WORLD_DATA_ACTION
   const watcher = yield takeLatest(LOAD_HELLO_WORLD_DATA_ACTION, getHelloWorldData);
 
+  // fire a LOAD_HELLO_WORLD_DATA_ACTION, so we can load our data for the page
   yield put(makeLoadHelloWorldDataAction());
 
   // Suspend execution until location changes
