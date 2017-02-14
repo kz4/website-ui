@@ -22,10 +22,10 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
     return false;
   }
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      title: "hello shraddha",
+      title:  "hello world",
   };
 
 
@@ -33,10 +33,12 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
 
   changeTitle(title)
   {
-    this.setState({title});
+    console.log(title);
+    this.setState({title: title});
   }
 
   render() {
+
 
 
     //const title = "practising further parts of react before getting into testing";
@@ -100,7 +102,14 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
 
 
 
+
+
+
+        {this.state.title}
+
+
         <Practice changeTitle = {this.changeTitle.bind(this)} title = {this.state.title}/>
+
       </div>
     );
   }
