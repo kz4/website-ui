@@ -9,9 +9,9 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { Button } from 'react-bootstrap';
-import { makeSelectIsEditable } from './selectors';
+import { makeSelectIsEditable, makeSelectExampleValue } from './selectors';
 import EditableField from './EditableField';
-import { toggleIsEditableAction } from './actions';
+import { makeToggleIsEditableAction, makeChangeExampleAction } from './actions';
 
 export class NiviHelloWorld extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -25,8 +25,7 @@ export class NiviHelloWorld extends React.PureComponent { // eslint-disable-line
         />
         <Button bsStyle="primary" onClick={this.props.toggleIsEditable}> Edit </Button>
         <hr />
-        <EditableField isEditable={this.props.isEditable} />
-        <EditableField isEditable={this.props.isEditable} />
+        <EditableField isEditable={this.props.isEditable} onChange={this.props.onChangeExampleValue} curVal={this.props.exampleValue}/>
       </div>
     );
   }
@@ -35,15 +34,19 @@ export class NiviHelloWorld extends React.PureComponent { // eslint-disable-line
 NiviHelloWorld.propTypes = {
   isEditable: PropTypes.bool.isRequired,
   toggleIsEditable: PropTypes.func.isRequired,
+  onChangeExampleValue: PropTypes.func.isRequired,
+  exampleValue: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
   isEditable: makeSelectIsEditable(),
+  exampleValue: makeSelectExampleValue(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    toggleIsEditable: () => { console.log('toggleIsEditable'); dispatch(toggleIsEditableAction()); },
+    toggleIsEditable: () => { console.log('toggleIsEditable'); dispatch(makeToggleIsEditableAction()); },
+    onChangeExampleValue: (exampleVal) => { console.log('onChangeExampleValue'); dispatch(makeChangeExampleAction(exampleVal)); },
   };
 }
 

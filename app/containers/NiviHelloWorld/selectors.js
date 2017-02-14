@@ -17,7 +17,13 @@ const makeSelectIsEditable = () => createSelector(
   (substate) => substate.get('isEditable')
 );
 
+const makeSelectExampleValue = () => createSelector(
+  selectNiviHelloWorldDomain(),
+  (substate) => substate.get('exampleValue')
+)
+
 export {
   makeSelectIsEditable,
   selectNiviHelloWorldDomain,
+  makeSelectExampleValue,
 };
