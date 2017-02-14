@@ -1,6 +1,6 @@
 
 import { fromJS } from 'immutable';
-import { onChangeUsername, onChangePassword, onChangeVerifyPassword } from '../actions';
+import { onChangeUsernameAction, onChangePasswordAction, onChangeVerifyPasswordAction } from '../actions';
 import userRegisterReducer from '../reducer';
 
 describe('userRegisterReducer', () => {
@@ -18,18 +18,18 @@ describe('userRegisterReducer', () => {
     const fixture = 'mxstbr';
     const expectedResult = state.set('username', fixture);
 
-    expect(userRegisterReducer(state, onChangeUsername(fixture))).toEqual(expectedResult);
+    expect(userRegisterReducer(state, onChangeUsernameAction(fixture))).toEqual(expectedResult);
   });
   it('should handle the change password action correctly', () => {
     const fixture = 'mxstbr';
     const expectedResult = state.set('password', fixture);
 
-    expect(userRegisterReducer(state, onChangePassword(fixture))).toEqual(expectedResult);
+    expect(userRegisterReducer(state, onChangePasswordAction(fixture))).toEqual(expectedResult);
   });
   it('should handle the change verifyPassword action correctly', () => {
     const fixture = true;
     const expectedResult = state.set('verifyPassword', fixture);
 
-    expect(userRegisterReducer(state, onChangeVerifyPassword(fixture))).toEqual(expectedResult);
+    expect(userRegisterReducer(state, onChangeVerifyPasswordAction(fixture))).toEqual(expectedResult);
   });
 });

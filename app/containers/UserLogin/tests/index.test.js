@@ -5,7 +5,7 @@ import LogInButton from '../LogInButton';
 import RememberMeCheckbox from '../RememberMeCheckbox';
 import { UserLogin, passwordMsg, usernameMsg, mapDispatchToProps } from '../index';
 import { USERNAME_UID, PASSWORD_UID } from '../constants';
-import { onChangeUsername, onChangePassword, onChangeRemember, onDoLogIn } from '../actions';
+import { onChangeUsernameAction, onChangePasswordAction, onChangeRememberAction, onDoLogInAction } from '../actions';
 
 describe('<UserLogin />', () => {
   const noop = () => {};
@@ -39,7 +39,7 @@ describe('<UserLogin />', () => {
     it('should dispatch loadRepos when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onDoLogIn();
+      const action = onDoLogInAction();
       result.onDoLogIn();
       expect(dispatch).toHaveBeenCalledWith(action);
     });
@@ -54,7 +54,7 @@ describe('<UserLogin />', () => {
     it('should dispatch loadRepos when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onChangeUsername('foo');
+      const action = onChangeUsernameAction('foo');
       const evt = { target: { value: 'foo' } };
       result.onChangeUsername(evt);
       expect(dispatch).toHaveBeenCalledWith(action);
@@ -70,7 +70,7 @@ describe('<UserLogin />', () => {
     it('should dispatch when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onChangePassword('foo');
+      const action = onChangePasswordAction('foo');
       const evt = { target: { value: 'foo' } };
       result.onChangePassword(evt);
       expect(dispatch).toHaveBeenCalledWith(action);
@@ -86,7 +86,7 @@ describe('<UserLogin />', () => {
     it('should dispatch when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onChangeRemember(true);
+      const action = onChangeRememberAction(true);
       const evt = { target: { checked: true } };
       result.onChangeRemember(evt);
       expect(dispatch).toHaveBeenCalledWith(action);

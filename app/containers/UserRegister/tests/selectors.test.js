@@ -3,10 +3,10 @@
 
 // const selector = makeSelectUserRegisterDomain();
 import { fromJS } from 'immutable';
-import { makeSelectUserRegisterDomain, makeSelectRegisterCredentials } from '../selectors';
+import { makeSelectUserRegisterSubstate, makeSelectRegisterCredentials } from '../selectors';
 
 describe('selectUserRegisterDomain', () => {
-  const selectUserRegisterDomain = makeSelectUserRegisterDomain();
+  const selectUserRegisterDomain = makeSelectUserRegisterSubstate();
   it('should select the UserRegister state', () => {
     const userRegisterState = fromJS({
       username: '',

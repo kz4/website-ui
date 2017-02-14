@@ -13,7 +13,7 @@ import * as router from 'react-router';
 import { login, getLoginResponse, changeToUserPage } from '../sagas';
 import { DO_LOGIN, LOGIN_SUCCESS } from '../constants';
 import { makeSelectLoginCredentials } from '../selectors';
-import { onLoginSuccess } from '../actions';
+import { onLoginSuccessAction } from '../actions';
 
 describe('changeToUserPage', () => {
   let pushMock;
@@ -60,7 +60,7 @@ describe('getLoginResponse saga', () => {
       status: 200,
     };
     const putDescriptor = getLoginResponseGenerator.next(loginResponse).value;
-    expect(putDescriptor).toEqual(put(onLoginSuccess(loginResponse)));
+    expect(putDescriptor).toEqual(put(onLoginSuccessAction(loginResponse)));
   });
 
   // haven't implemented yet, but should look like this

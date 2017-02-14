@@ -12,34 +12,34 @@ import {
   CHANGE_REMEMBER,
 } from './constants';
 
-export function onChangeUsername(username) {
+export function onChangeUsernameAction(username) {
   return {
     type: CHANGE_USERNAME,
     username,
   };
 }
 
-export function onChangePassword(password) {
+export function onChangePasswordAction(password) {
   return {
     type: CHANGE_PASSWORD,
     password,
   };
 }
 
-export function onChangeRemember(remember) {
+export function onChangeRememberAction(remember) {
   return {
     type: CHANGE_REMEMBER,
     remember,
   };
 }
 
-export function onDoLogIn() {
+export function onDoLogInAction() {
   return {
     type: DO_LOGIN,
   };
 }
 
-export function onLoginSuccess(loginResponse) {
+export function onLoginSuccessAction(loginResponse) {
   return {
     type: LOGIN_SUCCESS,
     loginResponse,

@@ -1,10 +1,10 @@
 
 import {
-  onChangeUsername,
-  onChangePassword,
-  onChangeRemember,
-  onDoLogIn,
-  onLoginSuccess,
+  onChangeUsernameAction,
+  onChangePasswordAction,
+  onChangeRememberAction,
+  onDoLogInAction,
+  onLoginSuccessAction,
 } from '../actions';
 import {
   CHANGE_PASSWORD,
@@ -22,7 +22,7 @@ describe('UserLogin actions', () => {
         type: CHANGE_USERNAME,
         username: expectedUsername,
       };
-      expect(onChangeUsername(expectedUsername)).toEqual(expected);
+      expect(onChangeUsernameAction(expectedUsername)).toEqual(expected);
     });
   });
 
@@ -33,7 +33,7 @@ describe('UserLogin actions', () => {
         type: CHANGE_PASSWORD,
         password: expectedPassword,
       };
-      expect(onChangePassword(expectedPassword)).toEqual(expected);
+      expect(onChangePasswordAction(expectedPassword)).toEqual(expected);
     });
   });
 
@@ -44,7 +44,7 @@ describe('UserLogin actions', () => {
         type: CHANGE_REMEMBER,
         remember: expectedRemember,
       };
-      expect(onChangeRemember(expectedRemember)).toEqual(expected);
+      expect(onChangeRememberAction(expectedRemember)).toEqual(expected);
     });
   });
 
@@ -53,7 +53,7 @@ describe('UserLogin actions', () => {
       const expected = {
         type: DO_LOGIN,
       };
-      expect(onDoLogIn()).toEqual(expected);
+      expect(onDoLogInAction()).toEqual(expected);
     });
   });
 
@@ -64,7 +64,7 @@ describe('UserLogin actions', () => {
         type: LOGIN_SUCCESS,
         loginResponse: expectedLoginResponse,
       };
-      expect(onLoginSuccess(expectedLoginResponse)).toEqual(expected);
+      expect(onLoginSuccessAction(expectedLoginResponse)).toEqual(expected);
     });
   });
 });

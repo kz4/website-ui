@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import request from 'utils/request';
 import { makeSelectLoginCredentials } from './selectors';
 import { DO_LOGIN, LOGIN_SUCCESS } from './constants';
-import { onLoginSuccess } from './actions';
+import { onLoginSuccessAction } from './actions';
 
 /**
  * Github repos request/response handler
@@ -26,7 +26,7 @@ export function* getLoginResponse() {
       },
     });
     // browserHistory.push(paths.appPaths.user.path);
-    yield put(onLoginSuccess(loginResponse));
+    yield put(onLoginSuccessAction(loginResponse));
   } catch (err) {
     // console.log('reponse error', err);
     // yield put(repoLoadingError(err));

@@ -1,4 +1,3 @@
-//test commit by shraddha
 const trueEnv = process.env.NODE_ENV;
 const envs = {
   PRODUCTION: 'production',

@@ -1,10 +1,10 @@
 
 import {
-  onChangeUsername,
-  onChangePassword,
-  onChangeVerifyPassword,
-  onDoRegister,
-  onRegisterSuccess,
+  onChangeUsernameAction,
+  onChangePasswordAction,
+  onChangeVerifyPasswordAction,
+  onDoRegisterAction,
+  onRegisterSuccessAction,
 } from '../actions';
 import {
   CHANGE_PASSWORD,
@@ -22,7 +22,7 @@ describe('UserRegister actions', () => {
         type: CHANGE_USERNAME,
         username: expectedUsername,
       };
-      expect(onChangeUsername(expectedUsername)).toEqual(expected);
+      expect(onChangeUsernameAction(expectedUsername)).toEqual(expected);
     });
   });
 
@@ -33,7 +33,7 @@ describe('UserRegister actions', () => {
         type: CHANGE_PASSWORD,
         password: expectedPassword,
       };
-      expect(onChangePassword(expectedPassword)).toEqual(expected);
+      expect(onChangePasswordAction(expectedPassword)).toEqual(expected);
     });
   });
 
@@ -44,7 +44,7 @@ describe('UserRegister actions', () => {
         type: CHANGE_VERIFY_PASSWORD,
         verifyPassword: expectedVerifyPassword,
       };
-      expect(onChangeVerifyPassword(expectedVerifyPassword)).toEqual(expected);
+      expect(onChangeVerifyPasswordAction(expectedVerifyPassword)).toEqual(expected);
     });
   });
 
@@ -53,7 +53,7 @@ describe('UserRegister actions', () => {
       const expected = {
         type: DO_REGISTER,
       };
-      expect(onDoRegister()).toEqual(expected);
+      expect(onDoRegisterAction()).toEqual(expected);
     });
   });
 
@@ -64,7 +64,7 @@ describe('UserRegister actions', () => {
         type: REGISTER_SUCCESS,
         registerResponse: expectedRegisterResponse,
       };
-      expect(onRegisterSuccess(expectedRegisterResponse)).toEqual(expected);
+      expect(onRegisterSuccessAction(expectedRegisterResponse)).toEqual(expected);
     });
   });
 });
