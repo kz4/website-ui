@@ -68,12 +68,14 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+
       path: '/projects',
       name: 'projects',
       getComponent(nextState, cb) {
         import('containers/ProjectPage')
           .then(loadModule(cb))
           .catch(errorLoading);
+
       },
     }, {
       path: '*',
