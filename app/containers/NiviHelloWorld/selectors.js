@@ -3,27 +3,29 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the niviHelloWorld state domain
  */
-const selectNiviHelloWorldDomain = () => (state) => state.get('niviHelloWorld');
+const makeSelectNiviHelloWorldDomain = () => (state) => state.get('niviHelloWorld');
 
 /**
  * Other specific selectors
  */
+const makeSelectStore = () => (state) => state;
 
 /**
  * Default selector used by NiviHelloWorld
  */
 const makeSelectIsEditable = () => createSelector(
-  selectNiviHelloWorldDomain(),
+  makeSelectNiviHelloWorldDomain(),
   (substate) => substate.get('isEditable')
 );
 
 const makeSelectExampleValue = () => createSelector(
-  selectNiviHelloWorldDomain(),
+  makeSelectNiviHelloWorldDomain(),
   (substate) => substate.get('exampleValue')
-)
+);
 
 export {
   makeSelectIsEditable,
-  selectNiviHelloWorldDomain,
+  makeSelectNiviHelloWorldDomain,
   makeSelectExampleValue,
+  makeSelectStore,
 };

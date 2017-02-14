@@ -25,7 +25,7 @@ export class NiviHelloWorld extends React.PureComponent { // eslint-disable-line
         />
         <Button bsStyle="primary" onClick={this.props.toggleIsEditable}> Edit </Button>
         <hr />
-        <EditableField isEditable={this.props.isEditable} onChange={this.props.onChangeExampleValue} curVal={this.props.exampleValue}/>
+        <EditableField isEditable={this.props.isEditable} onChange={this.props.onChangeExampleValue} curVal={this.props.exampleValue} />
       </div>
     );
   }
