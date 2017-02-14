@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 import { fromJS } from 'immutable';
 /**
- * Direct selector to the userLogin state domain
+ * Direct selector to the userRegister state domain
  */
-const makeSelectUserLoginDomain = () => (state) => {
-  console.log('selectUserLogin', state.toJS());
-  return state.get('login').get('userLogin');
+const makeSelectUserRegisterDomain = () => (state) => {
+  console.log('selectUserRegister', state.toJS());
+  return state.get('register').get('userRegister');
 };
 
 /**
@@ -14,26 +14,26 @@ const makeSelectUserLoginDomain = () => (state) => {
 
 
 /**
- * Default selector used by UserLogin
+ * Default selector used by UserRegister
  */
 
-const makeSelectLoginCredentials = () => createSelector(
-  makeSelectUserLoginDomain(),
+const makeSelectRegisterCredentials = () => createSelector(
+  makeSelectUserRegisterDomain(),
   (substate) => {
-    const loginCredentials = {
+    const registerCredentials = {
       username: '',
       password: '',
-      remember: false,
+      verifyPassword: false,
     };
-    loginCredentials.username = substate.get('username') || '';
-    loginCredentials.password = substate.get('password') || '';
-    loginCredentials.remember = substate.get('remember') || false;
-    return fromJS(loginCredentials);
+    registerCredentials.username = substate.get('username') || '';
+    registerCredentials.password = substate.get('password') || '';
+    registerCredentials.verifyPassword = substate.get('verifyPassword') || false;
+    return fromJS(registerCredentials);
   }
 );
 
-// export default makeSelectUserLogin;
+// export default makeSelectUserRegister;
 export {
-  makeSelectLoginCredentials,
-  makeSelectUserLoginDomain,
+  makeSelectRegisterCredentials,
+  makeSelectUserRegisterDomain,
 };

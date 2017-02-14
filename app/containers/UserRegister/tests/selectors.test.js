@@ -1,56 +1,56 @@
 // import { fromJS } from 'immutable';
-// import { makeSelectUserLoginDomain } from '../selectors';
+// import { makeSelectUserRegisterDomain } from '../selectors';
 
-// const selector = makeSelectUserLoginDomain();
+// const selector = makeSelectUserRegisterDomain();
 import { fromJS } from 'immutable';
-import { makeSelectUserLoginDomain, makeSelectLoginCredentials } from '../selectors';
+import { makeSelectUserRegisterDomain, makeSelectRegisterCredentials } from '../selectors';
 
-describe('selectUserLoginDomain', () => {
-  const selectUserLoginDomain = makeSelectUserLoginDomain();
-  it('should select the UserLogin state', () => {
-    const userLoginState = fromJS({
+describe('selectUserRegisterDomain', () => {
+  const selectUserRegisterDomain = makeSelectUserRegisterDomain();
+  it('should select the UserRegister state', () => {
+    const userRegisterState = fromJS({
       username: '',
       password: '',
-      remember: '',
+      verifyPassword: '',
     });
     const mockedState = fromJS({
-      login: {
-        userLogin: userLoginState,
+      register: {
+        userRegister: userRegisterState,
       },
     });
-    expect(selectUserLoginDomain(mockedState)).toEqual(userLoginState);
+    expect(selectUserRegisterDomain(mockedState)).toEqual(userRegisterState);
   });
 });
 
-describe('makeSelectLoginCredentials', () => {
-  const selectLoginCredentialsSelector = makeSelectLoginCredentials();
-  it('should select username, password, and remember', () => {
+describe('makeSelectRegisterCredentials', () => {
+  const selectRegisterCredentialsSelector = makeSelectRegisterCredentials();
+  it('should select username, password, and verifyPassword', () => {
     const expectedJS = {
       username: 'foo',
       password: 'bar',
-      remember: true,
+      verifyPassword: true,
     };
     const expected = fromJS(expectedJS);
     const mockedState = fromJS({
-      login: {
-        userLogin: expectedJS,
+      register: {
+        userRegister: expectedJS,
       },
     });
-    expect(selectLoginCredentialsSelector(mockedState)).toEqual(expected);
+    expect(selectRegisterCredentialsSelector(mockedState)).toEqual(expected);
   });
 
-  it('should select username, password, and remember as default values if it\'s empty', () => {
+  it('should select username, password, and verifyPassword as default values if it\'s empty', () => {
     const expectedJS = {
       username: '',
       password: '',
-      remember: false,
+      verifyPassword: false,
     };
     const expected = fromJS(expectedJS);
     const mockedState = fromJS({
-      login: {
-        userLogin: {},
+      register: {
+        userRegister: {},
       },
     });
-    expect(selectLoginCredentialsSelector(mockedState)).toEqual(expected);
+    expect(selectRegisterCredentialsSelector(mockedState)).toEqual(expected);
   });
 });

@@ -1,24 +1,23 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import AuthInputGroup from 'components/auth/AuthInputGroup';
-import LogInButton from '../LogInButton';
-import RememberMeCheckbox from '../RememberMeCheckbox';
-import { UserLogin, passwordMsg, usernameMsg, mapDispatchToProps } from '../index';
-import { USERNAME_UID, PASSWORD_UID } from '../constants';
-import { onChangeUsername, onChangePassword, onChangeConfirmPassword, onDoLogIn } from '../actions';
+import RegisterButton from '../RegisterButton';
+import { UserRegister, passwordMsg, usernameMsg, verifyPasswordMsg, mapDispatchToProps } from '../index';
+import { USERNAME_UID, PASSWORD_UID, VERIFY_PASSWORD_UID } from '../constants';
+import { onChangeUsername, onChangePassword, onChangeVerifyPassword, onDoRegister } from '../actions';
 
-describe('<UserLogin />', () => {
+describe('<UserRegister />', () => {
   const noop = () => {};
   const renderedComp = shallow(
-    <UserLogin onDoLogIn={noop} onChangeUsername={noop} onChangeRemember={noop} onChangePassword={noop} />
+    <UserRegister onDoRegister={noop} onChangeUsername={noop} onChangeVerifyPassword={noop} onChangePassword={noop} />
   );
   it('should have a log in button', () => {
-    expect(renderedComp.contains(<LogInButton onDoLogIn={noop} />)).toEqual(true);
+    expect(renderedComp.contains(<RegisterButton onDoRegister={noop} />)).toEqual(true);
   });
 
   // could probably make this test more specific
-  it('should have Remember me checkbox', () => {
-    expect(renderedComp.contains(<RememberMeCheckbox onChangeRemember={noop} />)).toEqual(true);
+  it('should have veriy password authinput', () => {
+    expect(renderedComp.contains(<AuthInputGroup uid={VERIFY_PASSWORD_UID} display={verifyPasswordMsg} onChange={noop} />)).toEqual(true);
   });
 
   it('should have username authinput', () => {
@@ -29,18 +28,18 @@ describe('<UserLogin />', () => {
     expect(renderedComp.contains(<AuthInputGroup uid={PASSWORD_UID} display={passwordMsg} onChange={noop} />)).toEqual(true);
   });
 
-  describe('onDoLogIn', () => {
+  describe('onDoRegister', () => {
     it('should be injected', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      expect(result.onDoLogIn).toBeDefined();
+      expect(result.onDoRegister).toBeDefined();
     });
 
     it('should dispatch loadRepos when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onDoLogIn();
-      result.onDoLogIn();
+      const action = onDoRegister();
+      result.onDoRegister();
       expect(dispatch).toHaveBeenCalledWith(action);
     });
   });
@@ -76,19 +75,19 @@ describe('<UserLogin />', () => {
       expect(dispatch).toHaveBeenCalledWith(action);
     });
   });
-  describe('onChangeRemember', () => {
+  describe('onChangeVerifyPassword', () => {
     it('should be injected', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      expect(result.onChangeRemember).toBeDefined();
+      expect(result.onChangeVerifyPassword).toBeDefined();
     });
 
     it('should dispatch when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onChangeConfirmPassword(true);
-      const evt = { target: { checked: true } };
-      result.onChangeRemember(evt);
+      const action = onChangeVerifyPassword('foo');
+      const evt = { target: { value: 'foo' } };
+      result.onChangeVerifyPassword(evt);
       expect(dispatch).toHaveBeenCalledWith(action);
     });
   });

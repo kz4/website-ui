@@ -2,19 +2,19 @@
 import {
   onChangeUsername,
   onChangePassword,
-  onChangeConfirmPassword,
-  onDoLogIn,
-  onLoginSuccess,
+  onChangeVerifyPassword,
+  onDoRegister,
+  onRegisterSuccess,
 } from '../actions';
 import {
   CHANGE_PASSWORD,
-  CHANGE_CONFIRM_REMEMBER,
+  CHANGE_VERIFY_PASSWORD,
   CHANGE_USERNAME,
-  DO_LOGIN,
-  LOGIN_SUCCESS,
+  DO_REGISTER,
+  REGISTER_SUCCESS,
 } from '../constants';
 
-describe('UserLogin actions', () => {
+describe('UserRegister actions', () => {
   describe('on Change Username', () => {
     it('has a type of CHANGE_USERNAME and username', () => {
       const expectedUsername = 'foo';
@@ -37,34 +37,34 @@ describe('UserLogin actions', () => {
     });
   });
 
-  describe('on Change Remember', () => {
-    it('has a type of CHANGE_REMEMBER and remember', () => {
-      const expectedRemember = true;
+  describe('on Change VerifyPassword', () => {
+    it('has a type of CHANGE_VERIFY_PASSWORD and verifyPassword', () => {
+      const expectedVerifyPassword = true;
       const expected = {
-        type: CHANGE_CONFIRM_REMEMBER,
-        remember: expectedRemember,
+        type: CHANGE_VERIFY_PASSWORD,
+        verifyPassword: expectedVerifyPassword,
       };
-      expect(onChangeConfirmPassword(expectedRemember)).toEqual(expected);
+      expect(onChangeVerifyPassword(expectedVerifyPassword)).toEqual(expected);
     });
   });
 
   describe('on Do Log In', () => {
-    it('has a type of DO_LOGIN', () => {
+    it('has a type of DO_REGISTER', () => {
       const expected = {
-        type: DO_LOGIN,
+        type: DO_REGISTER,
       };
-      expect(onDoLogIn()).toEqual(expected);
+      expect(onDoRegister()).toEqual(expected);
     });
   });
 
-  describe('on Login Success', () => {
-    it('has a type of LOGIN_SUCCESS and loginResponse', () => {
-      const expectedLoginResponse = 'bar';
+  describe('on Register Success', () => {
+    it('has a type of REGISTER_SUCCESS and registerResponse', () => {
+      const expectedRegisterResponse = 'bar';
       const expected = {
-        type: LOGIN_SUCCESS,
-        loginResponse: expectedLoginResponse,
+        type: REGISTER_SUCCESS,
+        registerResponse: expectedRegisterResponse,
       };
-      expect(onLoginSuccess(expectedLoginResponse)).toEqual(expected);
+      expect(onRegisterSuccess(expectedRegisterResponse)).toEqual(expected);
     });
   });
 });

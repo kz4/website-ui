@@ -1,6 +1,6 @@
 /*
  *
- * UserLogin
+ * UserRegister
  *
  */
 
@@ -11,19 +11,19 @@ import { createStructuredSelector } from 'reselect';
 
 import AuthInputGroup from 'components/auth/AuthInputGroup';
 
-import { onChangeUsername, onDoLogIn, onChangePassword, onChangeConfirmPassword } from './actions';
-import { USERNAME_UID, PASSWORD_UID } from './constants';
-// import makeSelectUserLogin from './selectors';
+import { onChangeUsername, onDoRegister, onChangePassword, onChangeVerifyPassword } from './actions';
+import { USERNAME_UID, PASSWORD_UID, VERIFY_PASSWORD_UID } from './constants';
+// import makeSelectUserRegister from './selectors';
 import messages from './messages';
-import LogInButton from './LogInButton';
-import RememberMeCheckbox from './RememberMeCheckbox';
+import RegisterButton from './RegisterButton';
 
 // is there a better way? Will this have any problems?
 // export for testing
 export const usernameMsg = (<FormattedMessage {...messages.usernameInput} />);
 export const passwordMsg = (<FormattedMessage {...messages.passwordInput} />);
+export const verifyPasswordMsg = (<FormattedMessage {...messages.verifyPasswordInput} />);
 
-export class UserLogin extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class UserRegister extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
@@ -37,32 +37,35 @@ export class UserLogin extends React.PureComponent { // eslint-disable-line reac
           display={passwordMsg}
           onChange={this.props.onChangePassword}
         />
-        <div id="loginErrorMsg" className="alert alert-error hide">Wrong username or password</div>
-        <RememberMeCheckbox onChangeRemember={this.props.onChangeRemember} />
-        <LogInButton onDoLogIn={this.props.onDoLogIn} />
+        <AuthInputGroup
+          uid={VERIFY_PASSWORD_UID}
+          display={verifyPasswordMsg}
+          onChange={this.props.onChangeVerifyPassword}
+        />
+        <RegisterButton onDoRegister={this.props.onDoRegister} />
       </div>
     );
   }
 }
 
-UserLogin.propTypes = {
+UserRegister.propTypes = {
   onChangeUsername: PropTypes.func.isRequired,
   onChangePassword: PropTypes.func.isRequired,
-  onChangeRemember: PropTypes.func.isRequired,
-  onDoLogIn: PropTypes.func.isRequired,
+  onChangeVerifyPassword: PropTypes.func.isRequired,
+  onDoRegister: PropTypes.func.isRequired,
 };
 
 export const mapStateToProps = createStructuredSelector({
-  // UserLogin: makeSelectUserLogin(),
+  // UserRegister: makeSelectUserRegister(),
 });
 
 export function mapDispatchToProps(dispatch) {
   return {
     onChangeUsername: (evt) => dispatch(onChangeUsername(evt.target.value)),
     onChangePassword: (evt) => dispatch(onChangePassword(evt.target.value)),
-    onChangeRemember: (evt) => dispatch(onChangeConfirmPassword(evt.target.checked)),
-    onDoLogIn: () => dispatch(onDoLogIn()),
+    onChangeVerifyPassword: (evt) => dispatch(onChangeVerifyPassword(evt.target.value)),
+    onDoRegister: () => dispatch(onDoRegister()),
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(UserRegister);

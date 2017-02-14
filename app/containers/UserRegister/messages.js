@@ -1,33 +1,33 @@
 /*
- * UserLogin Messages
+ * UserRegister Messages
  *
- * This contains all the text for the UserLogin component.
+ * This contains all the text for the UserRegister component.
  */
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   header: {
-    id: 'app.containers.UserLogin.header',
-    defaultMessage: 'This is UserLogin container !',
+    id: 'app.containers.UserRegister.header',
+    defaultMessage: 'This is UserRegister container !',
   },
   usernameInput: {
-    id: 'app.containers.login_page.username',
+    id: 'app.containers.register_page.username',
     defaultMessage: 'Username',
   },
   passwordInput: {
-    id: 'app.containers.login_page.password',
+    id: 'app.containers.register_page.password',
     defaultMessage: 'Password',
   },
-  rememberMe: {
-    id: 'app.containers.login_page.rememberMe',
-    defaultMessage: 'Remember Login',
+  verifyPasswordInput: {
+    id: 'app.containers.register_page.verify_password',
+    defaultMessage: 'Verify Password',
   },
   isPrivateComputer: {
-    id: 'app.containers.login_page.computer_is_private',
+    id: 'app.containers.register_page.computer_is_private',
     defaultMessage: 'if this is a private computer',
   },
-  logInButton: {
-    id: 'app.containers.login_page.log_in',
+  registerButton: {
+    id: 'app.containers.register_page.log_in',
     defaultMessage: 'Log In',
   },
 });
