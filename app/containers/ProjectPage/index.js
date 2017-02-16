@@ -1,24 +1,6 @@
 
-
-/*
- * FeaturePage
- *
- * List all the features
- */
 import React from 'react';
 import Project from '../../components/Project/index.js'
-//import Practice from '../../components/Practice/Practice'
-//shifting any practice code to feature page since it does not do anything significant. don't want to touch your awesome code.
-
-const options = {
-  onRowClick: function (row) {
-    alert(`You click row id: ${row.id}`);
-  },
-  onRowDoubleClick: function (row) {
-    alert(`You double click row id: ${row.id}`);
-  },
-}
-
 // var project = [
 //   {
 //   "project_id": 1,
@@ -74,9 +56,6 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
     return (
       <div>
         <Project></Project>
-
-
-
       </div>
 
     );
