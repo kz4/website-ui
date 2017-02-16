@@ -10,6 +10,19 @@ export default defineMessages({
     id: 'boilerplate.containers.ProjectPage.header',
     defaultMessage: 'Projects!!',
   },
+  purpose: {
+    id: 'boilerplate.components.ViewDataPage.purpose',
+    defaultMessage: 'Wind and lidar turbulence profiles from 40 m to 220 m above the surface.',
+  },
+  quality: {
+    id: 'boilerplate.components.ViewDataPage.purpose',
+    defaultMessage: 'These two-minute-averaged data files consider the 1 Hz line-of-sight measurements that pass the -22 dB CNR quality control threshold.',
+  },
+  references: {
+    id: 'boilerplate.components.ViewDataPage.purpose',
+    defaultMessage: 'Lundquist, J. K., M. Churchfield, S. Lee, and A. Clifton. 2015. Quantifying Error of Lidar and Sodar Doppler Beam Swinging Measurements of Wind Turbine Wakes using Computational Fluid Dynamics. Atmos. Meas. Tech., 8, 907-920, 2015, doi: 10.5194/amt-8-907-2015.' +
+    'Rhodes, M. E., and J. K. Lundquist. 2013. The Effect of Wind Turbine Wakes on Summertime Midwest Atmospheric Wind Profiles. Bound.-Layer Meteor., 149, 85-103. doi: 10.1007/s10546-013-9834-x.',
+  },
   scaffoldingHeader: {
     id: 'boilerplate.containers.FeaturePage.scaffolding.header',
     defaultMessage: 'Project',
