@@ -38,19 +38,4 @@ describe('makeSelectLoginCredentials', () => {
     });
     expect(selectLoginCredentialsSelector(mockedState)).toEqual(expected);
   });
-
-  it('should select username, password, and remember as default values if it\'s empty', () => {
-    const expectedJS = {
-      username: '',
-      password: '',
-      remember: false,
-    };
-    const expected = fromJS(expectedJS);
-    const mockedState = fromJS({
-      login: {
-        userLogin: {},
-      },
-    });
-    expect(selectLoginCredentialsSelector(mockedState)).toEqual(expected);
-  });
 });

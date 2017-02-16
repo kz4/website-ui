@@ -24,7 +24,7 @@ function makeApiPath(path) {
 const paths = {
   api: {
     auth: {
-      LOGIN: makeApiPath('auth/login'),
+      LOGIN: makeApiPath('auth/login_reject'),
       REGISTER: makeApiPath('auth/register'),
     },
   },

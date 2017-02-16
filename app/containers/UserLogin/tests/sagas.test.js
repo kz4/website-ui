@@ -11,9 +11,9 @@ import request from 'utils/request';
 import { fromJS } from 'immutable';
 import * as router from 'react-router';
 import { login, getLoginResponse, changeToUserPage } from '../sagas';
-import { DO_LOGIN, LOGIN_SUCCESS } from '../constants';
+import { DO_LOGIN_ACTION, LOGIN_SUCCESS_ACTION } from '../constants';
 import { makeSelectLoginCredentials } from '../selectors';
-import { onLoginSuccessAction } from '../actions';
+import { makeLoginSuccessAction } from '../actions';
 
 describe('changeToUserPage', () => {
   let pushMock;
@@ -60,7 +60,7 @@ describe('getLoginResponse saga', () => {
       status: 200,
     };
     const putDescriptor = getLoginResponseGenerator.next(loginResponse).value;
-    expect(putDescriptor).toEqual(put(onLoginSuccessAction(loginResponse)));
+    expect(putDescriptor).toEqual(put(makeLoginSuccessAction(loginResponse)));
   });
 
   // haven't implemented yet, but should look like this
@@ -80,12 +80,12 @@ describe('login Saga', () => {
 
   it('should start task to watch for DO_LOGIN action', () => {
     const takeLatestDescriptor = loginSaga.next().value;
-    expect(takeLatestDescriptor).toEqual(takeLatest(DO_LOGIN, getLoginResponse));
+    expect(takeLatestDescriptor).toEqual(takeLatest(DO_LOGIN_ACTION, getLoginResponse));
   });
 
   it('should start task to watch for LOGIN_SUCCESS action', () => {
     const takeLatestDescriptor = loginSaga.next(mockDoLoginWatcher).value;
-    expect(takeLatestDescriptor).toEqual(takeLatest(LOGIN_SUCCESS, changeToUserPage));
+    expect(takeLatestDescriptor).toEqual(takeLatest(LOGIN_SUCCESS_ACTION, changeToUserPage));
   });
 
   it('should yield until LOCATION_CHANGE action', () => {

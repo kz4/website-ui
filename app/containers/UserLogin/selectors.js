@@ -20,20 +20,28 @@ const makeSelectUserLoginSubstate = () => (state) => {
 const makeSelectLoginCredentials = () => createSelector(
   makeSelectUserLoginSubstate(),
   (substate) => {
-    const loginCredentials = {
-      username: '',
-      password: '',
-      remember: false,
-    };
-    loginCredentials.username = substate.get('username') || '';
-    loginCredentials.password = substate.get('password') || '';
-    loginCredentials.remember = substate.get('remember') || false;
+    const loginCredentials = {};
+    loginCredentials.username = substate.get('username');
+    loginCredentials.password = substate.get('password');
+    loginCredentials.remember = substate.get('remember');
     return fromJS(loginCredentials);
   }
+);
+
+const makeSelectLoginError = () => createSelector(
+  makeSelectUserLoginSubstate(),
+  (substate) => substate.get('loginError')
+);
+
+const makeSelectLoginErrorMsg = () => createSelector(
+  makeSelectUserLoginSubstate(),
+  (substate) => substate.get('loginErrorMsg')
 );
 
 // export default makeSelectUserLogin;
 export {
   makeSelectLoginCredentials,
   makeSelectUserLoginSubstate,
+  makeSelectLoginError,
+  makeSelectLoginErrorMsg,
 };

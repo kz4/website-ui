@@ -4,10 +4,11 @@
  *
  */
 
-export const CHANGE_USERNAME = 'app/UserLogin/CHANGE_USERNAME';
-export const CHANGE_PASSWORD = 'app/UserLogin/CHANGE_PASSWORD';
-export const CHANGE_REMEMBER = 'app/UserLogin/CHANGE_REMEMBER';
-export const DO_LOGIN = 'app/UserLogin/DO_LOGIN';
-export const LOGIN_SUCCESS = 'app/UserLogin/LOGIN_SUCCESS';
+export const CHANGE_USERNAME_ACTION = 'app/UserLogin/CHANGE_USERNAME';
+export const CHANGE_PASSWORD_ACTION = 'app/UserLogin/CHANGE_PASSWORD';
+export const CHANGE_REMEMBER_ACTION = 'app/UserLogin/CHANGE_REMEMBER';
+export const DO_LOGIN_ACTION = 'app/UserLogin/DO_LOGIN';
+export const LOGIN_SUCCESS_ACTION = 'app/UserLogin/LOGIN_SUCCESS';
+export const LOGIN_ERROR_ACTION = 'app/UserLogin/LOGIN_ERROR';
 export const USERNAME_UID = 'username';
 export const PASSWORD_UID = 'password';

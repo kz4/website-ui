@@ -5,44 +5,51 @@
  */
 
 import {
-  DO_LOGIN,
-  CHANGE_USERNAME,
-  CHANGE_PASSWORD,
-  LOGIN_SUCCESS,
-  CHANGE_REMEMBER,
+  DO_LOGIN_ACTION,
+  CHANGE_USERNAME_ACTION,
+  CHANGE_PASSWORD_ACTION,
+  LOGIN_SUCCESS_ACTION,
+  CHANGE_REMEMBER_ACTION,
+  LOGIN_ERROR_ACTION,
 } from './constants';
 
-export function onChangeUsernameAction(username) {
+export function makeChangeUsernameAction(username) {
   return {
-    type: CHANGE_USERNAME,
+    type: CHANGE_USERNAME_ACTION,
     username,
   };
 }
 
-export function onChangePasswordAction(password) {
+export function makeChangePasswordAction(password) {
   return {
-    type: CHANGE_PASSWORD,
+    type: CHANGE_PASSWORD_ACTION,
     password,
   };
 }
 
-export function onChangeRememberAction(remember) {
+export function makeChangeRememberAction(remember) {
   return {
-    type: CHANGE_REMEMBER,
+    type: CHANGE_REMEMBER_ACTION,
     remember,
   };
 }
 
-export function onDoLogInAction() {
+export function makeDoLogInAction() {
   return {
-    type: DO_LOGIN,
+    type: DO_LOGIN_ACTION,
   };
 }
 
-export function onLoginSuccessAction(loginResponse) {
+export function makeLoginSuccessAction(loginResponse) {
   return {
-    type: LOGIN_SUCCESS,
+    type: LOGIN_SUCCESS_ACTION,
     loginResponse,
   };
 }
 
+export function makeLoginErrorAction(errorMsg) {
+  return {
+    type: LOGIN_ERROR_ACTION,
+    errorMsg,
+  };
+}

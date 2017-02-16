@@ -5,12 +5,19 @@ import LogInButton from '../LogInButton';
 import RememberMeCheckbox from '../RememberMeCheckbox';
 import { UserLogin, passwordMsg, usernameMsg, mapDispatchToProps } from '../index';
 import { USERNAME_UID, PASSWORD_UID } from '../constants';
-import { onChangeUsernameAction, onChangePasswordAction, onChangeRememberAction, onDoLogInAction } from '../actions';
+import { makeChangeUsernameAction, makeChangePasswordAction, makeChangeRememberAction, makeDoLogInAction } from '../actions';
 
 describe('<UserLogin />', () => {
   const noop = () => {};
   const renderedComp = shallow(
-    <UserLogin onDoLogIn={noop} onChangeUsername={noop} onChangeRemember={noop} onChangePassword={noop} />
+    <UserLogin
+      onDoLogIn={noop}
+      onChangeUsername={noop}
+      onChangeRemember={noop}
+      onChangePassword={noop}
+      loginError={false}
+      loginErrorMsg={''}
+    />
   );
   it('should have a log in button', () => {
     expect(renderedComp.contains(<LogInButton onDoLogIn={noop} />)).toEqual(true);
@@ -39,7 +46,7 @@ describe('<UserLogin />', () => {
     it('should dispatch loadRepos when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onDoLogInAction();
+      const action = makeDoLogInAction();
       result.onDoLogIn();
       expect(dispatch).toHaveBeenCalledWith(action);
     });
@@ -54,7 +61,7 @@ describe('<UserLogin />', () => {
     it('should dispatch loadRepos when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onChangeUsernameAction('foo');
+      const action = makeChangeUsernameAction('foo');
       const evt = { target: { value: 'foo' } };
       result.onChangeUsername(evt);
       expect(dispatch).toHaveBeenCalledWith(action);
@@ -70,7 +77,7 @@ describe('<UserLogin />', () => {
     it('should dispatch when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onChangePasswordAction('foo');
+      const action = makeChangePasswordAction('foo');
       const evt = { target: { value: 'foo' } };
       result.onChangePassword(evt);
       expect(dispatch).toHaveBeenCalledWith(action);
@@ -86,7 +93,7 @@ describe('<UserLogin />', () => {
     it('should dispatch when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onChangeRememberAction(true);
+      const action = makeChangeRememberAction(true);
       const evt = { target: { checked: true } };
       result.onChangeRemember(evt);
       expect(dispatch).toHaveBeenCalledWith(action);

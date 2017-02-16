@@ -30,4 +30,9 @@ export default defineMessages({
     id: 'app.containers.login_page.log_in',
     defaultMessage: 'Log In',
   },
+  // Eventually the backend should be returning a constant
+  defaultLoginError: {
+    id: 'app.containers.login_page.log_in',
+    defaultMessage: 'Wrong username or password.',
+  },
 });
