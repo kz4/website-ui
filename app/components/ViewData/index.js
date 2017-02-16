@@ -33,24 +33,27 @@ export default class ViewData extends React.Component{
       {variable: 'Vhm',
         units: 'm s-1',
         description: 'mean horizontal wind speed',},
-      {variable: 'Vhm',
+      {variable: 'dVh',
         units: 'm s-1',
-        description: 'mean horizontal wind speed',},
-      {variable: 'Vhm',
+        description: 'standard deviation of horizontal wind speed',},
+      {variable: 'VhMax',
         units: 'm s-1',
-        description: 'mean horizontal wind speed',},
-      {variable: 'Vhm',
+        description: 'maximum horizontal wind speed during averaging time',},
+      {variable: 'VhMin',
         units: 'm s-1',
-        description: 'mean horizontal wind speed',},
-      {variable: 'Vhm',
+        description: 'minimum horizontal wind speed during averaging time',},
+      {variable: 'Azim',
+        units: 'deg',
+        description: 'wind direction in meteriological coordinates',},
+      {variable: 'um',
         units: 'm s-1',
-        description: 'mean horizontal wind speed',},
-      {variable: 'Vhm',
+        description: 'mean zonal wind speed',},
+      {variable: 'du',
         units: 'm s-1',
-        description: 'mean horizontal wind speed',},
-      {variable: 'Vhm',
+        description: 'standard deviation of zonal wind speed',},
+      {variable: 'vm',
         units: 'm s-1',
-        description: 'mean horizontal wind speed',},
+        description: 'mean meridional wind speed',},
     ];
 
     const purposeMessage = (<FormattedMessage {...messages.purpose} />);
@@ -60,7 +63,7 @@ export default class ViewData extends React.Component{
     return (
       <Grid fluid="true">
         <Row>
-          <Panel header="Wind Energy">
+          <Panel header="Wind Energy" bsStyle="primary">
             <h3 title="purpose"> Purpose </h3>
             <p> {purposeMessage} </p>
 
@@ -72,61 +75,49 @@ export default class ViewData extends React.Component{
             <Tabs>
             <Tab eventKey={1} title="Data">
             <br />
-              <Col md={6}> <Panel header="Measurements">
+              <Col md={8}> <Panel header="Measurements">
                 <Col md={12}><BootstrapTableViewData datasets = {datasets}/></Col>
               </Panel> </Col>
-              <Col md={6}> <Panel header="Attachments">
+              <Col md={4}> <Panel header="Attachments">
                 <ListGroup fill>
                   <ListGroupItem>
-                    <Button bsStyle="link">Includes information on datafiles and instrument locations</Button>
-                    <Button bsStyle="primary"> Download </Button>
+                    <a>Includes information on datafiles and instrument locations</a>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <Button bsStyle="link">Includes information on datafiles and instrument locations</Button>
-                    <Button bsStyle="primary"> Download </Button>
+                    <a bsStyle="link">Includes information on datafiles and instrument locations</a>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <Button bsStyle="link">Includes information on datafiles and instrument locations</Button>
-                    <Button bsStyle="primary"> Download </Button>
+                    <a bsStyle="link">Includes information on datafiles and instrument locations</a>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <Button bsStyle="link">Includes information on datafiles and instrument locations</Button>
-                    <Button bsStyle="primary"> Download </Button>
+                    <a bsStyle="link">Includes information on datafiles and instrument locations</a>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <Button bsStyle="link">Includes information on datafiles and instrument locations</Button>
-                    <Button bsStyle="primary"> Download </Button>
+                    <a bsStyle="link">Includes information on datafiles and instrument locations</a>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <Button bsStyle="link">Includes information on datafiles and instrument locations</Button>
-                    <Button bsStyle="primary"> Download </Button>
+                    <a bsStyle="link">Includes information on datafiles and instrument locations</a>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <Button bsStyle="link">Includes information on datafiles and instrument locations</Button>
-                    <Button bsStyle="primary"> Download </Button>
+                    <a bsStyle="link">Includes information on datafiles and instrument locations</a>
                   </ListGroupItem>
                   </ListGroup>
               </Panel> </Col>
 
           </Tab>
             <Tab eventKey={2} title="Images">
+              <br />
               <Col xs={6} md={3}>
-              <Thumbnail href="#" alt="191x190" src={require('../ViewData/wind-img1.jpg')} />
+              <Thumbnail href="#" alt="171x180" src={require('../ViewData/w1.jpg')} />
               </Col>
               <Col xs={6} md={3}>
-              <Thumbnail href="#" alt="171x180" src={require('../ViewData/wind-img2.jpg')} />
+                <Thumbnail href="#" alt="171x180" src={require('../ViewData/w3.jpg')} />
               </Col>
               <Col xs={6} md={3}>
-              <Thumbnail href="#" alt="171x180" src={require('../ViewData/wind-img1.jpg')} />
+                <Thumbnail href="#" alt="171x180" src={require('../ViewData/w4.jpg')} />
               </Col>
               <Col xs={6} md={3}>
-                <Thumbnail href="#" alt="171x180" src={require('../ViewData/wind-img1.jpg')} />
-              </Col>
-              <Col xs={6} md={3}>
-                <Thumbnail href="#" alt="171x180" src={require('../ViewData/wind-img1.jpg')} />
-              </Col>
-              <Col xs={6} md={3}>
-                <Thumbnail href="#" alt="171x180" src={require('../ViewData/wind-img1.jpg')} />
+                <Thumbnail href="#" alt="171x180" src={require('../ViewData/w5.jpg')} />
               </Col>
             </Tab>
             </Tabs>

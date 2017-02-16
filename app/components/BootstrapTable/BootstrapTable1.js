@@ -16,7 +16,7 @@ export default class BootstrapTable1 extends React.Component{
 editingButtons(cell, row, enumObject, rowIndex) {
   return(
     <div>
-      <Button bsStyle="success" href={'/'}>View</Button>&nbsp;
+      <Button bsStyle="success" href={'/viewData'}>View</Button>&nbsp;
       <Button bsStyle="info" href={'/'}>Edit/Download</Button>
 
     </div>
