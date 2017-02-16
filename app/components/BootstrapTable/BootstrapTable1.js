@@ -3,27 +3,25 @@
  */
 import React from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import Button from 'react-bootstrap/lib/Button';
 
 export default class BootstrapTable1 extends React.Component{
-  constructor()
-  {
-    super();
-    /*this.datasets = [
-      {id: 'data 1',
-        updated: 2052017,
-        start: 1052008,
-        end: 12082016,
-        count: 500,
-        size: 2000,},
-      {id:'data 2',
-        updated: 2052012,
-        start: 1052007,
-        end: 12082011,
-        count: 800,
-        size: 3000,},
-    ];*/
+  onClickViewData(cell, row, rowIndex){
+    alert('Hello! View Data');
+  }
+  onClickEditData(cell, row, rowIndex){
+    alert('Hello! Edit Data');
   }
 
+editingButtons(cell, row, enumObject, rowIndex) {
+  return(
+    <div>
+      <Button bsStyle="success" href={'/'}>View</Button>&nbsp;
+      <Button bsStyle="info" href={'/'}>Edit/Download</Button>
+
+    </div>
+  )
+}
 
   render()
   {
@@ -34,6 +32,12 @@ export default class BootstrapTable1 extends React.Component{
       <TableHeaderColumn dataField="end">End</TableHeaderColumn>
       <TableHeaderColumn dataField="count">Count</TableHeaderColumn>
       <TableHeaderColumn dataField="size">Size</TableHeaderColumn>
+      <TableHeaderColumn width="200"
+        dataField='button'
+        dataFormat={this.editingButtons.bind(this)}
+      />
+
+
     </BootstrapTable>);
   }
 

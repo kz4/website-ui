@@ -110,7 +110,6 @@
 import React from 'react';
 import BootstrapTable1 from '../../components/BootstrapTable/BootstrapTable1.js'
 import Button from 'react-bootstrap/lib/Button';
-import Well from 'react-bootstrap/lib/Well';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
@@ -122,10 +121,6 @@ import Tab from 'react-bootstrap/lib/Tab';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
 
 export default class Project extends React.Component{
-  constructor()
-  {
-    super();
-  }
 
 
   render()
