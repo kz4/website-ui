@@ -61,7 +61,7 @@ export default class ViewData extends React.Component{
     const referencesMessage = (<FormattedMessage {...messages.references} />);
 
     return (
-      <Grid fluid="true">
+      <Grid fluid={true}>
         <Row>
           <Panel header="Wind Energy" bsStyle="primary">
             <h3 title="purpose"> Purpose </h3>
