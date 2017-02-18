@@ -1,25 +1,17 @@
 import { createSelector } from 'reselect';
 
-/**
- * Direct selector to the profilePage state domain
- */
-const makeSelectProfilePageDomain = () => (state) => state.get('profilePage');
-
-/**
- * Other specific selectors
- */
-
+const makeSelectProfilePage = () => (state) => state.get('profile');
 
 /**
  * Default selector used by ProfilePage
  */
 
-const makeSelectProfilePage = () => createSelector(
-  makeSelectProfilePageDomain(),
-  (substate) => substate ? substate.toJS() : ''
+const makeSelectProfileData = () => createSelector(
+  makeSelectProfilePage(),
+  (substate) => ({ name: substate.get('name'), email: substate.get('email'), phone: substate.get('phone') })
 );
 
-export default makeSelectProfilePage;
 export {
-  makeSelectProfilePageDomain,
+  makeSelectProfilePage,
+  makeSelectProfileData,
 };

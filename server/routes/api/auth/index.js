@@ -15,4 +15,12 @@ router.post('/register', (req, res) => {
   res.json(user);
 });
 
+router.get('/profile', (req, res) => {
+  res.json({
+    name: 'fromServerName',
+    phone: 'fromServerPhone',
+    email: 'fromServerEmail',
+  });
+});
+
 module.exports = router;

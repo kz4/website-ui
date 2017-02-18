@@ -4,7 +4,7 @@
 // const selector = makeSelectProfilePageDomain();
 
 import { fromJS } from 'immutable';
-import { makeSelectProfilePageDomain } from '../selectors';
+import { makeSelectProfilePage } from '../selectors';
 
 describe('makeSelectProfilePageDomain', () => {
   it('Expect to have unit tests specified', () => {
@@ -13,7 +13,7 @@ describe('makeSelectProfilePageDomain', () => {
 });
 
 describe('selectProfilePageDomain', () => {
-  const selectProfilePageDomain = makeSelectProfilePageDomain();
+  const selectProfilePageDomain = makeSelectProfilePage();
   it('should have the Profile state', () => {
     const userProfileState = fromJS({
       Name: '',

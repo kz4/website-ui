@@ -1,6 +1,6 @@
 
 import {
-  profileFormUpdated,
+  makeProfileFormUpdatedAction,
 } from '../actions';
 import {
   DEFAULT_ACTION,
@@ -12,7 +12,7 @@ describe('ProfilePage actions', () => {
       const expected = {
         type: DEFAULT_ACTION,
       };
-      expect(profileFormUpdated()).toEqual(expected);
+      expect(makeProfileFormUpdatedAction()).toEqual(expected);
     });
   });
 });
