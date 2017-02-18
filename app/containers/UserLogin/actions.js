@@ -47,9 +47,9 @@ export function makeLoginSuccessAction(loginResponse) {
   };
 }
 
-export function makeLoginErrorAction(errorMsg) {
+export function makeLoginErrorAction(loginErrorMsg) {
   return {
     type: LOGIN_ERROR_ACTION,
-    errorMsg,
+    loginErrorMsg,
   };
 }

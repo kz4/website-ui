@@ -3,7 +3,12 @@
 
 // const selector = makeSelectUserLoginDomain();
 import { fromJS } from 'immutable';
-import { makeSelectUserLoginSubstate, makeSelectLoginCredentials } from '../selectors';
+import {
+  makeSelectUserLoginSubstate,
+  makeSelectLoginCredentials,
+  makeSelectLoginError,
+  makeSelectLoginErrorMsg,
+} from '../selectors';
 
 describe('selectUserLoginDomain', () => {
   const selectUserLoginDomain = makeSelectUserLoginSubstate();
@@ -37,5 +42,37 @@ describe('makeSelectLoginCredentials', () => {
       },
     });
     expect(selectLoginCredentialsSelector(mockedState)).toEqual(expected);
+  });
+});
+
+describe('makeSelectLoginError', () => {
+  const selectLoginError = makeSelectLoginError();
+  it('should select loginError', () => {
+    const expectedVal = true;
+    const expectedJS = {
+      loginError: expectedVal,
+    };
+    const mockedState = fromJS({
+      login: {
+        userLogin: expectedJS,
+      },
+    });
+    expect(selectLoginError(mockedState)).toEqual(expectedVal);
+  });
+});
+
+describe('makeSelectLoginErrorMsg', () => {
+  const selectLoginErrorMsg = makeSelectLoginErrorMsg();
+  it('should select loginErrorMsg', () => {
+    const expectedVal = 'foo';
+    const expectedJS = {
+      loginErrorMsg: expectedVal,
+    };
+    const mockedState = fromJS({
+      login: {
+        userLogin: expectedJS,
+      },
+    });
+    expect(selectLoginErrorMsg(mockedState)).toEqual(expectedVal);
   });
 });

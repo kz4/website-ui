@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { Alert } from 'react-bootstrap';
 import messages from './messages';
 
+export const showWrapper = (props) => props.show ? '' : 'display: none;';
 export const Wrapper = styled.div`
-  ${(props) => props.show ? '' : 'display: none'}
+  ${showWrapper}
 `;
 
 export const DEFAULT_MSG = (<FormattedMessage {...messages.defaultLoginError} />);

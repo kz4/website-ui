@@ -1,11 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { FormattedMessage } from 'react-intl';
-import LoginErrorMessage, { Wrapper, DEFAULT_MSG } from '../LoginErrorMessage';
+import LoginErrorMessage, { showWrapper, Wrapper, DEFAULT_MSG } from '../LoginErrorMessage';
 import messages from '../messages';
 
 describe('<LoginErrorMessage />', () => {
-  // TODO figure out way to test display: none when show = false
   describe('<Wrapper />', () => {
     it('should render an <div> tag', () => {
       const renderedComponent = shallow(<Wrapper />);
@@ -26,6 +25,16 @@ describe('<LoginErrorMessage />', () => {
     it('should not adopt an invalid attribute', () => {
       const renderedComponent = shallow(<Wrapper attribute={'test'} />);
       expect(renderedComponent.prop('attribute')).toBeUndefined();
+    });
+
+    describe('showWrapper', () => {
+      it('should return an empty string when show is true', () => {
+        expect(showWrapper({ show: true })).toEqual('');
+      });
+
+      it('should return an `display: none` when show is false', () => {
+        expect(showWrapper({ show: false })).toEqual('display: none;');
+      });
     });
   });
 

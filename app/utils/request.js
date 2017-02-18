@@ -49,7 +49,7 @@ function getJsonPostOptions(options) {
  */
 export default function request(url, options) {
   let updatedOptions = options;
-  if (options.method === 'POST') {
+  if (options && options.method === 'POST') {
     updatedOptions = getJsonPostOptions(options);
   }
   return fetch(url, updatedOptions)

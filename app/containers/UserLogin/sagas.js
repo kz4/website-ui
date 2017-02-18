@@ -4,7 +4,7 @@ import { paths } from 'config';
 import { browserHistory } from 'react-router';
 import request from 'utils/request';
 import { makeSelectLoginCredentials } from './selectors';
-import { DO_LOGIN_ACTION, LOGIN_SUCCESS_ACTION } from './constants';
+import { DO_LOGIN_ACTION, LOGIN_SUCCESS_ACTION, LOGIN_ERROR_MSG_DEFAULT } from './constants';
 import { makeLoginSuccessAction, makeLoginErrorAction } from './actions';
 
 /**
@@ -22,16 +22,15 @@ export function* getLoginResponse() {
       body: {
         username: loginCred.get('username'),
         password: loginCred.get('password'),
-        // remember: loginCred.get('remember'),
+        remember: loginCred.get('remember'),
       },
     });
     // browserHistory.push(paths.appPaths.user.path);
     yield put(makeLoginSuccessAction(loginResponse));
   } catch (err) {
-    console.log('reponse error', err);
-    yield put(makeLoginErrorAction({
-      loginErrorMsg: '',
-    }));
+    const body = err.body ? err.body : {};
+    const loginErrorMsg = body.loginErrorMsg ? body.loginErrorMsg : LOGIN_ERROR_MSG_DEFAULT;
+    yield put(makeLoginErrorAction(loginErrorMsg));
   }
 }
 

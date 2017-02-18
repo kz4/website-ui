@@ -11,9 +11,9 @@ import request from 'utils/request';
 import { fromJS } from 'immutable';
 import * as router from 'react-router';
 import { login, getLoginResponse, changeToUserPage } from '../sagas';
-import { DO_LOGIN_ACTION, LOGIN_SUCCESS_ACTION } from '../constants';
+import { DO_LOGIN_ACTION, LOGIN_SUCCESS_ACTION, LOGIN_ERROR_MSG_DEFAULT } from '../constants';
 import { makeSelectLoginCredentials } from '../selectors';
-import { makeLoginSuccessAction } from '../actions';
+import { makeLoginSuccessAction, makeLoginErrorAction } from '../actions';
 
 describe('changeToUserPage', () => {
   let pushMock;
@@ -63,14 +63,23 @@ describe('getLoginResponse saga', () => {
     expect(putDescriptor).toEqual(put(makeLoginSuccessAction(loginResponse)));
   });
 
-  // haven't implemented yet, but should look like this
-  // it('should dispatch onLoginFailure for a failure', () => {
-  //     const loginResponse = {
-  //     status: 500,
-  //   };
-  //   const putDescriptor = getLoginResponseGenerator.throw(loginResponse).value;
-  //   expect(putDescriptor).toEqual(put(onLoginError(loginResponse)));
-  // });
+  it('should dispatch onLoginFailure for a failure and set msg if has msg', () => {
+    const loginErrorMsg = 'foo';
+    const loginResponse = {
+      status: 500,
+      body: { loginErrorMsg },
+    };
+    const putDescriptor = getLoginResponseGenerator.throw(loginResponse).value;
+    expect(putDescriptor).toEqual(put(makeLoginErrorAction(loginErrorMsg)));
+  });
+
+  it('should dispatch onLoginFailure for a failure and use default if no msg', () => {
+    const loginResponse = {
+      status: 500,
+    };
+    const putDescriptor = getLoginResponseGenerator.throw(loginResponse).value;
+    expect(putDescriptor).toEqual(put(makeLoginErrorAction(LOGIN_ERROR_MSG_DEFAULT)));
+  });
 });
 
 describe('login Saga', () => {

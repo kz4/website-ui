@@ -5,6 +5,7 @@ import {
   makeChangeRememberAction,
   makeDoLogInAction,
   makeLoginSuccessAction,
+  makeLoginErrorAction,
 } from '../actions';
 import {
   CHANGE_PASSWORD_ACTION,
@@ -12,6 +13,7 @@ import {
   CHANGE_USERNAME_ACTION,
   DO_LOGIN_ACTION,
   LOGIN_SUCCESS_ACTION,
+  LOGIN_ERROR_ACTION,
 } from '../constants';
 
 describe('UserLogin actions', () => {
@@ -65,6 +67,17 @@ describe('UserLogin actions', () => {
         loginResponse: expectedLoginResponse,
       };
       expect(makeLoginSuccessAction(expectedLoginResponse)).toEqual(expected);
+    });
+  });
+
+  describe('on make login error', () => {
+    it('has a type of LOGIN_ERROR_ACTION and has errorMsg', () => {
+      const expectedErrorMsg = 'foo';
+      const expected = {
+        type: LOGIN_ERROR_ACTION,
+        loginErrorMsg: expectedErrorMsg,
+      };
+      expect(makeLoginErrorAction(expectedErrorMsg)).toEqual(expected);
     });
   });
 });

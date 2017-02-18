@@ -11,6 +11,7 @@ import {
   CHANGE_REMEMBER_ACTION,
   DO_LOGIN_ACTION,
   LOGIN_ERROR_ACTION,
+  LOGIN_ERROR_MSG_DEFAULT,
 } from './constants';
 
 const initialState = fromJS({
@@ -19,7 +20,7 @@ const initialState = fromJS({
   remember: false,
   loginError: false,
   // loginErrorMsg should be const from server to tell us which message in messages.js to display
-  loginErrorMsg: '',
+  loginErrorMsg: LOGIN_ERROR_MSG_DEFAULT,
 });
 function userLoginReducer(state = initialState, action) {
   console.log('pre userLoginReducer', state.toJS(), 'action', action);
@@ -33,7 +34,7 @@ function userLoginReducer(state = initialState, action) {
     case DO_LOGIN_ACTION:
       return state.set('loginError', false);
     case LOGIN_ERROR_ACTION: {
-      const loginErrorMsg = action.loginErrorMsg ? action.loginErrorMsg : initialState.get('loginErrorMsg');
+      const loginErrorMsg = action.loginErrorMsg ? action.loginErrorMsg : LOGIN_ERROR_MSG_DEFAULT;
       return state.set('loginError', true).set('loginErrorMsg', loginErrorMsg);
     }
     default:

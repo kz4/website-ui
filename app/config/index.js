@@ -1,6 +1,4 @@
 const trueEnv = process.env.CONFIG_ENV || process.env.NODE_ENV;
-console.log('env', process.env);
-console.log('config_env', process.env.CONFIG_ENV);
 const envs = {
   DEVELOPMENT: 'development',
   BACKEND_DEVELOPMENT: 'backend-development',
@@ -8,8 +6,9 @@ const envs = {
   TESTING: 'testing',
 };
 
-const BACKEND_DEV_ROOT = 'https://06wl8i4mb2.execute-api.us-east-1.amazonaws.com/dev/';
-const LOCAL_DEV_ROOT = '/api';
+export const BACKEND_DEV_ROOT = 'https://06wl8i4mb2.execute-api.us-east-1.amazonaws.com/dev/';
+export const LOCAL_DEV_ROOT = '/api';
+export const PROD_ROOT = LOCAL_DEV_ROOT;
 
 function getServerBase(env = trueEnv) {
   switch (env) {
@@ -20,7 +19,7 @@ function getServerBase(env = trueEnv) {
     case (envs.BACKEND_DEVELOPMENT):
       return BACKEND_DEV_ROOT;
     default:
-      return LOCAL_DEV_ROOT;
+      return PROD_ROOT;
   }
 }
 

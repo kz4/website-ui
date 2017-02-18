@@ -12,3 +12,4 @@ export const LOGIN_SUCCESS_ACTION = 'app/UserLogin/LOGIN_SUCCESS';
 export const LOGIN_ERROR_ACTION = 'app/UserLogin/LOGIN_ERROR';
 export const USERNAME_UID = 'username';
 export const PASSWORD_UID = 'password';
+export const LOGIN_ERROR_MSG_DEFAULT = '';
