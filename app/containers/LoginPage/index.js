@@ -35,9 +35,8 @@ export class Login extends React.PureComponent { // eslint-disable-line react/pr
 const mapStateToProps = createStructuredSelector({
 });
 
-function mapDispatchToProps(/* dispatch */) {
-  return {
-  };
+export function mapDispatchToProps(/* dispatch */) {
+  return {};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

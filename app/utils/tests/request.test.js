@@ -2,7 +2,7 @@
  * Test the request function
  */
 
-import request from '../request';
+import request, { getJsonPostOptions } from '../request';
 
 describe('request', () => {
   // Before each test, stub the fetch function
@@ -31,6 +31,33 @@ describe('request', () => {
           done();
         });
     });
+
+
+    it('should return an correct options (e.g. headers) if options.method==\'POST\'', (done) => {
+      const someUrl = '/thisurliscorrect';
+      const passedOptions = {
+        method: 'POST',
+        headers: {
+          foo: 'bar',
+        },
+        someOtherKey: 'value',
+      };
+      const expectedOptions = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          foo: 'bar',
+        },
+        someOtherKey: 'value',
+      };
+      request(someUrl, passedOptions)
+        .catch(done)
+        .then(() => {
+          expect(window.fetch).toHaveBeenLastCalledWith(someUrl, expectedOptions);
+          done();
+        });
+    });
   });
 
   describe('stubbing error response', () => {
@@ -54,6 +81,24 @@ describe('request', () => {
           expect(err.response.statusText).toBe('Not Found');
           done();
         });
+    });
+  });
+
+  describe('getJsonPostOptions', () => {
+    it('should deep assign values, e.g. headers', () => {
+      const input = {
+        headers: {
+          foo: 'bar',
+        },
+      };
+      const expected = {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          foo: 'bar',
+        },
+      };
+      expect(getJsonPostOptions(input)).toEqual(expected);
     });
   });
 });

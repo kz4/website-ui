@@ -38,9 +38,8 @@ Register.propTypes = {
 const mapStateToProps = createStructuredSelector({
 });
 
-function mapDispatchToProps(/* dispatch */) {
-  return {
-  };
+export function mapDispatchToProps(/* dispatch */) {
+  return {};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
