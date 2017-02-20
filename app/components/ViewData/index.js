@@ -84,25 +84,28 @@ export default class ViewData extends React.Component{
               <Col md={4}> <Panel header="Attachments">
                 <ListGroup fill>
                   <ListGroupItem>
-                    <a>Includes information on datafiles and instrument locations</a>
+                    <a>Includes information on datafiles and instrument locations | PDF</a>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <a bsStyle="link">Includes information on datafiles and instrument locations</a>
+                    <a>Sample file for v2 lidar (Gordon's Ridge) | TXT</a>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <a bsStyle="link">Includes information on datafiles and instrument locations</a>
+                    <a>Sample file for v1 lidars (Wasco and Troutdale) | TXT</a>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <a bsStyle="link">Includes information on datafiles and instrument locations</a>
+                    <a>Information on wind energy data collected in March 2016 | PDF</a>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <a bsStyle="link">Includes information on datafiles and instrument locations</a>
+                    <a>Surfacemet data format | TXT</a>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <a bsStyle="link">Includes information on datafiles and instrument locations</a>
+                    <a>449mhz-wind-profiler-meta | PDF</a>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <a bsStyle="link">Includes information on datafiles and instrument locations</a>
+                  <a>Information on wind energy data collected in May 2016 | PDF</a>
+                  </ListGroupItem>
+                  <ListGroupItem>
+                  <a>Data file example *.xlsx with explanation of the profiler data| PDF</a>
                   </ListGroupItem>
                   </ListGroup>
               </Panel> </Col>
