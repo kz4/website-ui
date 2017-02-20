@@ -1,16 +1,17 @@
 import React, { PropTypes } from 'react';
+import { Col, Well, Row, Grid } from 'react-bootstrap';
 
 const AuthPage = (props) => (
-  <div className="container">
-    <div className="row">
-      <div className="col-sm-6 col-sm-offset-3">
+  <Grid>
+    <Row>
+      <Col sm={6} smOffset={3}>
         <h1>{props.title}</h1>
-        <div className="well">
+        <Well>
           {props.children}
-        </div>
-      </div>
-    </div>
-  </div>
+        </Well>
+      </Col>
+    </Row>
+  </Grid>
 );
 
 AuthPage.propTypes = {

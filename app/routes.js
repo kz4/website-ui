@@ -39,32 +39,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-<<<<<<< HEAD
-      path: '/profile',
-      name: 'profile',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/ProfilePage/reducer'),
-          import('containers/ProfilePage/sagas'),
-          import('containers/ProfilePage'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('profile', reducer.default);
-          injectSagas(sagas.default);
-
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
-      },
-    }, {
-      path: '/login',
-=======
       path: paths.appPaths.login.path,
->>>>>>> ea220bba174a6f6cf9d7feca803beb45cee1907d
       name: 'login',
       getComponent(nextState, cb) {
         const importModules = Promise.all([

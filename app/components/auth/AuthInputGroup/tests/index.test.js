@@ -7,7 +7,7 @@ describe('<AuthInputGroup />', () => {
   const renderedComp = shallow(
     <AuthInputGroup onChange={onChangeMock} uid="foo" display="bar" />
   );
-  it('should have a an input', () => {
+  it('should have an input', () => {
     expect(renderedComp.find('input').length).toBeTruthy();
   });
   it('should have a label', () => {

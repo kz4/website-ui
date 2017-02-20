@@ -1,20 +1,20 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { ControlLabel, Checkbox, HelpBlock } from 'react-bootstrap';
 import messages from './messages';
 
 const RememberMeCheckbox = (props) => (
-  <div className="checkbox">
-    <label htmlFor="remember">
-      <input
-        type="checkbox"
-        name="remember"
-        id="remember"
-        onChange={props.onChangeRemember}
-      />
+  <Checkbox
+    type="checkbox"
+    name="remember"
+    id="remember"
+    onChange={props.onChangeRemember}
+  >
+    <ControlLabel htmlFor="remember">
       <FormattedMessage {...messages.rememberMe} />
-    </label>
-    <p className="help-block">(<FormattedMessage {...messages.isPrivateComputer} />)</p>
-  </div>
+      <HelpBlock>(<FormattedMessage {...messages.isPrivateComputer} />)</HelpBlock>
+    </ControlLabel>
+  </Checkbox>
 );
 
 RememberMeCheckbox.propTypes = {

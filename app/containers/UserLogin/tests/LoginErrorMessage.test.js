@@ -45,7 +45,7 @@ describe('<LoginErrorMessage />', () => {
     expect(renderedComp.find('Alert').length).toBeTruthy();
   });
 
-  it('should used default MSG when loginErrorMsg id falsey', () => {
+  it('should use default MSG when loginErrorMsg is falsey', () => {
     const renderedComp = shallow(
       <LoginErrorMessage loginError={false} loginErrorMsg={''} />
     );

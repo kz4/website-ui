@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react';
+import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 const AuthInputGroup = (props) => (
-  <div className="form-group">
-    <label htmlFor={props.uid} className="control-label">{props.display}</label>
-    <input
+  <FormGroup>
+    <ControlLabel htmlFor={props.uid}>{props.display}</ControlLabel>
+    <FormControl
       type="text"
-      className="form-control"
       id={props.uid}
       onChange={props.onChange}
     />
     <span className="help-block"></span>
-  </div>
+  </FormGroup>
 );
 
 AuthInputGroup.propTypes = {
