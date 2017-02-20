@@ -119,6 +119,7 @@ import Image from 'react-bootstrap/lib/Image';
 import Tabs from 'react-bootstrap/lib/Tabs';
 import Tab from 'react-bootstrap/lib/Tab';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
+import VelloModal from '../ModelWrapper/modal';
 
 export default class Project extends React.Component{
 
@@ -161,7 +162,8 @@ export default class Project extends React.Component{
         </Row>
         <Row>
           <Panel header="Data Sets">
-            <Col md={12}><Button bsStyle="primary" href={'/'}>Upload new file&nbsp;<Glyphicon glyph="plus"></Glyphicon></Button></Col>
+
+            <Col md={12}><VelloModal /></Col>
             <Col md={12}><BootstrapTable1 datasets = {datasets}/></Col>
           </Panel>
         </Row>
