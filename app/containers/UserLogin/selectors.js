@@ -3,9 +3,9 @@ import { fromJS } from 'immutable';
 /**
  * Direct selector to the userLogin state domain
  */
-const selectUserLoginDomain = () => (state) => {
+const makeSelectUserLoginSubstate = () => (state) => {
   console.log('selectUserLogin', state.toJS());
-  return state.get('home').get('userLogin');
+  return state.get('login').get('userLogin');
 };
 
 /**
@@ -18,22 +18,30 @@ const selectUserLoginDomain = () => (state) => {
  */
 
 const makeSelectLoginCredentials = () => createSelector(
-  selectUserLoginDomain(),
+  makeSelectUserLoginSubstate(),
   (substate) => {
-    const loginCredentials = {
-      username: '',
-      password: '',
-    };
-    if (substate) {
-      loginCredentials.username = substate.get('username') || '';
-      loginCredentials.password = substate.get('password') || '';
-    }
+    const loginCredentials = {};
+    loginCredentials.username = substate.get('username');
+    loginCredentials.password = substate.get('password');
+    loginCredentials.remember = substate.get('remember');
     return fromJS(loginCredentials);
   }
+);
+
+const makeSelectLoginError = () => createSelector(
+  makeSelectUserLoginSubstate(),
+  (substate) => substate.get('loginError')
+);
+
+const makeSelectLoginErrorMsg = () => createSelector(
+  makeSelectUserLoginSubstate(),
+  (substate) => substate.get('loginErrorMsg')
 );
 
 // export default makeSelectUserLogin;
 export {
   makeSelectLoginCredentials,
-  selectUserLoginDomain,
+  makeSelectUserLoginSubstate,
+  makeSelectLoginError,
+  makeSelectLoginErrorMsg,
 };

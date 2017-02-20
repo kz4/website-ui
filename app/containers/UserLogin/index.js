@@ -6,55 +6,51 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-// import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import { Button } from 'react-bootstrap';
-import { onChangeUsername, onDoLogIn, onChangePassword } from './actions';
+
+import AuthInputGroup from 'components/auth/AuthInputGroup';
+
+import {
+  makeChangeUsernameAction,
+  makeDoLogInAction,
+  makeChangePasswordAction,
+  makeChangeRememberAction,
+} from './actions';
+import { USERNAME_UID, PASSWORD_UID } from './constants';
 // import makeSelectUserLogin from './selectors';
-// import messages from './messages';
+import messages from './messages';
+import LogInButton from './LogInButton';
+import RememberMeCheckbox from './RememberMeCheckbox';
+import LoginErrorMessage from './LoginErrorMessage';
+import { makeSelectLoginError, makeSelectLoginErrorMsg } from './selectors';
+
+// is there a better way? Will this have any problems?
+// export for testing
+export const usernameMsg = (<FormattedMessage {...messages.usernameInput} />);
+export const passwordMsg = (<FormattedMessage {...messages.passwordInput} />);
 
 export class UserLogin extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-6 col-sm-offset-3">
-              <div className="well">
-                <form id="loginForm" method="POST" action="/login/" noValidate="novalidate">
-                  <div className="form-group">
-                    <label htmlFor="username" className="control-label">Username</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="username"
-                      onChange={this.props.onChangeUsername}
-                    />
-                    <span className="help-block"></span>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="password" className="control-label">Password</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="password"
-                      onChange={this.props.onChangePassword}
-                    />
-                    <span className="help-block"></span>
-                  </div>
-                  <div id="loginErrorMsg" className="alert alert-error hide">Wrong username og password</div>
-                  <div className="checkbox">
-                    <label htmlFor="remember">
-                      <input type="checkbox" name="remember" id="remember" /> Remember login
-                    </label>
-                    <p className="help-block">(if this is a private computer)</p>
-                  </div>
-                  <Button bsStyle="success" onClick={this.props.onDoLogIn}> Log In </Button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+        <AuthInputGroup
+          uid={USERNAME_UID}
+          display={usernameMsg}
+          onChange={this.props.onChangeUsername}
+        />
+        <AuthInputGroup
+          uid={PASSWORD_UID}
+          display={passwordMsg}
+          onChange={this.props.onChangePassword}
+        />
+        <div className="alert alert-error hide">Wrong username or password</div>
+        <LoginErrorMessage
+          loginError={this.props.loginError}
+          loginErrorMsg={this.props.loginErrorMsg}
+        />
+        <RememberMeCheckbox onChangeRemember={this.props.onChangeRemember} />
+        <LogInButton onDoLogIn={this.props.onDoLogIn} />
       </div>
     );
   }
@@ -63,18 +59,23 @@ export class UserLogin extends React.PureComponent { // eslint-disable-line reac
 UserLogin.propTypes = {
   onChangeUsername: PropTypes.func.isRequired,
   onChangePassword: PropTypes.func.isRequired,
+  onChangeRemember: PropTypes.func.isRequired,
   onDoLogIn: PropTypes.func.isRequired,
+  loginError: PropTypes.bool.isRequired,
+  loginErrorMsg: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = createStructuredSelector({
-  // UserLogin: makeSelectUserLogin(),
+export const mapStateToProps = createStructuredSelector({
+  loginError: makeSelectLoginError(),
+  loginErrorMsg: makeSelectLoginErrorMsg(),
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
-    onChangeUsername: (evt) => dispatch(onChangeUsername(evt.target.value)),
-    onChangePassword: (evt) => dispatch(onChangePassword(evt.target.value)),
-    onDoLogIn: () => dispatch(onDoLogIn()),
+    onChangeUsername: (evt) => dispatch(makeChangeUsernameAction(evt.target.value)),
+    onChangePassword: (evt) => dispatch(makeChangePasswordAction(evt.target.value)),
+    onChangeRemember: (evt) => dispatch(makeChangeRememberAction(evt.target.checked)),
+    onDoLogIn: () => dispatch(makeDoLogInAction()),
   };
 }
 
