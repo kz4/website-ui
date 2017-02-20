@@ -3,8 +3,8 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the projectList state domain
  */
-const selectProjectListDomain = () => (state) => state.get('projectList');
-
+// const selectProjectListDomain = () => (state) => { console.log('selectProjListDom', state.toJS()); return state.get('projectsMaster');};
+const selectProjectListDomain = () => (state) => state.get('projectsMaster');
 /**
  * Other specific selectors
  */
@@ -16,7 +16,7 @@ const makeSelectStore = () => (state) => state;
 
 const makeSelectProjectList = () => createSelector(
   selectProjectListDomain(),
-  (substate) => console.log(substate) //substate.get('projects')
+  (substate) => substate.get('projects')
 );
 
 export default makeSelectProjectList;
