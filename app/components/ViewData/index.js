@@ -63,6 +63,9 @@ export default class ViewData extends React.Component{
     return (
       <Grid fluid={true}>
         <Row>
+          <a href={'/projects'}> <u> Back to Projects </u> </a>
+          <br />
+          <br />
           <Panel header="Wind Energy" bsStyle="primary">
             <h3 title="purpose"> Purpose </h3>
             <p> {purposeMessage} </p>
