@@ -6,18 +6,18 @@
 
 import { fromJS } from 'immutable';
 import {
-  GET_PROJECTS_SUCCESS,
+  GET_PROJECTS_SUCCESS_ACTION,
 } from './constants';
 
-const initialState = fromJS({});
+const initialState = fromJS({
+  init: 'values',
+  projects: [],
+});
 
 function projectListReducer(state = initialState, action) {
-  console.log('projectListReducer', state.toJS());
   switch (action.type) {
-    case GET_PROJECTS_SUCCESS:
-      const newState = state.set(projects, action.projects);
-      console.log('Get Projects Success reducer changed state to:', newState);
-      return newState;
+    case GET_PROJECTS_SUCCESS_ACTION:
+      return state.set('projects', action.projects);
     default:
       return state;
   }

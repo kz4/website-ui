@@ -5,26 +5,19 @@
  */
 
 import {
-  // DEFAULT_ACTION,
-  GET_PROJECTS,
-  GET_PROJECTS_SUCCESS,
+  GET_PROJECTS_ACTION,
+  GET_PROJECTS_SUCCESS_ACTION,
 } from './constants';
 
-// export function defaultAction() {
-//   return {
-//     type: DEFAULT_ACTION,
-//   };
-// }
-
-export function makeGetProjectsAction(){
-  return{
-    type: GET_PROJECTS,
+export function makeGetProjectsAction() {
+  return {
+    type: GET_PROJECTS_ACTION,
   };
 }
 
-export function makeGetProjectsSuccessAction(projects){
-  return{
-    type: GET_PROJECTS_SUCCESS,
+export function makeGetProjectsSuccessAction(projects) {
+  return {
+    type: GET_PROJECTS_SUCCESS_ACTION,
     projects,
   };
 }

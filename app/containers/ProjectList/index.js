@@ -5,10 +5,12 @@
  */
 
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import makeSelectProjectList from './selectors';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import { Col } from 'react-bootstrap';import makeSelectProjectList from './selectors';
+
 // import { makeGetProjectsAction } from './actions';
 
 export class ProjectList extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -20,8 +22,17 @@ export class ProjectList extends React.PureComponent { // eslint-disable-line re
           meta={[
             { name: 'description', content: 'Description of ProjectList' },
           ]}
+          link={[
+            { rel: 'stylesheet', href: 'https://npmcdn.com/react-bootstrap-table/dist/react-bootstrap-table-all.min.css' },
+          ]}
         />
-        <p>{this.props.projects}</p>
+        <h2>Your Projects:</h2>
+        <Col xs={12}>
+          <BootstrapTable data={this.props.projects} striped hover condensed>
+            <TableHeaderColumn dataField="name" isKey>Project Name</TableHeaderColumn>
+            <TableHeaderColumn dataField="description">Description</TableHeaderColumn>
+          </BootstrapTable>
+        </Col>
 
       </div>
     );
@@ -29,16 +40,16 @@ export class ProjectList extends React.PureComponent { // eslint-disable-line re
 }
 
 ProjectList.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
-  // getProjects: PropTypes.func.isRequired,
+  projects: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
-  ProjectList: makeSelectProjectList(),
+  projects: makeSelectProjectList(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
+    dispatch,
     // getProjects: (evt) => dispatch(makeGetProjectsAction(evt.target.value))
   };
 }

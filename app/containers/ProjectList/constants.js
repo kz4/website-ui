@@ -5,5 +5,5 @@
  */
 
 // export const DEFAULT_ACTION = 'app/ProjectList/DEFAULT_ACTION';
-export const GET_PROJECTS = 'app/ProjectList/GET_PROJECTS';
-export const GET_PROJECTS_SUCCESS = 'app/ProjectList/GET_PROJECTS_SUCCESS';
+export const GET_PROJECTS_ACTION = 'app/ProjectList/GET_PROJECTS';
+export const GET_PROJECTS_SUCCESS_ACTION = 'app/ProjectList/GET_PROJECTS_SUCCESS';

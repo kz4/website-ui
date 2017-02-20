@@ -9,16 +9,10 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import makeSelectUserConsole from './selectors';
+import { options } from './constants';
+export class UserDashboard extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
-export class UserConsole extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const options =
-      [
-        { name: 'Profile', link: '/landing' },
-        { name: 'Projects', link: '/dashboard/projects' },
-        { name: 'Cats', link: '/dashboard/cats' },
-        { name: 'Dogs', link: '/dashboard/dogs' },
-      ];
     return (
       <div>
         <Helmet
@@ -28,13 +22,13 @@ export class UserConsole extends React.Component { // eslint-disable-line react/
           ]}
         />
         <Sidebar options={options} />
-        <h1>{this.props.children}</h1>
+        <p>{this.props.children}</p>
       </div>
     );
   }
 }
 
-UserConsole.propTypes = {
+UserDashboard.propTypes = {
   // dispatch: PropTypes.func,
   children: PropTypes.node,
 };
@@ -49,6 +43,6 @@ const mapStateToProps = createStructuredSelector({
 //   };
 // }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(UserConsole);
+// export default connect(mapStateToProps, mapDispatchToProps)(UserDashboard);
 
-export default connect(mapStateToProps)(UserConsole);
+export default connect(mapStateToProps)(UserDashboard);
