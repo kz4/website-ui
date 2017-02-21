@@ -7,7 +7,7 @@
 
 export const options =
   [
-    { name: 'Profile', link: '/landing' },
+    { name: 'Profile', link: '/dashboard/profile' },
     { name: 'Projects', link: '/dashboard/projects' },
     { name: 'Cats', link: '/dashboard/cats' },
     { name: 'Dogs', link: '/dashboard/dogs' },

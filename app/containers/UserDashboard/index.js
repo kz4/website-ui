@@ -22,7 +22,7 @@ export class UserDashboard extends React.Component { // eslint-disable-line reac
           ]}
         />
         <Sidebar options={options} />
-        <p>{this.props.children}</p>
+        <div>{this.props.children}</div>
       </div>
     );
   }

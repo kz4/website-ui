@@ -42,6 +42,9 @@ const paths = {
     user: {
       path: '/user',
     },
+    dashboard: {
+      path: '/dashboard',
+    }
   },
 };
 

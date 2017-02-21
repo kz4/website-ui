@@ -27,12 +27,13 @@ export class ProjectList extends React.PureComponent { // eslint-disable-line re
           ]}
         />
         <h2>Your Projects:</h2>
-        <Col xs={12}>
-          <BootstrapTable data={this.props.projects} striped hover condensed>
-            <TableHeaderColumn dataField="name" isKey>Project Name</TableHeaderColumn>
-            <TableHeaderColumn dataField="description">Description</TableHeaderColumn>
-          </BootstrapTable>
-        </Col>
+        <p>Hello {this.props.projects}</p>
+        {/*<Col xs={12}>*/}
+          {/*<BootstrapTable data={this.props.projects} striped hover condensed>*/}
+            {/*<TableHeaderColumn dataField="name" isKey>Project Name</TableHeaderColumn>*/}
+            {/*<TableHeaderColumn dataField="description">Description</TableHeaderColumn>*/}
+          {/*</BootstrapTable>*/}
+        {/*</Col>*/}
 
       </div>
     );

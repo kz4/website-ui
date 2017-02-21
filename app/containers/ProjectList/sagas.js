@@ -10,11 +10,14 @@ import { makeGetProjectsAction, makeGetProjectsSuccessAction } from './actions';
 export function* getProjects() {
   const requestURL = '/api/auth/projects';
   try {
+    console.log("Trying shit");
+    console.log(request);
+    console.log(requestURL);
     const result = yield call(request, requestURL);
     const getProjectSuccessAction = makeGetProjectsSuccessAction(result);
     yield put(getProjectSuccessAction);
   } catch (err) {
-    // console.log('error!', err);
+    console.log('error!', err);
   }
 }
 
@@ -22,6 +25,7 @@ export function* getProjects() {
  * Watcher lifecycle
  */
 export function* getProjectsWatcherSaga() {
+  console.log("Get projects watcher saga");
   const watcher = yield takeLatest(GET_PROJECTS_ACTION, getProjects);
   yield put(makeGetProjectsAction());
   yield take(LOCATION_CHANGE);
