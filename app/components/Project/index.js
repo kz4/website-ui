@@ -1,14 +1,15 @@
 import React from 'react';
 import BootstrapTable1 from 'components/BootstrapTable/BootstrapTable1.js'
-import Button from 'react-bootstrap/lib/Button';
-import Grid from 'react-bootstrap/lib/Grid';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-import Panel from 'react-bootstrap/lib/Panel';
-import Image from 'react-bootstrap/lib/Image';
-import Tabs from 'react-bootstrap/lib/Tabs';
-import Tab from 'react-bootstrap/lib/Tab';
-import Glyphicon from 'react-bootstrap/lib/Glyphicon';
+import { Button, Grid, Row, Col, Panel, Image, Tabs, Tab, Glyphicon } from 'react-bootstrap';
+// import Button from 'react-bootstrap/lib/Button';
+// import Grid from 'react-bootstrap/lib/Grid';
+// import Row from 'react-bootstrap/lib/Row';
+// import Col from 'react-bootstrap/lib/Col';
+// import Panel from 'react-bootstrap/lib/Panel';
+// import Image from 'react-bootstrap/lib/Image';
+// import Tabs from 'react-bootstrap/lib/Tabs';
+// import Tab from 'react-bootstrap/lib/Tab';
+// import Glyphicon from 'react-bootstrap/lib/Glyphicon';
 import VelloModal from 'components/ModelWrapper/modal';
 
 export default class Project extends React.Component{
@@ -32,7 +33,7 @@ export default class Project extends React.Component{
     ];
     return (
       <Grid fluid="true">
-        <Row className="show-grid" className="page-header">
+        <Row className="show-grid page-header">
           <Col md={12} style={{
             display: 'flex',
             alignItems: 'center',
@@ -59,7 +60,10 @@ export default class Project extends React.Component{
                 <li>Boat: BoatyMcBoatFace</li>
               </ul>
             </Col>
-            <Col xs={6} md={4}><Image src={require('../Project/astoria_test.jpg')} responsive></Image></Col></Panel>
+            <Col xs={6} md={4}>
+              <Image className="center-block" src={require('../Project/astoria_test.jpg')} responsive></Image>
+            </Col>
+          </Panel>
         </Row>
         <Row className="show-grid">
           <Panel><Col xs={18} md={12}>
