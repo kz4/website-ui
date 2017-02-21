@@ -4,7 +4,7 @@ import AuthInputGroup from 'components/auth/AuthInputGroup';
 import RegisterButton from '../RegisterButton';
 import { UserRegister, passwordMsg, usernameMsg, verifyPasswordMsg, mapDispatchToProps } from '../index';
 import { USERNAME_UID, PASSWORD_UID, VERIFY_PASSWORD_UID } from '../constants';
-import { onChangeUsername, onChangePassword, onChangeVerifyPassword, onDoRegister } from '../actions';
+import { onChangeUsernameAction, onChangePasswordAction, onChangeVerifyPasswordAction, onDoRegisterAction } from '../actions';
 
 describe('<UserRegister />', () => {
   const noop = () => {};
@@ -38,7 +38,7 @@ describe('<UserRegister />', () => {
     it('should dispatch loadRepos when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onDoRegister();
+      const action = onDoRegisterAction();
       result.onDoRegister();
       expect(dispatch).toHaveBeenCalledWith(action);
     });
@@ -53,7 +53,7 @@ describe('<UserRegister />', () => {
     it('should dispatch loadRepos when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onChangeUsername('foo');
+      const action = onChangeUsernameAction('foo');
       const evt = { target: { value: 'foo' } };
       result.onChangeUsername(evt);
       expect(dispatch).toHaveBeenCalledWith(action);
@@ -69,7 +69,7 @@ describe('<UserRegister />', () => {
     it('should dispatch when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onChangePassword('foo');
+      const action = onChangePasswordAction('foo');
       const evt = { target: { value: 'foo' } };
       result.onChangePassword(evt);
       expect(dispatch).toHaveBeenCalledWith(action);
@@ -85,7 +85,7 @@ describe('<UserRegister />', () => {
     it('should dispatch when called', () => {
       const dispatch = jest.fn();
       const result = mapDispatchToProps(dispatch);
-      const action = onChangeVerifyPassword('foo');
+      const action = onChangeVerifyPasswordAction('foo');
       const evt = { target: { value: 'foo' } };
       result.onChangeVerifyPassword(evt);
       expect(dispatch).toHaveBeenCalledWith(action);

@@ -13,7 +13,7 @@ import * as router from 'react-router';
 import { register, getRegisterResponse, changeToUserPage } from '../sagas';
 import { DO_REGISTER, REGISTER_SUCCESS } from '../constants';
 import { makeSelectRegisterCredentials } from '../selectors';
-import { onRegisterSuccess } from '../actions';
+import { onRegisterSuccessAction } from '../actions';
 
 describe('changeToUserPage', () => {
   let pushMock;
@@ -60,7 +60,7 @@ describe('getRegisterResponse saga', () => {
       status: 200,
     };
     const putDescriptor = getRegisterResponseGenerator.next(registerResponse).value;
-    expect(putDescriptor).toEqual(put(onRegisterSuccess(registerResponse)));
+    expect(putDescriptor).toEqual(put(onRegisterSuccessAction(registerResponse)));
   });
 
   // haven't implemented yet, but should look like this

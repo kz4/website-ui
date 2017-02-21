@@ -14,6 +14,7 @@ export function* getProjects() {
     console.log(request);
     console.log(requestURL);
     const result = yield call(request, requestURL);
+    console.log('result', result);
     const getProjectSuccessAction = makeGetProjectsSuccessAction(result);
     yield put(getProjectSuccessAction);
   } catch (err) {

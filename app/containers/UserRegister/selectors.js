@@ -3,7 +3,7 @@ import { fromJS } from 'immutable';
 /**
  * Direct selector to the userRegister state domain
  */
-const makeSelectUserRegisterDomain = () => (state) => {
+const makeSelectUserRegisterSubstate = () => (state) => {
   console.log('selectUserRegister', state.toJS());
   return state.get('register').get('userRegister');
 };
@@ -18,7 +18,7 @@ const makeSelectUserRegisterDomain = () => (state) => {
  */
 
 const makeSelectRegisterCredentials = () => createSelector(
-  makeSelectUserRegisterDomain(),
+  makeSelectUserRegisterSubstate(),
   (substate) => {
     const registerCredentials = {
       username: '',
@@ -35,5 +35,5 @@ const makeSelectRegisterCredentials = () => createSelector(
 // export default makeSelectUserRegister;
 export {
   makeSelectRegisterCredentials,
-  makeSelectUserRegisterDomain,
+  makeSelectUserRegisterSubstate,
 };

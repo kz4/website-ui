@@ -11,7 +11,7 @@ import { createStructuredSelector } from 'reselect';
 
 import AuthInputGroup from 'components/auth/AuthInputGroup';
 
-import { onChangeUsername, onDoRegister, onChangePassword, onChangeVerifyPassword } from './actions';
+import { onChangeUsernameAction, onDoRegisterAction, onChangePasswordAction, onChangeVerifyPasswordAction } from './actions';
 import { USERNAME_UID, PASSWORD_UID, VERIFY_PASSWORD_UID } from './constants';
 // import makeSelectUserRegister from './selectors';
 import messages from './messages';
@@ -61,10 +61,10 @@ export const mapStateToProps = createStructuredSelector({
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onChangeUsername: (evt) => dispatch(onChangeUsername(evt.target.value)),
-    onChangePassword: (evt) => dispatch(onChangePassword(evt.target.value)),
-    onChangeVerifyPassword: (evt) => dispatch(onChangeVerifyPassword(evt.target.value)),
-    onDoRegister: () => dispatch(onDoRegister()),
+    onChangeUsername: (evt) => dispatch(onChangeUsernameAction(evt.target.value)),
+    onChangePassword: (evt) => dispatch(onChangePasswordAction(evt.target.value)),
+    onChangeVerifyPassword: (evt) => dispatch(onChangeVerifyPasswordAction(evt.target.value)),
+    onDoRegister: () => dispatch(onDoRegisterAction()),
   };
 }
 

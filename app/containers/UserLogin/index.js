@@ -11,12 +11,19 @@ import { createStructuredSelector } from 'reselect';
 
 import AuthInputGroup from 'components/auth/AuthInputGroup';
 
-import { onChangeUsername, onDoLogIn, onChangePassword, onChangeRemember } from './actions';
+import {
+  makeChangeUsernameAction,
+  makeDoLogInAction,
+  makeChangePasswordAction,
+  makeChangeRememberAction,
+} from './actions';
 import { USERNAME_UID, PASSWORD_UID } from './constants';
 // import makeSelectUserLogin from './selectors';
 import messages from './messages';
 import LogInButton from './LogInButton';
 import RememberMeCheckbox from './RememberMeCheckbox';
+import LoginErrorMessage from './LoginErrorMessage';
+import { makeSelectLoginError, makeSelectLoginErrorMsg } from './selectors';
 
 // is there a better way? Will this have any problems?
 // export for testing
@@ -37,7 +44,11 @@ export class UserLogin extends React.PureComponent { // eslint-disable-line reac
           display={passwordMsg}
           onChange={this.props.onChangePassword}
         />
-        <div id="loginErrorMsg" className="alert alert-error hide">Wrong username or password</div>
+        <div className="alert alert-error hide">Wrong username or password</div>
+        <LoginErrorMessage
+          loginError={this.props.loginError}
+          loginErrorMsg={this.props.loginErrorMsg}
+        />
         <RememberMeCheckbox onChangeRemember={this.props.onChangeRemember} />
         <LogInButton onDoLogIn={this.props.onDoLogIn} />
       </div>
@@ -50,18 +61,21 @@ UserLogin.propTypes = {
   onChangePassword: PropTypes.func.isRequired,
   onChangeRemember: PropTypes.func.isRequired,
   onDoLogIn: PropTypes.func.isRequired,
+  loginError: PropTypes.bool.isRequired,
+  loginErrorMsg: PropTypes.string.isRequired,
 };
 
 export const mapStateToProps = createStructuredSelector({
-  // UserLogin: makeSelectUserLogin(),
+  loginError: makeSelectLoginError(),
+  loginErrorMsg: makeSelectLoginErrorMsg(),
 });
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onChangeUsername: (evt) => dispatch(onChangeUsername(evt.target.value)),
-    onChangePassword: (evt) => dispatch(onChangePassword(evt.target.value)),
-    onChangeRemember: (evt) => dispatch(onChangeRemember(evt.target.checked)),
-    onDoLogIn: () => dispatch(onDoLogIn()),
+    onChangeUsername: (evt) => dispatch(makeChangeUsernameAction(evt.target.value)),
+    onChangePassword: (evt) => dispatch(makeChangePasswordAction(evt.target.value)),
+    onChangeRemember: (evt) => dispatch(makeChangeRememberAction(evt.target.checked)),
+    onDoLogIn: () => dispatch(makeDoLogInAction()),
   };
 }
 

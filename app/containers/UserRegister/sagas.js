@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import request from 'utils/request';
 import { makeSelectRegisterCredentials } from './selectors';
 import { DO_REGISTER, REGISTER_SUCCESS } from './constants';
-import { onRegisterSuccess } from './actions';
+import { onRegisterSuccessAction } from './actions';
 
 /**
  * Github repos request/response handler
@@ -26,7 +26,7 @@ export function* getRegisterResponse() {
       },
     });
     // browserHistory.push(paths.appPaths.user.path);
-    yield put(onRegisterSuccess(registerResponse));
+    yield put(onRegisterSuccessAction(registerResponse));
   } catch (err) {
     // console.log('reponse error', err);
     // yield put(repoLoadingError(err));

@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import deepAssign from 'deep-assign';
 
 /**
  * Parses the JSON returned by a network request
@@ -28,8 +29,8 @@ function checkStatus(response) {
   throw error;
 }
 
-function getJsonPostOptions(options) {
-  const newOptions = Object.assign(options, {
+export function getJsonPostOptions(options) {
+  const newOptions = deepAssign(options, {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -49,7 +50,7 @@ function getJsonPostOptions(options) {
  */
 export default function request(url, options) {
   let updatedOptions = options;
-  if (options.method === 'POST') {
+  if (options && options.method === 'POST') {
     updatedOptions = getJsonPostOptions(options);
   }
   return fetch(url, updatedOptions)

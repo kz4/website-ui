@@ -4,8 +4,8 @@ import { paths } from 'config';
 import { browserHistory } from 'react-router';
 import request from 'utils/request';
 import { makeSelectLoginCredentials } from './selectors';
-import { DO_LOGIN, LOGIN_SUCCESS } from './constants';
-import { onLoginSuccess } from './actions';
+import { DO_LOGIN_ACTION, LOGIN_SUCCESS_ACTION, LOGIN_ERROR_MSG_DEFAULT } from './constants';
+import { makeLoginSuccessAction, makeLoginErrorAction } from './actions';
 
 /**
  * Github repos request/response handler
@@ -26,10 +26,11 @@ export function* getLoginResponse() {
       },
     });
     // browserHistory.push(paths.appPaths.user.path);
-    yield put(onLoginSuccess(loginResponse));
+    yield put(makeLoginSuccessAction(loginResponse));
   } catch (err) {
-    // console.log('reponse error', err);
-    // yield put(repoLoadingError(err));
+    const body = err.body ? err.body : {};
+    const loginErrorMsg = body.loginErrorMsg ? body.loginErrorMsg : LOGIN_ERROR_MSG_DEFAULT;
+    yield put(makeLoginErrorAction(loginErrorMsg));
   }
 }
 
@@ -44,8 +45,8 @@ export function* login() {
   // Watches for LOAD_REPOS actions and calls getRepos when one comes in.
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
-  const doLoginWatcher = yield takeLatest(DO_LOGIN, getLoginResponse);
-  const loginSuccessWatcher = yield takeLatest(LOGIN_SUCCESS, changeToUserPage);
+  const doLoginWatcher = yield takeLatest(DO_LOGIN_ACTION, getLoginResponse);
+  const loginSuccessWatcher = yield takeLatest(LOGIN_SUCCESS_ACTION, changeToUserPage);
 
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE);

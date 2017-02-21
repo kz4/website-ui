@@ -4,7 +4,7 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
@@ -33,17 +33,13 @@ export class Register extends React.PureComponent { // eslint-disable-line react
 }
 
 Register.propTypes = {
-  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  // Register: makeSelectRegister(),
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
+export function mapDispatchToProps(/* dispatch */) {
+  return {};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

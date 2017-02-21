@@ -1,17 +1,19 @@
 
 import {
-  onChangeUsername,
-  onChangePassword,
-  onChangeRemember,
-  onDoLogIn,
-  onLoginSuccess,
+  makeChangeUsernameAction,
+  makeChangePasswordAction,
+  makeChangeRememberAction,
+  makeDoLogInAction,
+  makeLoginSuccessAction,
+  makeLoginErrorAction,
 } from '../actions';
 import {
-  CHANGE_PASSWORD,
-  CHANGE_REMEMBER,
-  CHANGE_USERNAME,
-  DO_LOGIN,
-  LOGIN_SUCCESS,
+  CHANGE_PASSWORD_ACTION,
+  CHANGE_REMEMBER_ACTION,
+  CHANGE_USERNAME_ACTION,
+  DO_LOGIN_ACTION,
+  LOGIN_SUCCESS_ACTION,
+  LOGIN_ERROR_ACTION,
 } from '../constants';
 
 describe('UserLogin actions', () => {
@@ -19,10 +21,10 @@ describe('UserLogin actions', () => {
     it('has a type of CHANGE_USERNAME and username', () => {
       const expectedUsername = 'foo';
       const expected = {
-        type: CHANGE_USERNAME,
+        type: CHANGE_USERNAME_ACTION,
         username: expectedUsername,
       };
-      expect(onChangeUsername(expectedUsername)).toEqual(expected);
+      expect(makeChangeUsernameAction(expectedUsername)).toEqual(expected);
     });
   });
 
@@ -30,10 +32,10 @@ describe('UserLogin actions', () => {
     it('has a type of CHANGE_PASSWORD and password', () => {
       const expectedPassword = 'foo';
       const expected = {
-        type: CHANGE_PASSWORD,
+        type: CHANGE_PASSWORD_ACTION,
         password: expectedPassword,
       };
-      expect(onChangePassword(expectedPassword)).toEqual(expected);
+      expect(makeChangePasswordAction(expectedPassword)).toEqual(expected);
     });
   });
 
@@ -41,19 +43,19 @@ describe('UserLogin actions', () => {
     it('has a type of CHANGE_REMEMBER and remember', () => {
       const expectedRemember = true;
       const expected = {
-        type: CHANGE_REMEMBER,
+        type: CHANGE_REMEMBER_ACTION,
         remember: expectedRemember,
       };
-      expect(onChangeRemember(expectedRemember)).toEqual(expected);
+      expect(makeChangeRememberAction(expectedRemember)).toEqual(expected);
     });
   });
 
   describe('on Do Log In', () => {
     it('has a type of DO_LOGIN', () => {
       const expected = {
-        type: DO_LOGIN,
+        type: DO_LOGIN_ACTION,
       };
-      expect(onDoLogIn()).toEqual(expected);
+      expect(makeDoLogInAction()).toEqual(expected);
     });
   });
 
@@ -61,10 +63,21 @@ describe('UserLogin actions', () => {
     it('has a type of LOGIN_SUCCESS and loginResponse', () => {
       const expectedLoginResponse = 'bar';
       const expected = {
-        type: LOGIN_SUCCESS,
+        type: LOGIN_SUCCESS_ACTION,
         loginResponse: expectedLoginResponse,
       };
-      expect(onLoginSuccess(expectedLoginResponse)).toEqual(expected);
+      expect(makeLoginSuccessAction(expectedLoginResponse)).toEqual(expected);
+    });
+  });
+
+  describe('on make login error', () => {
+    it('has a type of LOGIN_ERROR_ACTION and has errorMsg', () => {
+      const expectedErrorMsg = 'foo';
+      const expected = {
+        type: LOGIN_ERROR_ACTION,
+        loginErrorMsg: expectedErrorMsg,
+      };
+      expect(makeLoginErrorAction(expectedErrorMsg)).toEqual(expected);
     });
   });
 });
