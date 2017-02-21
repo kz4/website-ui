@@ -148,7 +148,19 @@ export default class Project extends React.Component{
         </Row>
         <Row className="show-grid">
           <Panel>
-            <Col xs={12} md={8}>Project Metadata</Col>
+            <Col xs={12} md={8}>
+              <h3>Project Metadata</h3>
+              <ul style={{
+                listStyle: 'none',
+                fontSize: '1.25em'
+              }}>
+                <li>Location: Somewhere</li>
+                <li>Year: 2007</li>
+                <li>Instruments: Wind thingy, Water testmajigger, florb</li>
+                <li>Salinity: Saltier than a saltine</li>
+                <li>Boat: BoatyMcBoatFace</li>
+              </ul>
+            </Col>
             <Col xs={6} md={4}><Image src={require('../Project/astoria_test.jpg')} responsive></Image></Col></Panel>
         </Row>
         <Row className="show-grid">

@@ -14,7 +14,8 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    padding: 0,
   }
 };
 
@@ -58,7 +59,7 @@ class VelloModal extends React.Component{
           contentLabel="Upload Dataset"
         >
 
-          <div className="panel panel-primary">
+          <div className="panel panel-primary" style={{margin: 0}}>
             <div className="panel-heading">
               <h4 ref="subtitle" className ="panel-title">Upload Dataset</h4>
             </div>
@@ -67,9 +68,9 @@ class VelloModal extends React.Component{
                 <input className ="form-control" placeholder = "Dataset Name" type="text" /> <br />
                 <input className ="form-control" placeholder = "Search Keywords (, seperated )" type="text" /> <br />
                 <textarea className ="form-control"placeholder = "Describe you dataset" />  <br />
-                <div className ="form-group">
+                <div>
                   <label>Choose dataset file</label>
-                  <input className ="form-control" placeholder = "Upload dataset file" type="file" /> <br />
+                  <input placeholder = "Upload dataset file" type="file" /> <br />
                 </div>
                 <button type="button" onClick={this.closeModal} className = "btn btn-default">Upload</button>
               </form>
