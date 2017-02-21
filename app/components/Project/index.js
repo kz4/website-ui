@@ -142,9 +142,17 @@ export default class Project extends React.Component{
     ];
     return (
       <Grid fluid="true">
-        <Row className="show-grid">
-          <Col md={10}><PageHeader>BUOY&nbsp;<small>Offshore Wind Energy - Buoy Lidar Project</small></PageHeader></Col>
-          <Col md={2}><Button bsStyle="link" href={'/'}>Edit Project&nbsp;<Glyphicon glyph="pencil"></Glyphicon></Button></Col>
+        <Row className="show-grid" className="page-header">
+          <Col md={12} style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
+            <h1 style={{display: 'inline-block'}}>BUOY&nbsp;Offshore Wind Energy - Buoy Lidar Project</h1>
+            <div style={{marginLeft: '1em'}}>
+              <Button bsStyle="primary" href={'/'}>Edit Project&nbsp;<Glyphicon glyph="pencil"></Glyphicon></Button>
+            </div>
+          </Col>
         </Row>
         <Row className="show-grid">
           <Panel>
