@@ -4,16 +4,10 @@
  * List all the features
  */
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Col, Button } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
-
-import H1 from 'components/H1';
-import messages from './messages';
-import List from './List';
-import ListItem from './ListItem';
-import ListItemTitle from './ListItemTitle';
-import Practice from '../../components/Practice/Practice'
-
+import { SliderPanel, SliderText, SliderImg, SliderWrapper } from './slider/Slider';
+const Slider = require('react-slick');
 export default class FeaturePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   // Since state and props are static,
@@ -26,7 +20,7 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
     super(props);
     this.state = {
       title:  "hello world",
-  };
+    };
 
 
   }
@@ -38,9 +32,53 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
   }
 
   render() {
-    return (<div>
-      
-    </div>);
-  ;
+    const sliderSettings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+    };
+    return (
+      <div>
+        <script
+          src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        >
+        </script>
+        <link
+          rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
+        <Slider {...sliderSettings}>
+          <SliderPanel>
+            <Col xs={8}>
+              <SliderImg src="http://lorempixel.com/400/200/cats/" />
+            </Col>
+            <Col xs={4}>
+              <SliderText>Here&apos;s one really sick feature of Velo. It's cats. </SliderText>
+              <div className="text-center">
+                <Button bsStyle="success">Learn more about cats!</Button>
+              </div>
+            </Col>
+          </SliderPanel>
+          <SliderPanel>
+            <Col xs={8}>
+              <SliderImg src="http://lorempixel.com/400/200/cats/" />
+            </Col>
+            <Col xs={4}>
+              <SliderText>Here&apos;s another reason Velo is super awesome. It's also cats.</SliderText>
+              <div className="text-center">
+                <Button bsStyle="success">Seriously, Learn More!</Button>
+              </div>
+            </Col>
+          </SliderPanel>
+        </Slider>
+      </div>);
+    ;
   }
 }
