@@ -15,7 +15,7 @@ function NavBar() {
     <Navbar collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand>
-          <Link to={'/'}>React-Bootstrap</Link>
+          <Link to={'/'}>Velo</Link>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>

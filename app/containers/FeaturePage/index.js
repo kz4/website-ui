@@ -38,79 +38,9 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
   }
 
   render() {
-
-
-
-    //const title = "practising further parts of react before getting into testing";
-    return (
-      <div>
-        {/*<Helmet
-          title="Feature Page"
-          meta={[
-            { name: 'description', content: 'Feature page of React.js Boilerplate application' },
-          ]}
-        />*/}
-        {/*<H1>
-          <FormattedMessage {...messages.header} />
-        </H1>
-        <List>
-          <ListItem>
-            <ListItemTitle>
-              <FormattedMessage {...messages.scaffoldingHeader} />
-            </ListItemTitle>
-            <p>
-              <FormattedMessage {...messages.scaffoldingMessage} />
-            </p>
-          </ListItem>
-
-          <ListItem>
-            <ListItemTitle>
-              <FormattedMessage {...messages.feedbackHeader} />
-            </ListItemTitle>
-            <p>
-              <FormattedMessage {...messages.feedbackMessage} />
-            </p>
-          </ListItem>
-
-          <ListItem>
-            <ListItemTitle>
-              <FormattedMessage {...messages.routingHeader} />
-            </ListItemTitle>
-            <p>
-              <FormattedMessage {...messages.routingMessage} />
-            </p>
-          </ListItem>
-
-          <ListItem>
-            <ListItemTitle>
-              <FormattedMessage {...messages.networkHeader} />
-            </ListItemTitle>
-            <p>
-              <FormattedMessage {...messages.networkMessage} />
-            </p>
-          </ListItem>
-
-          <ListItem>
-            <ListItemTitle>
-              <FormattedMessage {...messages.intlHeader} />
-            </ListItemTitle>
-            <p>
-              <FormattedMessage {...messages.intlMessage} />
-            </p>
-          </ListItem>
-        </List>*/}
-
-
-
-
-
-
-        {this.state.title}
-
-
-        <Practice changeTitle = {this.changeTitle.bind(this)} title = {this.state.title}/>
-
-      </div>
-    );
+    return (<div>
+      
+    </div>);
+  ;
   }
 }

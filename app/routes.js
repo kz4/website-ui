@@ -18,27 +18,28 @@ export default function createRoutes(store) {
   const { injectReducer, injectSagas } = getAsyncInjectors(store);
 
   return [
-    {
-      path: paths.appPaths.home.path,
-      name: 'home',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/HomePage/reducer'),
-          import('containers/HomePage/sagas'),
-          import('containers/HomePage'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('home', reducer.default);
-          injectSagas(sagas.default);
-
-          renderRoute(component);
-        });
-        importModules.catch(errorLoading);
-      },
-    }, {
+    // {
+    //   path: paths.appPaths.home.path,
+    //   name: 'home',
+    //   getComponent(nextState, cb) {
+    //     const importModules = Promise.all([
+    //       import('containers/HomePage/reducer'),
+    //       import('containers/HomePage/sagas'),
+    //       import('containers/HomePage'),
+    //     ]);
+    //
+    //     const renderRoute = loadModule(cb);
+    //
+    //     importModules.then(([reducer, sagas, component]) => {
+    //       injectReducer('home', reducer.default);
+    //       injectSagas(sagas.default);
+    //
+    //       renderRoute(component);
+    //     });
+    //     importModules.catch(errorLoading);
+    //   },
+    // },
+     {
       path: '/profile',
       name: 'profile',
       getComponent(nextState, cb) {
@@ -112,7 +113,7 @@ export default function createRoutes(store) {
       },
     },
     {
-      path: '/landing',
+      path: '/',
       name: 'landing',
       getComponent(nextState, cb) {
         import('containers/LandingPage')
