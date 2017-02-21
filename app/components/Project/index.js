@@ -1,6 +1,7 @@
 import React from 'react';
 import BootstrapTable1 from 'components/BootstrapTable/BootstrapTable1.js'
 import { Button, Grid, Row, Col, Panel, Image, Tabs, Tab, Glyphicon } from 'react-bootstrap';
+import VelloModal from 'components/ModelWrapper/modal';
 // import Button from 'react-bootstrap/lib/Button';
 // import Grid from 'react-bootstrap/lib/Grid';
 // import Row from 'react-bootstrap/lib/Row';
@@ -10,7 +11,13 @@ import { Button, Grid, Row, Col, Panel, Image, Tabs, Tab, Glyphicon } from 'reac
 // import Tabs from 'react-bootstrap/lib/Tabs';
 // import Tab from 'react-bootstrap/lib/Tab';
 // import Glyphicon from 'react-bootstrap/lib/Glyphicon';
-import VelloModal from 'components/ModelWrapper/modal';
+
+const EditableTextArea = (props) => {
+  if(props.isEditable) {
+    return (<textarea value={props.value}/>);
+  }
+  return (<span>{props.value}</span>);
+};
 
 export default class Project extends React.Component{
 
@@ -76,7 +83,6 @@ export default class Project extends React.Component{
         </Row>
         <Row>
           <Panel header="Data Sets">
-
             <Col md={12}><VelloModal /></Col>
             <Col md={12}><BootstrapTable1 datasets = {datasets}/></Col>
           </Panel>
