@@ -26,29 +26,31 @@ export class ProfilePage extends React.PureComponent { // eslint-disable-line re
             { name: 'description', content: 'Description of ProfilePage' },
           ]}
         />
-        <div className="row" style={{ marginBottom: '1em' }}>
-          <div className="col-sm-12">
-            <form className="form-horizontal" role="form">
-              <h2>Profile</h2>
-              <FormInput
-                name="Name"
-                updater={this.props.makeUpdater('name')}
-              />
+        <div className="col-xs-9">
+          <div className="row" style={{ marginBottom: '1em' }}>
+            <div className="col-sm-12">
+              <form className="form-horizontal" role="form">
+                <h2>Profile</h2>
+                <FormInput
+                  name="Name"
+                  updater={this.props.makeUpdater('name')}
+                />
 
-              <FormInput
-                name="Email"
-                updater={this.props.makeUpdater('email')}
-              />
+                <FormInput
+                  name="Email"
+                  updater={this.props.makeUpdater('email')}
+                />
 
-              <FormInput
-                name="Phone"
-                updater={this.props.makeUpdater('phone')}
-              />
+                <FormInput
+                  name="Phone"
+                  updater={this.props.makeUpdater('phone')}
+                />
 
-              <div className="pull-right">
-                <Button bsStyle="primary">Update</Button>
-              </div>
-            </form>
+                <div className="pull-right">
+                  <Button bsStyle="primary">Update</Button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

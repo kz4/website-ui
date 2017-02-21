@@ -14,6 +14,7 @@ import { Col } from 'react-bootstrap';import makeSelectProjectList from './selec
 // import { makeGetProjectsAction } from './actions';
 
 export class ProjectList extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
   render() {
     return (
       <div>
@@ -27,21 +28,19 @@ export class ProjectList extends React.PureComponent { // eslint-disable-line re
           ]}
         />
         <h2>Your Projects:</h2>
-        <p>Hello {this.props.projects}</p>
-        {/*<Col xs={12}>*/}
-          {/*<BootstrapTable data={this.props.projects} striped hover condensed>*/}
-            {/*<TableHeaderColumn dataField="name" isKey>Project Name</TableHeaderColumn>*/}
-            {/*<TableHeaderColumn dataField="description">Description</TableHeaderColumn>*/}
-          {/*</BootstrapTable>*/}
-        {/*</Col>*/}
-
+        <Col xs={9}>
+          <BootstrapTable data={this.props.projects} striped hover condensed>
+            <TableHeaderColumn dataField="name" isKey>Project Name</TableHeaderColumn>
+            <TableHeaderColumn dataField="description">Description</TableHeaderColumn>
+          </BootstrapTable>
+        </Col>
       </div>
     );
   }
 }
 
 ProjectList.propTypes = {
-  projects: PropTypes.object,
+  // projects: React.PropTypes.array,
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -7,7 +7,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { Image } from 'react-bootstrap';
+import { Image, Col } from 'react-bootstrap';
 import { createStructuredSelector } from 'reselect';
 import makeSelectDogs from './selectors';
 
@@ -22,8 +22,10 @@ export class Dogs extends React.PureComponent { // eslint-disable-line react/pre
             { name: 'description', content: 'Description of Dogs' },
           ]}
         />
-        <h1>I just love dogs so much.</h1>
-        <Image src="http://loremflickr.com/320/240/dog"></Image>
+        <Col xs={9}>
+          <h1>I just love dogs so much.</h1>
+          <Image src="http://loremflickr.com/320/240/dog"></Image>
+        </Col>
       </div>
     );
   }
