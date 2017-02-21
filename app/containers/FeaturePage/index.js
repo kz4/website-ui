@@ -12,6 +12,7 @@ import messages from './messages';
 import List from './List';
 import ListItem from './ListItem';
 import ListItemTitle from './ListItemTitle';
+import Practice from '../../components/Practice/Practice'
 
 export default class FeaturePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -21,16 +22,35 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
     return false;
   }
 
+  constructor(props){
+    super(props);
+    this.state = {
+      title:  "hello world",
+  };
+
+
+  }
+
+  changeTitle(title)
+  {
+    console.log(title);
+    this.setState({title: title});
+  }
+
   render() {
+
+
+
+    //const title = "practising further parts of react before getting into testing";
     return (
       <div>
-        <Helmet
+        {/*<Helmet
           title="Feature Page"
           meta={[
             { name: 'description', content: 'Feature page of React.js Boilerplate application' },
           ]}
-        />
-        <H1>
+        />*/}
+        {/*<H1>
           <FormattedMessage {...messages.header} />
         </H1>
         <List>
@@ -78,7 +98,18 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
               <FormattedMessage {...messages.intlMessage} />
             </p>
           </ListItem>
-        </List>
+        </List>*/}
+
+
+
+
+
+
+        {this.state.title}
+
+
+        <Practice changeTitle = {this.changeTitle.bind(this)} title = {this.state.title}/>
+
       </div>
     );
   }

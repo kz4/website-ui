@@ -35,7 +35,7 @@ function NavBar() {
             <MenuItem eventKey={4.2}>Another action</MenuItem>
             <MenuItem eventKey={4.3}>Something else here</MenuItem>
             <MenuItem divider />
-            <MenuItem eventKey={4.3}>Separated link</MenuItem>
+            <MenuItem eventKey={4.4}>Separated link</MenuItem>
           </NavDropdown>
         </Nav>
         <Nav pullRight>

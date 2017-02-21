@@ -35,7 +35,7 @@ module.exports = {
     message: 'Do you want i18n messages (i.e. will this component use text)?',
   }],
   actions: (data) => {
-    // Generate index.js and index.test.js
+    // Generate index.js and viewdata.test.js
     let componentTemplate;
 
     switch (data.type) {
@@ -63,7 +63,7 @@ module.exports = {
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/components/{{properCase name}}/tests/index.test.js',
+      path: '../../app/components/{{properCase name}}/tests/viewdata.test.js',
       templateFile: './component/test.js.hbs',
       abortOnFail: true,
     }];
