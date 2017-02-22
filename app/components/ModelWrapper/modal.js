@@ -21,6 +21,7 @@ const customStyles = {
 // Much of this component should be refactored to use same style as examples (e.g. HomePage and
 // UserLogin). I can see how this would be hard to implement using this style, talk to me if you
 // are having a hard time getting started.
+// for example functions should be set using mapDispatchToProps
 class VelloModal extends React.Component{
 
   // Shouldn't be using a constructor, since we shouldn't be setting state on a component, state
@@ -43,6 +44,7 @@ class VelloModal extends React.Component{
   }
 
   afterOpenModal() {
+    // ???
     // references are now sync'd and can be accessed.
     this.refs.subtitle.style.color = '#000';
   }

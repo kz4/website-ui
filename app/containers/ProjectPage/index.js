@@ -55,7 +55,7 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
   }
 
   render() {
-    // I don't think this page needs to have a component for project the project, in fact it
+    // I don't think this page needs to have a component for the project, in fact it
     // probably will make it harder to do API calls since components are supposed to be stateless
     return (
       <div>
