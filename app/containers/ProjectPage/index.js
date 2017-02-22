@@ -47,6 +47,7 @@ import Project from 'components/Project/index.js'
 
 export default class ProjectPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
+  // eventually this component will have to update
   // Since state and props are static,
   // there's no need to re-render this component
   shouldComponentUpdate() {
@@ -55,7 +56,7 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
 
   render() {
     // I don't think this page needs to have a component for project the project, in fact it
-    // probably will manage it harder to do API calls since components are supposed to be stateless
+    // probably will make it harder to do API calls since components are supposed to be stateless
     return (
       <div>
         <Project></Project>

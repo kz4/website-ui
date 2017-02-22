@@ -23,7 +23,8 @@ const customStyles = {
 // are having a hard time getting started.
 class VelloModal extends React.Component{
 
-  // Shouldn't be using a constructor
+  // Shouldn't be using a constructor, since we shouldn't be setting state on a component, state
+  // belongs in the store.
   constructor(props){
     super(props);
 

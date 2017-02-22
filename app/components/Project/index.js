@@ -123,7 +123,7 @@ import Image from 'react-bootstrap/lib/Image';
 import Tabs from 'react-bootstrap/lib/Tabs';
 import Tab from 'react-bootstrap/lib/Tab';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
-// could be an absolute import
+// could be an absolute import, e.g. components/ModelWrapper/modal
 import VelloModal from '../ModelWrapper/modal';
 
 export default class Project extends React.Component{
