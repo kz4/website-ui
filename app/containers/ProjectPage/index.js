@@ -1,6 +1,9 @@
 
 import React from 'react';
-import Project from '../../components/Project/index.js'
+
+// webpack allows up top level imports
+// import Project from '../../components/Project/index.js'
+import Project from 'components/Project/index.js'
 // var project = [
 //   {
 //   "project_id": 1,
@@ -51,8 +54,8 @@ export default class ProjectPage extends React.Component { // eslint-disable-lin
   }
 
   render() {
-    //json used to display dataset table
-
+    // I don't think this page needs to have a component for project the project, in fact it
+    // probably will manage it harder to do API calls since components are supposed to be stateless
     return (
       <div>
         <Project></Project>

@@ -9,6 +9,7 @@ const EditableField = (props) => {
   if (props.isEditable) {
     inside = (<input className="form-control" type="text">Change Name</input>);
   } else {
+    // Again, shouldn't do PageHeader then small.
     inside = (<PageHeader>BUOY&nbsp;<small>Offshore Wind Energy - Buoy Lidar Project</small></PageHeader>);
   }
   return (

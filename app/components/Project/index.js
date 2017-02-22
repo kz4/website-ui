@@ -109,6 +109,10 @@
 
 import React from 'react';
 import BootstrapTable1 from '../../components/BootstrapTable/BootstrapTable1.js'
+
+// These can be imported in a simpler fashion
+// e.g.
+// import { Button, Grid, Row, ... } from 'react-bootstrap';
 import Button from 'react-bootstrap/lib/Button';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
@@ -119,6 +123,7 @@ import Image from 'react-bootstrap/lib/Image';
 import Tabs from 'react-bootstrap/lib/Tabs';
 import Tab from 'react-bootstrap/lib/Tab';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
+// could be an absolute import
 import VelloModal from '../ModelWrapper/modal';
 
 export default class Project extends React.Component{
@@ -126,6 +131,7 @@ export default class Project extends React.Component{
 
   render()
   {
+    // should pull this out into the store
     const datasets = [
       {id: 'data 1',
         updated: 2052017,
@@ -143,15 +149,23 @@ export default class Project extends React.Component{
     return (
       <Grid fluid="true">
         <Row className="show-grid">
+          {/*PageHeader followed by small is not great html. HTML should describe the
+           purpose/layout not be used to control style.
+           If you want the border at the bottom
+           at the bottom, you should make your own component.
+          */}
           <Col md={10}><PageHeader>BUOY&nbsp;<small>Offshore Wind Energy - Buoy Lidar Project</small></PageHeader></Col>
+          {/* I think this works better as a button than link */}
           <Col md={2}><Button bsStyle="link" href={'/'}>Edit Project&nbsp;<Glyphicon glyph="pencil"></Glyphicon></Button></Col>
         </Row>
         <Row className="show-grid">
           <Panel>
             <Col xs={12} md={8}>Project Metadata</Col>
+            /* I haven't tried, but I think this should work as a non local import */
             <Col xs={6} md={4}><Image src={require('../Project/astoria_test.jpg')} responsive></Image></Col></Panel>
         </Row>
         <Row className="show-grid">
+          {/* Not sure why xs=18, was it supposed to be 12? */}
           <Panel><Col xs={18} md={12}>
             <Tabs animation={true} defaultActiveKey={1} bsStyle="pills">
               <Tab eventKey={1} title="overview">A 2014 study estimated that U.S. offshore wind energy could generate enough power for 17 million homes. More than a dozen offshore wind farms are in various stages of development in the United States. The demonstration projects in Virginia and New Jersey receive funding from the U.S. Department of Energy (DOE).</Tab>

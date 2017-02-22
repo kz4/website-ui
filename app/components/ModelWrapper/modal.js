@@ -18,11 +18,16 @@ const customStyles = {
   }
 };
 
+// Much of this component should be refactored to use same style as examples (e.g. HomePage and
+// UserLogin). I can see how this would be hard to implement using this style, talk to me if you
+// are having a hard time getting started.
 class VelloModal extends React.Component{
 
+  // Shouldn't be using a constructor
   constructor(props){
     super(props);
-0
+
+    // Shouldn't be using state, should move this to the store
   this.state = {
       modalIsOpen: false
     };
