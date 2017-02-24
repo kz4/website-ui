@@ -99,6 +99,26 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/EditProject',
+      name: 'createEditProjectPage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/CreateEditProjectPage/reducer'),
+          import('containers/CreateEditProjectPage/sagas'),
+          import('containers/CreateEditProjectPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('createEditProjectPage', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

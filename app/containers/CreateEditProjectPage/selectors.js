@@ -14,12 +14,8 @@ const selectCreateEditProjectPageDomain = () => (state) => state.get('createEdit
  * Default selector used by CreateEditProjectPage
  */
 
-const makeSelectCreateEditProjectPage = () => createSelector(
+export const makeSelectMetaData = () => createSelector(
   selectCreateEditProjectPageDomain(),
-  (substate) => substate.toJS()
+  (substate) => substate.get('metaData').toJS()
 );
 
-export default makeSelectCreateEditProjectPage;
-export {
-  selectCreateEditProjectPageDomain,
-};

@@ -7,10 +7,13 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import makeSelectCreateEditProjectPage from './selectors';
-import messages from './messages';
+import MetaDataInput from './MetaDataInput';
+import { makeSelectMetaData } from './selectors';
+// import messages from './messages';
+import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { makeMetaDataUpdatedAction } from './actions';
 
 export class CreateEditProjectPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -22,7 +25,20 @@ export class CreateEditProjectPage extends React.PureComponent { // eslint-disab
             { name: 'description', content: 'Description of CreateEditProjectPage' },
           ]}
         />
-        <FormattedMessage {...messages.header} />
+        <div>
+          <form>
+            <FormGroup
+              controlId="formBasicText"
+            >
+              <ControlLabel>MetaData:</ControlLabel>
+              <MetaDataInput 
+                metaData={this.props.metaData} 
+                onMetaDataUpdated={this.props.metaDataUpdated}
+              />
+              <FormControl.Feedback />
+            </FormGroup>
+          </form>
+        </div>
       </div>
     );
   }
@@ -33,12 +49,13 @@ CreateEditProjectPage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  CreateEditProjectPage: makeSelectCreateEditProjectPage(),
+  metaData: makeSelectMetaData(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    metaDataUpdated: (newMetaData) => dispatch(makeMetaDataUpdatedAction(newMetaData))
   };
 }
 
