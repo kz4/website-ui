@@ -11,10 +11,17 @@ import {
 
 const initialState = fromJS({
   title: 'project title',
-  description: 'project title',
+  description: 'project Description',
   metadata: {
     key1: 'value1',
     key2: 'value2',
+    key3: {
+      key4: 'nested1Value1',
+      key5: 'nested1Value2',
+      key6: {
+        key7: 'nested2Value1'
+      }
+    }
   },
   dataset: {
   },

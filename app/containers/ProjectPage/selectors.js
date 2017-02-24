@@ -24,5 +24,5 @@ export const makeSelectProjectPageDescription = () => createSelector(
 
 export const makeSelectProjectPageMetaData = () => createSelector(
   selectProjectPageDomain(),
-  (substore) => substore.get('metadata')
+  (substore) => substore.get('metadata').toJS()
 );
