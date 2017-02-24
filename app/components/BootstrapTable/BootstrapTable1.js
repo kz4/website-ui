@@ -32,7 +32,7 @@ editingButtons(cell, row, enumObject, rowIndex) {
       <TableHeaderColumn dataField="end">End</TableHeaderColumn>
       <TableHeaderColumn dataField="count">Count</TableHeaderColumn>
       <TableHeaderColumn dataField="size">Size</TableHeaderColumn>
-      <TableHeaderColumn width="200"
+      <TableHeaderColumn width="200px"
         dataField='button'
         dataFormat={this.editingButtons.bind(this)}
       />
