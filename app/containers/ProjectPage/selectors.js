@@ -1,25 +1,28 @@
 import { createSelector } from 'reselect';
 
+// {
+//   home: {},
+//   project: {
+//     title: 'foo'
+//   }
+// }
+
 /**
  * Direct selector to the projectPage state domain
  */
-const selectProjectPageDomain = () => (state) => state.get('projectPage');
+const selectProjectPageDomain = () => (store) => store.get('project');
 
-/**
- * Other specific selectors
- */
-
-
-/**
- * Default selector used by ProjectPage
- */
-
-const makeSelectProjectPage = () => createSelector(
+export const makeSelectProjectPageTitle = () => createSelector(
   selectProjectPageDomain(),
-  (substate) => substate ? substate.toJS() : {}
+  (substore) => substore.get('title')
 );
 
-export default makeSelectProjectPage;
-export {
-  selectProjectPageDomain,
-};
+export const makeSelectProjectPageDescription = () => createSelector(
+  selectProjectPageDomain(),
+  (substore) => substore.get('description')
+);
+
+export const makeSelectProjectPageMetaData = () => createSelector(
+  selectProjectPageDomain(),
+  (substore) => substore.get('metadata')
+);

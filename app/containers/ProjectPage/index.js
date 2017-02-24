@@ -9,7 +9,11 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
-import makeSelectProjectPage from './selectors';
+import {
+  makeSelectProjectPageDescription, 
+  makeSelectProjectPageMetaData, 
+  makeSelectProjectPageTitle
+} from './selectors';
 import messages from './messages';
 import BootstrapTable1 from 'components/BootstrapTable/BootstrapTable1.js'
 import Button from 'react-bootstrap/lib/Button';
@@ -23,29 +27,15 @@ import Tabs from 'react-bootstrap/lib/Tabs';
 import Tab from 'react-bootstrap/lib/Tab';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
 import VelloModal from 'components/ModelWrapper/modal';
+import Heading from './Heading';
 
 export class ProjectPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const datasets = [
-      {id: 'data 1',
-        updated: 2052017,
-        start: 1052008,
-        end: 12082016,
-        count: 500,
-        size: 2000,},
-      {id:'data 2',
-        updated: 2052012,
-        start: 1052007,
-        end: 12082011,
-        count: 800,
-        size: 3000,},
-    ];
     return (
       <Grid fluid>
         <Row className="show-grid page-header">
           <Col md={12}>
-            <h1>BUOY&nbsp;Offshore Wind Energy - Buoy Lidar Project</h1>
-            <Button bsStyle="link" href={'/'}>Edit Project&nbsp;<Glyphicon glyph="pencil"></Glyphicon></Button>
+            <Heading title={this.props.title} />
           </Col>
         </Row>
         <Row className="show-grid">
@@ -66,7 +56,7 @@ export class ProjectPage extends React.PureComponent { // eslint-disable-line re
           <Panel header="Data Sets">
 
             <Col md={12}><VelloModal /></Col>
-            <Col md={12}><BootstrapTable1 datasets = {datasets}/></Col>
+            { /* <Col md={12}><BootstrapTable1 datasets = {datasets}/></Col> */ }
           </Panel>
         </Row>
       </Grid>
@@ -79,7 +69,9 @@ ProjectPage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  ProjectPage: makeSelectProjectPage(),
+  title: makeSelectProjectPageTitle(),
+  description: makeSelectProjectPageDescription(),
+  metaData: makeSelectProjectPageMetaData(),
 });
 
 function mapDispatchToProps(dispatch) {
