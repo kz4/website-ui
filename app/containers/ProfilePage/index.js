@@ -10,7 +10,7 @@ import Helmet from 'react-helmet';
 // import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import H1 from 'components/H1';
-import { makeProfileFormUpdatedAction } from './actions';
+import { makeProfileFormUpdatedAction, makeDoUpdateAction } from './actions';
 
 import { makeSelectProfileData } from './selectors';
 import FormInput from './FormInput';
@@ -50,7 +50,7 @@ export class ProfilePage extends React.PureComponent { // eslint-disable-line re
             />
 
             <div className="pull-right">
-              <UpdateButton />
+              <UpdateButton onDoUpdate={this.props.onDoUpdate}/>
             </div>
           </form>
         </Wrapper>
@@ -62,6 +62,7 @@ export class ProfilePage extends React.PureComponent { // eslint-disable-line re
 ProfilePage.propTypes = {
   makeUpdater: PropTypes.func.isRequired,
   profileData: PropTypes.object.isRequired,
+  onDoUpdate: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -71,6 +72,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     makeUpdater: (storeName) => (evt) => dispatch(makeProfileFormUpdatedAction(storeName, evt.target.value)),
+    onDoUpdate: () => dispatch(makeDoUpdateAction()),
   };
 }
 

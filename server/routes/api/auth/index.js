@@ -23,4 +23,9 @@ router.get('/profile', (req, res) => {
   });
 });
 
+router.post('/profile', (req, res) => {
+  const user = req.body;
+  res.json(user);
+});
+
 module.exports = router;

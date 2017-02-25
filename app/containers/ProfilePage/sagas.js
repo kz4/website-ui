@@ -1,9 +1,31 @@
 import { take, call, put, /* select, */ takeLatest, cancel } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import request from 'utils/request';
-import { FETCH_PROFILE_DATA_ACTION } from './constants';
-import { makeFetchProfileDataAction, makeProfileDataLoadedAction } from './actions';
+import { makeUpdateFields } from './selectors';
+import { FETCH_PROFILE_DATA_ACTION, DO_UPDATE_ACTION } from './constants';
+import { makeFetchProfileDataAction, makeProfileDataLoadedAction, makeUpdateSuccessAction } from './actions';
 
+export function* getUpdateResponse() {
+
+  const ProfileCred = yield select(makeUpdateFields());
+
+  try{
+    const UpdateResponse = yield call(request, 'api/auth/profile', {
+      method: 'POST',
+      body: {
+        name: ProfileCred.get('name'),
+        email: ProfileCred.get('email'),
+        phone: ProfileCred.get('phone'),
+      },
+    });
+
+    yield put(makeUpdateSuccessAction(UpdateResponse));
+  }catch (err) {
+    // const body = err.body ? err.body : {};
+    // const UpdateErrorMsg = body.UpdateErrorMsg : body.UpdateError
+    console.log('update proile error', err);
+  }
+}
 export function* fetchProfileData() {
   try {
     // Call our request helper (see 'utils/request')

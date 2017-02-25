@@ -8,12 +8,17 @@ import { fromJS } from 'immutable';
 import {
   PROFILE_FORM_UPDATED_ACTION,
   PROFILE_DATA_LOADED_ACTION,
+  DO_UPDATE_ACTION,
+  UPDATE_ERROR_ACTION,
+  UPDATE_ERROR_MSG_DEFAULT,
 } from './constants';
 
 const initialState = fromJS({
   name: '',
   email: '',
   phone: '',
+  UpdateError: false,
+  UpdateErrorMsg: UPDATE_ERROR_MSG_DEFAULT,
 });
 
 function profilePageReducer(state = initialState, action) {
@@ -28,6 +33,13 @@ function profilePageReducer(state = initialState, action) {
       const newState = state.merge(profileData);
       console.log('profilePage loaded newState', newState.toJS());
       return newState;
+    }
+    case DO_UPDATE_ACTION:
+      return state.set('UpdateError', false);
+
+    case UPDATE_ERROR_ACTION: {
+      const UpdateErrorMsg = action.UpdateErrorMsg ? action.UpdateErrorMsg : UPDATE_ERROR_MSG_DEFAULT;
+      return state.set('UpdateError', true).set('UpdateErrorMsg', UpdateErrorMsg);
     }
     default: {
       return state;
