@@ -31,8 +31,8 @@ export class CreateEditProjectPage extends React.PureComponent { // eslint-disab
               controlId="formBasicText"
             >
               <ControlLabel>MetaData:</ControlLabel>
-              <MetaDataInput 
-                metaData={this.props.metaData} 
+              <MetaDataInput
+                metaData={this.props.metaData}
                 onMetaDataUpdated={this.props.metaDataUpdated}
               />
               <FormControl.Feedback />
