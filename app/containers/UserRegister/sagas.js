@@ -22,7 +22,6 @@ export function* getRegisterResponse() {
       body: {
         username: registerCred.get('username'),
         password: registerCred.get('password'),
-        email: registerCred.get('email'),
         verifyPassword: registerCred.get('verifyPassword'),
       },
     });

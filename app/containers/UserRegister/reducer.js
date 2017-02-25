@@ -8,7 +8,6 @@ import { fromJS } from 'immutable';
 import {
   CHANGE_USERNAME,
   CHANGE_PASSWORD,
-  CHANGE_EMAIL,
   CHANGE_VERIFY_PASSWORD,
 } from './constants';
 
@@ -18,8 +17,6 @@ function userRegisterReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_USERNAME:
       return state.set('username', action.username);
-    case CHANGE_EMAIL:
-      return state.set('email', action.email);
     case CHANGE_PASSWORD:
       return state.set('password', action.password);
     case CHANGE_VERIFY_PASSWORD:

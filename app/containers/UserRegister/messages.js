@@ -14,10 +14,6 @@ export default defineMessages({
     id: 'app.containers.register_page.username',
     defaultMessage: 'Username',
   },
-  emailInput: {
-    id: 'app.containers.register_page.email',
-    defaultMessage: 'Email',
-  },
   passwordInput: {
     id: 'app.containers.register_page.password',
     defaultMessage: 'Password',
