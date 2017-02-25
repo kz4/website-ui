@@ -8,9 +8,10 @@ import { makeFetchProfileDataAction, makeProfileDataLoadedAction, makeUpdateSucc
 export function* getUpdateResponse() {
 
   const ProfileCred = yield select(makeUpdateFields());
+  const requestURL = paths.api.auth.PROFILE;
 
   try{
-    const UpdateResponse = yield call(request, 'api/auth/profile', {
+    const UpdateResponse = yield call(request, requestURL, {
       method: 'POST',
       body: {
         name: ProfileCred.get('name'),
@@ -25,6 +26,12 @@ export function* getUpdateResponse() {
     // const UpdateErrorMsg = body.UpdateErrorMsg : body.UpdateError
     console.log('update proile error', err);
   }
+}
+
+export function* update () {
+
+  const doUpdateWatcher = yield takeLatest(DO_UPDATE_ACTION, getUpdateResponse);
+
 }
 export function* fetchProfileData() {
   try {

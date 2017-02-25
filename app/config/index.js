@@ -25,6 +25,18 @@ const paths = {
   api: {
     auth: {
       LOGIN: makeApiPath('auth/login'),
+      PROFILE: makeApiPath('auth/profile'),
+    },
+  },
+  appPaths: {
+    home: {
+      path: '/'
+    },
+    login: {
+      path: '/login',
+    },
+    profile: {
+      path: '/profile',
     },
   },
 };
