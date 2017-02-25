@@ -90,6 +90,27 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/verify',
+      name: 'verifyAccount',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+        import('containers/VerifyAccount/reducer'),
+        import('containers/VerifyAccount/sagas'),
+        import('containers/VerifyAccount'),
+      ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('verifyAccount', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      }
+      ,
+    },{
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
