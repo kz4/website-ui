@@ -26,6 +26,7 @@
     "build:clean": "npm run test:clean && rimraf ./build",
     "build:dll": "node ./internals/scripts/dependencies.js",
     "start": "cross-env NODE_ENV=development node server",
+    "start:backend-dev": "cross-env NODE_ENV=development CONFIG_ENV=backend-development node server",
     "start:test": "export CONFIG_ENV=testing && cross-env NODE_ENV=development node server",
     "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
     "start:production": "npm run test && npm run build && npm run start:prod",
