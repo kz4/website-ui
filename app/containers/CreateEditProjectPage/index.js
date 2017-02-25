@@ -10,10 +10,12 @@ import Helmet from 'react-helmet';
 // import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import MetaDataInput from './MetaDataInput';
-import { makeSelectMetaData, makeSelectImage, makeProjectTitle, makeProjectdescription} from './selectors';
+import { makeSelectMetaData, makeSelectImage, makeProjectTitle, makeProjectdescription, makeSelectSaveError, makeSelectSaveErrorMsg} from './selectors';
 // import messages from './messages';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
-import { makeMetaDataUpdatedAction } from './actions';
+import { makeMetaDataUpdatedAction, onSaveAction } from './actions';
+import SaveButton from './SaveButton';
+import SaveErrorMessage from './SaveErrorMessage';
 
 export class CreateEditProjectPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -43,8 +45,6 @@ export class CreateEditProjectPage extends React.PureComponent { // eslint-disab
                 type="text"
                 value={this.props.image}
               />
-
-
             </FormGroup>
 
             <FormGroup>
@@ -59,6 +59,11 @@ export class CreateEditProjectPage extends React.PureComponent { // eslint-disab
                 <FormControl componentClass="textarea" value={this.props.projectDescription}></FormControl>
               </FormGroup>
             </FormGroup>
+            <SaveErrorMessage
+              saveError={this.props.saveError}
+              saveErrorMsg={this.props.saveErrorMsg}
+            />
+            <SaveButton onDoSave={this.props.onDoSave} />
           </form>
         </div>
       </div>
@@ -68,6 +73,7 @@ export class CreateEditProjectPage extends React.PureComponent { // eslint-disab
 
 CreateEditProjectPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  onDoSave: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -75,12 +81,15 @@ const mapStateToProps = createStructuredSelector({
   image: makeSelectImage(),
   projectTitle: makeProjectTitle(),
   projectDescription: makeProjectdescription(),
+  saveError: makeSelectSaveError(),
+  saveErrorMsg: makeSelectSaveErrorMsg(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    metaDataUpdated: (newMetaData) => dispatch(makeMetaDataUpdatedAction(newMetaData))
+    metaDataUpdated: (newMetaData) => dispatch(makeMetaDataUpdatedAction(newMetaData)),
+    onDoSave: () => dispatch(onSaveAction()),
   };
 }
 

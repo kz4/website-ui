@@ -35,3 +35,15 @@ export const makeProjectdescription = () => createSelector(
   selectCreateEditProjectPageDomain(),
   (substate) => substate.get('projectDescription')
 );
+
+export const makeSelectSaveError = () => createSelector(
+  selectCreateEditProjectPageDomain(),
+  (substate) => substate.get('saveError')
+);
+
+export const makeSelectSaveErrorMsg = () => createSelector(
+  selectCreateEditProjectPageDomain(),
+  (substate) => substate.get('saveErrorMsg')
+);
+
+

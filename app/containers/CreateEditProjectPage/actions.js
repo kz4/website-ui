@@ -8,6 +8,8 @@ import {
   DEFAULT_ACTION,
   META_DATA_UPDATED,
   ON_SAVE_ACTION,
+  SAVE_SUCCESS_ACTION,
+  SAVE_ERROR_ACTION
 } from './constants';
 
 export function defaultAction() {
@@ -25,9 +27,22 @@ export function makeMetaDataUpdatedAction(metaData) {
 }
 
 
-export function onSaveAction(project){
+export function onSaveAction(){
   return {
     type: ON_SAVE_ACTION,
-    project,
+  };
+}
+
+export function onSaveSuccessAction(saveResponse) {
+  return {
+    type: SAVE_SUCCESS_ACTION,
+    saveResponse,
+  };
+}
+
+export function onSaveErrorAction(saveErrorMsg) {
+  return {
+    type: SAVE_ERROR_ACTION,
+    saveErrorMsg,
   };
 }
