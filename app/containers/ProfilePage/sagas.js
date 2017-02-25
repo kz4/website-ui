@@ -3,7 +3,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import request from 'utils/request';
 import { makeUpdateFields } from './selectors';
 import { FETCH_PROFILE_DATA_ACTION, DO_UPDATE_ACTION } from './constants';
-import { makeFetchProfileDataAction, makeProfileDataLoadedAction, makeUpdateSuccessAction } from './actions';
+import { makeFetchProfileDataAction, makeProfileDataLoadedAction, makeUpdateSuccessAction, makeDoUpdateAction } from './actions';
 
 export function* getUpdateResponse() {
 
@@ -31,6 +31,8 @@ export function* getUpdateResponse() {
 export function* update () {
 
   const doUpdateWatcher = yield takeLatest(DO_UPDATE_ACTION, getUpdateResponse);
+  yield put(makeDoUpdateAction());
+  yield take(LOCATION_CHANGE);
   yield cancel(doUpdateWatcher);
 
 }
