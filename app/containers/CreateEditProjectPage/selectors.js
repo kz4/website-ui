@@ -19,3 +19,19 @@ export const makeSelectMetaData = () => createSelector(
   (substate) => substate.get('metaData').toJS()
 );
 
+export const makeSelectImage = () => createSelector(
+  selectCreateEditProjectPageDomain(),
+  (substate) => substate.get('image')
+);
+
+
+export const makeProjectTitle = () => createSelector(
+  selectCreateEditProjectPageDomain(),
+  (substate) => substate.get('projectTitle')
+);
+
+
+export const makeProjectdescription = () => createSelector(
+  selectCreateEditProjectPageDomain(),
+  (substate) => substate.get('projectDescription')
+);
