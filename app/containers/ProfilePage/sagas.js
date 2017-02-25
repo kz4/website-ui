@@ -1,4 +1,5 @@
-import { take, call, put, /* select, */ takeLatest, cancel } from 'redux-saga/effects';
+import { take, call, put, select,  takeLatest, cancel } from 'redux-saga/effects';
+import { paths } from 'config';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import request from 'utils/request';
 import { makeUpdateFields } from './selectors';
