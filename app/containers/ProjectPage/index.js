@@ -63,7 +63,7 @@ export class ProjectPage extends React.PureComponent { // eslint-disable-line re
 }
 
 ProjectPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -72,9 +72,9 @@ const mapStateToProps = createStructuredSelector({
   metaData: makeSelectProjectPageMetaData(),
 });
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(/* dispatch */) {
   return {
-    dispatch,
+    // dispatch,
   };
 }
 

@@ -6,7 +6,7 @@ const envs = {
   TESTING: 'testing',
 };
 
-export const BACKEND_DEV_ROOT = 'https://06wl8i4mb2.execute-api.us-east-1.amazonaws.com/dev/';
+export const BACKEND_DEV_ROOT = 'https://06wl8i4mb2.execute-api.us-east-1.amazonaws.com/dev';
 export const LOCAL_DEV_ROOT = '/api';
 export const PROD_ROOT = LOCAL_DEV_ROOT;
 
@@ -32,9 +32,14 @@ function makeApiPath(path) {
 const paths = {
   api: {
     auth: {
+      // TODO add base
       LOGIN: makeApiPath('auth/login'),
       REGISTER: makeApiPath('auth/register'),
     },
+    project: {
+      base: 'project',
+      getById: (id) => makeApiPath(`${paths.api.project.base}/${id}`),
+    }
   },
   appPaths: {
     home: {

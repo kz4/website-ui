@@ -49,6 +49,7 @@ export function getJsonPostOptions(options) {
  * @return {object}           The response data
  */
 export default function request(url, options) {
+  console.log('request', url, options);
   let updatedOptions = options;
   if (options && options.method === 'POST') {
     updatedOptions = getJsonPostOptions(options);

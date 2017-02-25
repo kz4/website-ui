@@ -6,7 +6,7 @@
 
 import { fromJS } from 'immutable';
 import {
-  DEFAULT_ACTION,
+  FETCH_PROJECT_SUCCESS_ACTION,
 } from './constants';
 
 const initialState = fromJS({
@@ -30,6 +30,10 @@ const initialState = fromJS({
 function projectPageReducer(state = initialState, action) {
   console.log('reducer called', state.toJS(), action);
   switch (action.type) {
+    case FETCH_PROJECT_SUCCESS_ACTION:
+      const newState = state.merge(action.project);
+      console.log('profilePage newState', newState.toJS());
+      return newState;
     default:
       return state;
   }

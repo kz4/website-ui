@@ -91,10 +91,11 @@ export default function createRoutes(store) {
       },
     }, {
 
-      path: '/projects',
+      path: '/projects/:projectId',
       name: 'projects',
       getComponent(nextState, cb) {
        const importModules = Promise.all([
+          import('containers/ProjectPage/actions'),
           import('containers/ProjectPage/reducer'),
           import('containers/ProjectPage/sagas'),
           import('containers/ProjectPage'),
@@ -102,11 +103,13 @@ export default function createRoutes(store) {
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, sagas, component]) => {
+        importModules.then(([actions, reducer, sagas, component]) => {
           injectReducer('project', reducer.default);
           injectSagas(sagas.default);
 
           renderRoute(component);
+          store.dispatch(actions.makeFetchProjectAction(nextState.params.projectId))
+
         });
 
         importModules.catch(errorLoading);
