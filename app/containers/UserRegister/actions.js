@@ -7,6 +7,7 @@
 import {
   DO_REGISTER,
   CHANGE_USERNAME,
+  CHANGE_EMAIL,
   CHANGE_PASSWORD,
   REGISTER_SUCCESS,
   CHANGE_VERIFY_PASSWORD,
@@ -16,6 +17,13 @@ export function onChangeUsernameAction(username) {
   return {
     type: CHANGE_USERNAME,
     username,
+  };
+}
+
+export function onChangeEmailAction(email) {
+  return {
+    type: CHANGE_EMAIL,
+    email,
   };
 }
 

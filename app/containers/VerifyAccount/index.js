@@ -20,7 +20,6 @@ import messages from './messages';
 export const usernameMsg = (<FormattedMessage {...messages.usernameInput} />);
 export const verifyMsg = (<FormattedMessage {...messages.verifyCodeInput} />);
 
-
 export class VerifyAccount extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (

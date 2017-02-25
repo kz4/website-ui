@@ -13,7 +13,7 @@ import { onRegisterSuccessAction } from './actions';
 export function* getRegisterResponse() {
   // Select username from store
   const registerCred = yield select(makeSelectRegisterCredentials());
-  const requestURL = paths.api.auth.REGISTER;
+  const requestURL = paths.api.user.REGISTER;
 
   try {
     // Call our request helper (see 'utils/request')
@@ -22,6 +22,7 @@ export function* getRegisterResponse() {
       body: {
         username: registerCred.get('username'),
         password: registerCred.get('password'),
+        email: registerCred.get('email'),
         verifyPassword: registerCred.get('verifyPassword'),
       },
     });
@@ -34,7 +35,7 @@ export function* getRegisterResponse() {
 }
 
 export function* changeToUserPage() {
-  browserHistory.push(paths.appPaths.user.path);
+  browserHistory.push(paths.appPaths.verify.path);
 }
 
 /**

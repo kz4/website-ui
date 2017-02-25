@@ -106,7 +106,6 @@ export default function createRoutes(store) {
           injectSagas(sagas.default);
           renderRoute(component);
         });
-
         importModules.catch(errorLoading);
       }
       ,

@@ -35,6 +35,10 @@ const paths = {
       LOGIN: makeApiPath('auth/login'),
       REGISTER: makeApiPath('auth/register'),
     },
+    user: {
+      VERIFY: makeApiPath('users/validate'),
+      REGISTER: makeApiPath('users/signup'),
+    }
   },
   appPaths: {
     home: {
@@ -48,6 +52,12 @@ const paths = {
     },
     user: {
       path: '/user',
+    },
+    dashboard: {
+      path: '/dashboard',
+    },
+    verify: {
+      path: '/verify',
     },
   },
 };

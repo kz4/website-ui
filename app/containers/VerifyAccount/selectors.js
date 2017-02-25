@@ -18,7 +18,7 @@ const makeSelectVerifyCredentials = () => createSelector(
   (substate) => {
     const verifyCredentials = {};
     verifyCredentials.username = substate.get('username');
-    verifyCredentials.password = substate.get('password');
+    verifyCredentials.verifyCode = substate.get('verifyCode');
     return fromJS(verifyCredentials);
   }
 );

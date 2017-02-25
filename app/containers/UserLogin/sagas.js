@@ -35,7 +35,7 @@ export function* getLoginResponse() {
 }
 
 export function* changeToUserPage() {
-  browserHistory.push(paths.appPaths.user.path);
+  browserHistory.push(paths.appPaths.dashboard.path);
 }
 
 /**

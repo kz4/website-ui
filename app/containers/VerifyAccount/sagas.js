@@ -10,7 +10,7 @@ import { browserHistory } from 'react-router';
 export function* getVerifyResponse() {
   // Select username from store
   const verifyCred = yield select(makeSelectVerifyCredentials());
-  const requestURL = 'https://06wl8i4mb2.execute-api.us-east-1.amazonaws.com/dev/users/signup';
+  const requestURL = paths.api.user.VERIFY;
 
   try {
     // Call our request helper (see 'utils/request')
