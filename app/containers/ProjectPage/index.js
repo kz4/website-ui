@@ -7,14 +7,12 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-// import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import {
   makeSelectProjectPageDescription,
   makeSelectProjectPageMetaData,
   makeSelectProjectPageTitle
 } from './selectors';
-// import messages from './messages';
 import { Grid, Row, Col, Panel, Image } from 'react-bootstrap';
 import VelloModal from 'components/ModelWrapper/modal';
 import Heading from './Heading';
