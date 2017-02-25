@@ -2,6 +2,7 @@
 // They are all wrapped in the App component, which should contain the navbar etc
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
+import { paths } from 'config';
 import { getAsyncInjectors } from './utils/asyncInjectors';
 
 const errorLoading = (err) => {
@@ -18,7 +19,7 @@ export default function createRoutes(store) {
 
   return [
     {
-      path: '/',
+      path: paths.appPaths.home.path,
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
@@ -35,11 +36,10 @@ export default function createRoutes(store) {
 
           renderRoute(component);
         });
-
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/login',
+      path: paths.appPaths.login.path,
       name: 'login',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
@@ -51,7 +51,29 @@ export default function createRoutes(store) {
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
-          injectReducer('home', reducer.default);
+          // TODO change to login, this is probably why the store was in home :P
+          injectReducer('login', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: paths.appPaths.register.path,
+      name: 'register',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/RegisterPage/reducer'),
+          import('containers/RegisterPage/sagas'),
+          import('containers/RegisterPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('register', reducer.default);
           injectSagas(sagas.default);
 
           renderRoute(component);
