@@ -31,6 +31,7 @@ export function* getUpdateResponse() {
 export function* update () {
 
   const doUpdateWatcher = yield takeLatest(DO_UPDATE_ACTION, getUpdateResponse);
+  yield cancel(doUpdateWatcher);
 
 }
 export function* fetchProfileData() {
@@ -57,4 +58,5 @@ export function* watcherSaga() {
 // All sagas to be loaded
 export default [
   watcherSaga,
+  update,
 ];
