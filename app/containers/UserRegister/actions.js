@@ -10,6 +10,7 @@ import {
   CHANGE_PASSWORD,
   REGISTER_SUCCESS,
   CHANGE_VERIFY_PASSWORD,
+  CHANGE_EMAIL,
 } from './constants';
 
 export function onChangeUsernameAction(username) {
@@ -30,6 +31,13 @@ export function onChangeVerifyPasswordAction(verifyPassword) {
   return {
     type: CHANGE_VERIFY_PASSWORD,
     verifyPassword,
+  };
+}
+
+export function onChangeEmailAction(email) {
+  return {
+    type: CHANGE_EMAIL,
+    email,
   };
 }
 

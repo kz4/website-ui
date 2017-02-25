@@ -22,6 +22,10 @@ export default defineMessages({
     id: 'app.containers.register_page.verify_password',
     defaultMessage: 'Verify Password',
   },
+  emailInput: {
+    id: 'app.containers.register_page.email',
+    defaultMessage: 'Email'
+  },
   isPrivateComputer: {
     id: 'app.containers.register_page.computer_is_private',
     defaultMessage: 'if this is a private computer',

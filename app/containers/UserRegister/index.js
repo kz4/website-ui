@@ -12,7 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import AuthInputGroup from 'components/auth/AuthInputGroup';
 
 import { onChangeUsernameAction, onChangeEmailAction, onDoRegisterAction, onChangePasswordAction, onChangeVerifyPasswordAction } from './actions';
-import { USERNAME_UID, PASSWORD_UID, VERIFY_PASSWORD_UID } from './constants';
+import { USERNAME_UID, PASSWORD_UID, VERIFY_PASSWORD_UID, ADDING_EMAIL } from './constants';
 // import makeSelectUserRegister from './selectors';
 import messages from './messages';
 import RegisterButton from './RegisterButton';
@@ -22,6 +22,8 @@ import RegisterButton from './RegisterButton';
 export const usernameMsg = (<FormattedMessage {...messages.usernameInput} />);
 export const passwordMsg = (<FormattedMessage {...messages.passwordInput} />);
 export const verifyPasswordMsg = (<FormattedMessage {...messages.verifyPasswordInput} />);
+export const emailMsg = (<FormattedMessage {...messages.emailInput} />);
+
 
 export class UserRegister extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -42,6 +44,11 @@ export class UserRegister extends React.PureComponent { // eslint-disable-line r
           display={verifyPasswordMsg}
           onChange={this.props.onChangeVerifyPassword}
         />
+        <AuthInputGroup
+          uid={ADDING_EMAIL}
+          display={emailMsg}
+          onChange={this.props.onChangeEmail}
+        />
         <RegisterButton onDoRegister={this.props.onDoRegister} />
       </div>
     );
@@ -51,6 +58,7 @@ export class UserRegister extends React.PureComponent { // eslint-disable-line r
 UserRegister.propTypes = {
   onChangeUsername: PropTypes.func.isRequired,
   onChangePassword: PropTypes.func.isRequired,
+  onChangeEmail: PropTypes.func.isRequired,
   onChangeVerifyPassword: PropTypes.func.isRequired,
   onDoRegister: PropTypes.func.isRequired,
 };
@@ -64,6 +72,7 @@ export function mapDispatchToProps(dispatch) {
     onChangeUsername: (evt) => dispatch(onChangeUsernameAction(evt.target.value)),
     onChangePassword: (evt) => dispatch(onChangePasswordAction(evt.target.value)),
     onChangeVerifyPassword: (evt) => dispatch(onChangeVerifyPasswordAction(evt.target.value)),
+    onChangeEmail: (evt) => dispatch(onChangeEmailAction(evt.target.value)),
     onDoRegister: () => dispatch(onDoRegisterAction()),
   };
 }

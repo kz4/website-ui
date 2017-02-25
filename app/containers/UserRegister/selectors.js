@@ -24,10 +24,12 @@ const makeSelectRegisterCredentials = () => createSelector(
       username: '',
       password: '',
       verifyPassword: false,
+      email: '',
     };
     registerCredentials.username = substate.get('username') || '';
     registerCredentials.password = substate.get('password') || '';
     registerCredentials.verifyPassword = substate.get('verifyPassword') || false;
+    registerCredentials.email = substate.get('email') || '';
     return fromJS(registerCredentials);
   }
 );

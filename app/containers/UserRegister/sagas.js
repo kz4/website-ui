@@ -23,6 +23,7 @@ export function* getRegisterResponse() {
         username: registerCred.get('username'),
         password: registerCred.get('password'),
         verifyPassword: registerCred.get('verifyPassword'),
+        email: registerCred.get('email')
       },
     });
     // browserHistory.push(paths.appPaths.user.path);
