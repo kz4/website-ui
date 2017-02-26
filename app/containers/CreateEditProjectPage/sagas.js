@@ -1,4 +1,4 @@
-import { take, call, put, select, takeLatest } from 'redux-saga/effects';
+import { take, call, put, select, takeLatest, cancel } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { paths } from 'config';
 import { browserHistory } from 'react-router';
@@ -35,7 +35,8 @@ export function* getSaveResponse() {
 }
 
 export function* changeToProjectPage() {
-  browserHistory.push(paths.appPaths.project.path);
+  console.log("changeToProjectPath",paths);
+  browserHistory.push(paths.appPaths.project.getById('1'));
 }
 
 /**

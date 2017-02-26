@@ -58,6 +58,10 @@ const paths = {
     save: {
       path: '/save'
     },
+    project: {
+      base: 'projects',
+      getById: (id) => `${paths.appPaths.project.base}/${id}`,
+    },
   },
 };
 

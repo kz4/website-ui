@@ -19,4 +19,9 @@ router.post('/register', (req, res) => {
   res.json(user);
 });
 
+router.post('/save', (req, res) => {
+  const project = req.body;
+  res.json(project);
+});
+
 module.exports = router;
