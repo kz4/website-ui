@@ -12,14 +12,15 @@ import { onSaveSuccessAction, onSaveErrorAction } from './actions';
 export function* getSaveResponse() {
 
   const saveProject = yield select(makeSelectSaveProject());
-  const requestURL = paths.api.auth.SAVE;
+  const requestURL = paths.api.project.updateById(saveProject.get('projectID'))
+  console.log("THE URL IS ",requestURL);
 
   try {
 
     const saveResponse = yield call(request, requestURL, {
       method: 'POST',
       body: {
-        projectID: saveProject.get('projectID'),
+        project_id: saveProject.get('projectID'),
         projectTitle: saveProject.get('projectTitle'),
         metaData: saveProject.get('metaData'),
         image: saveProject.get('image'),
@@ -27,7 +28,20 @@ export function* getSaveResponse() {
       },
     });
 
-    yield put(onSaveSuccessAction(saveResponse));
+    console.log("the response is ",saveResponse);
+    const changedResponse = {
+      projectID: saveResponse['project_id'],
+      projectTitle: saveResponse['project_name'],
+      projectDescription: saveResponse['project_description'],
+      projectOwner: saveResponse['project_owner'],
+
+      //using SaveProject data since back end has no metadata and image at the moment//
+      metaData: saveProject.get('metaData'),
+      image: saveProject.get('image'),
+    };
+
+
+    yield put(onSaveSuccessAction(changedResponse));
   } catch (err) {
     const body = err.body ? err.body : {};
     const saveErrorMsg = body.saveErrorMsg ? body.saveErrorMsg : SAVE_ERROR_MESSAGE_DEFAULT;

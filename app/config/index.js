@@ -40,6 +40,7 @@ const paths = {
     project: {
       base: 'project',
       getById: (id) => makeApiPath(`${paths.api.project.base}/${id}`),
+      updateById: (id) => makeApiPath(`${paths.api.project.base}/update`),
     }
   },
   appPaths: {
@@ -56,7 +57,7 @@ const paths = {
       path: '/user',
     },
     save: {
-      path: '/save'
+      path: '/project/update'
     },
     project: {
       base: 'projects',
