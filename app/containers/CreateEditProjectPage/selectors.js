@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-
+import { fromJS } from 'immutable';
 /**
  * Direct selector to the createEditProjectPage state domain
  */
