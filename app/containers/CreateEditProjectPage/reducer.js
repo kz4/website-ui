@@ -13,6 +13,7 @@ import {
 } from './constants';
 
 const initialState = fromJS({
+  projectID: '1' ,
   metaData: {
     key1: 'value1',
     key2: 'value2',

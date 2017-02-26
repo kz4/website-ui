@@ -40,6 +40,7 @@ export const makeSelectSaveProject = () => createSelector(
   selectCreateEditProjectPageDomain(),
   (substate) => {
     const saveProject = {};
+    saveProject.projectID = substate.get('projectID');
     saveProject.projectTitle = substate.get('projectTitle');
     saveProject.metaData = substate.get('metaData');
     saveProject.image = substate.get('image');

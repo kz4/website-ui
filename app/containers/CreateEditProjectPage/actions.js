@@ -29,7 +29,7 @@ export function makeMetaDataUpdatedAction(metaData) {
 
 export function onSaveAction(){
   return {
-    type: ON_SAVE_ACTION,
+    type: ON_SAVE_ACTION
   };
 }
 

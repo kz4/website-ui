@@ -19,6 +19,7 @@ export function* getSaveResponse() {
     const saveResponse = yield call(request, requestURL, {
       method: 'POST',
       body: {
+        projectID: saveProject.get('projectID'),
         projectTitle: saveProject.get('projectTitle'),
         metaData: saveProject.get('metaData'),
         image: saveProject.get('image'),
@@ -34,9 +35,10 @@ export function* getSaveResponse() {
   }
 }
 
-export function* changeToProjectPage() {
-  console.log("changeToProjectPath",paths);
-  browserHistory.push(paths.appPaths.project.getById('1'));
+export function* changeToProjectPage(action) {
+  console.log("changeToProjectPath",action);
+
+  browserHistory.push(paths.appPaths.project.getById(action.saveResponse.projectID));
 }
 
 /**
