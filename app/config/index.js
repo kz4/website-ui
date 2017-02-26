@@ -35,6 +35,7 @@ const paths = {
       // TODO add base
       LOGIN: makeApiPath('auth/login'),
       REGISTER: makeApiPath('auth/register'),
+      SAVE: makeApiPath('auth/save'),
     },
     project: {
       base: 'project',
@@ -53,6 +54,9 @@ const paths = {
     },
     user: {
       path: '/user',
+    },
+    save: {
+      path: '/save'
     },
   },
 };

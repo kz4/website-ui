@@ -36,6 +36,18 @@ export const makeProjectdescription = () => createSelector(
   (substate) => substate.get('projectDescription')
 );
 
+export const makeSelectSaveProject = () => createSelector(
+  selectCreateEditProjectPageDomain(),
+  (substate) => {
+    const saveProject = {};
+    saveProject.projectTitle = substate.get('projectTitle');
+    saveProject.metaData = substate.get('metaData');
+    saveProject.image = substate.get('image');
+    saveProject.projectDescription = substate.get('projectDescription');
+    return fromJS(saveProject);
+  }
+);
+
 export const makeSelectSaveError = () => createSelector(
   selectCreateEditProjectPageDomain(),
   (substate) => substate.get('saveError')
