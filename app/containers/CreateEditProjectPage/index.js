@@ -84,7 +84,7 @@ CreateEditProjectPage.propTypes = {
   metaData: PropTypes.object.isRequired,
   image: PropTypes.string.isRequired,
   projectTitle: PropTypes.string.isRequired,
-  saveError: PropTypes.boolean.isRequired,
+  saveError: PropTypes.bool.isRequired,
   saveErrorMsg: PropTypes.string.isRequired,
 };
 
