@@ -52,7 +52,7 @@ export function* getSaveResponse() {
 }
 
 export function* changeToProjectPage(action) {
-  console.log('changeToProjectPath',action);
+  console.log('changeToProjectPath', action);
 
   browserHistory.push(paths.appPaths.project.getById(action.saveResponse.projectID));
 }

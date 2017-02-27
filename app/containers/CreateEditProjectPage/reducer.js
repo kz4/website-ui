@@ -10,10 +10,11 @@ import {
   ON_SAVE_ACTION,
   SAVE_ERROR_ACTION,
   SAVE_ERROR_MESSAGE_DEFAULT,
+  FETCH_PROJECT_SUCCESS_ACTION,
 } from './constants';
 
 const initialState = fromJS({
-  projectID: '1',
+  projectID: '',
   metaData: {
     key1: 'value1',
     key2: 'value2',
@@ -33,6 +34,11 @@ function createEditProjectPageReducer(state = initialState, action) {
       return state.set('metaData', action.metaData);
     case ON_SAVE_ACTION:
       return state.set('saveError', false);
+    case FETCH_PROJECT_SUCCESS_ACTION: {
+      const newState = state.merge(action.project)
+      console.log('newState', newState);
+      return newState;
+    }
     case SAVE_ERROR_ACTION: {
       const saveErrorMsg = action.saveErrorMsg ? action.saveErrorMsg : SAVE_ERROR_MESSAGE_DEFAULT;
       return state.set('saveError', true).set('saveErrorMsg', saveErrorMsg);
