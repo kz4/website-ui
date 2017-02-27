@@ -9,7 +9,9 @@ import {
   META_DATA_UPDATED,
   ON_SAVE_ACTION,
   SAVE_SUCCESS_ACTION,
-  SAVE_ERROR_ACTION
+  SAVE_ERROR_ACTION,
+  FETCH_PROJECT_ACTION,
+  FETCH_PROJECT_SUCCESS_ACTION,
 } from './constants';
 
 export function defaultAction() {
@@ -27,9 +29,9 @@ export function makeMetaDataUpdatedAction(metaData) {
 }
 
 
-export function onSaveAction(){
+export function onSaveAction() {
   return {
-    type: ON_SAVE_ACTION
+    type: ON_SAVE_ACTION,
   };
 }
 
@@ -44,5 +46,19 @@ export function onSaveErrorAction(saveErrorMsg) {
   return {
     type: SAVE_ERROR_ACTION,
     saveErrorMsg,
+  };
+}
+
+export function makeFetchProjectAction(projectId) {
+  return {
+    type: FETCH_PROJECT_ACTION,
+    projectId,
+  };
+}
+
+export function makeFetchProjectSuccessAction(project) {
+  return {
+    type: FETCH_PROJECT_SUCCESS_ACTION,
+    project,
   };
 }

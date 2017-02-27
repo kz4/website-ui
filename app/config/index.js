@@ -24,7 +24,6 @@ function getServerBase(env = trueEnv) {
 }
 
 function makeApiPath(path) {
-  console.log('makeAPI env', trueEnv);
   const serverBase = getServerBase();
   return `${serverBase}/${path}`;
 }
@@ -40,8 +39,8 @@ const paths = {
     project: {
       base: 'project',
       getById: (id) => makeApiPath(`${paths.api.project.base}/${id}`),
-      updateById: (id) => makeApiPath(`${paths.api.project.base}/update`),
-    }
+      updateById: (/* id */) => makeApiPath(`${paths.api.project.base}/update`),
+    },
   },
   appPaths: {
     home: {
@@ -57,7 +56,7 @@ const paths = {
       path: '/user',
     },
     save: {
-      path: '/project/update'
+      path: '/project/update',
     },
     project: {
       base: 'projects',

@@ -4,19 +4,21 @@ import { paths } from 'config';
 import { browserHistory } from 'react-router';
 import request from 'utils/request';
 import { makeSelectSaveProject } from './selectors';
-import { ON_SAVE_ACTION, SAVE_SUCCESS_ACTION, SAVE_ERROR_MESSAGE_DEFAULT } from './constants';
-import { onSaveSuccessAction, onSaveErrorAction } from './actions';
+import {
+  ON_SAVE_ACTION,
+  SAVE_SUCCESS_ACTION,
+  SAVE_ERROR_MESSAGE_DEFAULT,
+  FETCH_PROJECT_ACTION,
+} from './constants';
+import { onSaveSuccessAction, onSaveErrorAction, makeFetchProjectSuccessAction } from './actions';
 /**
  * Github repos request/response handler
  */
 export function* getSaveResponse() {
-
   const saveProject = yield select(makeSelectSaveProject());
-  const requestURL = paths.api.project.updateById(saveProject.get('projectID'))
-  console.log("THE URL IS ",requestURL);
-
+  const requestURL = paths.api.project.updateById(saveProject.get('projectID'));
+  console.log('THE URL IS ', requestURL);
   try {
-
     const saveResponse = yield call(request, requestURL, {
       method: 'POST',
       body: {
@@ -28,14 +30,14 @@ export function* getSaveResponse() {
       },
     });
 
-    console.log("the response is ",saveResponse);
+    console.log('the response is ', saveResponse);
     const changedResponse = {
-      projectID: saveResponse['project_id'],
-      projectTitle: saveResponse['project_name'],
-      projectDescription: saveResponse['project_description'],
-      projectOwner: saveResponse['project_owner'],
+      projectID: saveResponse.project_id,
+      projectTitle: saveResponse.project_name,
+      projectDescription: saveResponse.project_description,
+      projectOwner: saveResponse.project_owner,
 
-      //using SaveProject data since back end has no metadata and image at the moment//
+      // using SaveProject data since back end has no metadata and image at the moment
       metaData: saveProject.get('metaData'),
       image: saveProject.get('image'),
     };
@@ -50,7 +52,7 @@ export function* getSaveResponse() {
 }
 
 export function* changeToProjectPage(action) {
-  console.log("changeToProjectPath",action);
+  console.log('changeToProjectPath',action);
 
   browserHistory.push(paths.appPaths.project.getById(action.saveResponse.projectID));
 }
@@ -58,13 +60,40 @@ export function* changeToProjectPage(action) {
 /**
  * Root saga manages watcher lifecycle
  */
-export function* save() {
+export function* saveWatcher() {
   const doSaveWatcher = yield takeLatest(ON_SAVE_ACTION, getSaveResponse);
   const saveSuccessWatcher = yield takeLatest(SAVE_SUCCESS_ACTION, changeToProjectPage);
   yield take(LOCATION_CHANGE);
   yield [doSaveWatcher, saveSuccessWatcher].map((task) => cancel(task));
 }
 
+export function* fetchProjectData(action) {
+  try {
+    console.log('fetchProfileData', action);
+    // Call our request helper (see 'utils/request')
+    const project = yield call(request, paths.api.project.getById(action.projectId));
+    yield put(makeFetchProjectSuccessAction({
+      projectID: project.project_id,
+      projectTitle: project.project_name,
+      projectDescription: project.project_description,
+      projectOwner: project.project_owner,
+    }));
+  } catch (err) {
+    console.log('fetchProfileData err', err);
+    // yield put(repoLoadingError(err));
+  }
+}
+
+// Individual exports for testing
+export function* fetchWatcher() {
+  const watcher = yield takeLatest(FETCH_PROJECT_ACTION, fetchProjectData);
+
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE);
+  yield cancel(watcher);
+}
+
 export default [
-  save,
+  saveWatcher,
+  fetchWatcher,
 ];

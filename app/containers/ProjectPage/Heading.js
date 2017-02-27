@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Glyphicon, Button } from 'react-bootstrap';
 import styled from 'styled-components';
 
@@ -13,12 +13,18 @@ const Heading = (props) => {
   return (
     <Wrapper>
       <h1>{props.title}</h1>
-      <Button bsStyle="primary"
-              href={'/'}>
+      <Button
+        bsStyle="primary"
+        href={'/'}
+      >
         Edit Project <Glyphicon glyph="pencil"></Glyphicon>
       </Button>
     </Wrapper>
-  )
+  );
+};
+
+Heading.propTypes = {
+  title: PropTypes.string.isRequired,
 };
 
 export default Heading;

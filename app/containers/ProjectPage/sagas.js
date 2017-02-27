@@ -1,18 +1,18 @@
 import { take, call, put, /* select, */ takeLatest, cancel } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import request from 'utils/request';
-import { FETCH_PROJECT_ACTION } from './constants';
-import { makeFetchProjectAction, makeFetchProjectSuccessAction } from './actions';
 import { paths } from 'config';
+import { FETCH_PROJECT_ACTION } from './constants';
+import { makeFetchProjectSuccessAction } from './actions';
 
-export function* fetchProfileData(action) {
+export function* fetchProjectData(action) {
   try {
     console.log('fetchProfileData', action);
     // Call our request helper (see 'utils/request')
     const project = yield call(request, paths.api.project.getById(action.projectId));
     yield put(makeFetchProjectSuccessAction({
-      title: project['project_name'],
-      description: project['project_description'],
+      title: project.project_name,
+      description: project.project_description,
     }));
   } catch (err) {
     console.log('fetchProfileData err', err);
@@ -22,8 +22,7 @@ export function* fetchProfileData(action) {
 
 // Individual exports for testing
 export function* watcherSaga() {
-  const watcher = yield takeLatest(FETCH_PROJECT_ACTION, fetchProfileData);
-  // yield put(makeFetchProjectAction('1'));
+  const watcher = yield takeLatest(FETCH_PROJECT_ACTION, fetchProjectData);
 
   // Suspend execution until location changes
   yield take(LOCATION_CHANGE);

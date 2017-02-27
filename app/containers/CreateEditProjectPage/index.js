@@ -8,11 +8,18 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 // import { FormattedMessage } from 'react-intl';
-import { createStructuredSelector } from 'reselect';
-import MetaDataInput from './MetaDataInput';
-import { makeSelectMetaData, makeSelectImage, makeProjectTitle, makeProjectdescription, makeSelectSaveError, makeSelectSaveErrorMsg} from './selectors';
 // import messages from './messages';
+import { createStructuredSelector } from 'reselect';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import MetaDataInput from './MetaDataInput';
+import {
+  makeSelectMetaData,
+  makeSelectImage,
+  makeProjectTitle,
+  makeProjectdescription,
+  makeSelectSaveError,
+  makeSelectSaveErrorMsg,
+} from './selectors';
 import { makeMetaDataUpdatedAction, onSaveAction } from './actions';
 import SaveButton from './SaveButton';
 import SaveErrorMessage from './SaveErrorMessage';
@@ -50,8 +57,8 @@ export class CreateEditProjectPage extends React.PureComponent { // eslint-disab
             <FormGroup>
               <ControlLabel>Project Title</ControlLabel>
               <FormControl
-              type = "text"
-              value={this.props.projectTitle}>
+                type="text"
+                value={this.props.projectTitle}>
               </FormControl>
 
               <FormGroup>
@@ -74,6 +81,11 @@ export class CreateEditProjectPage extends React.PureComponent { // eslint-disab
 CreateEditProjectPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   onDoSave: PropTypes.func.isRequired,
+  metaData: PropTypes.object.isRequired,
+  image: PropTypes.string.isRequired,
+  projectTitle: PropTypes.string.isRequired,
+  saveError: PropTypes.boolean.isRequired,
+  saveErrorMsg: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

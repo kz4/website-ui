@@ -8,13 +8,13 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
+import { Grid, Row, Col, Panel, Image } from 'react-bootstrap';
+import VelloModal from 'components/ModelWrapper/modal';
 import {
   makeSelectProjectPageDescription,
   makeSelectProjectPageMetaData,
-  makeSelectProjectPageTitle
+  makeSelectProjectPageTitle,
 } from './selectors';
-import { Grid, Row, Col, Panel, Image } from 'react-bootstrap';
-import VelloModal from 'components/ModelWrapper/modal';
 import Heading from './Heading';
 import MetaDataDisplay from './MetaDataDisplay';
 
@@ -63,6 +63,9 @@ export class ProjectPage extends React.PureComponent { // eslint-disable-line re
 }
 
 ProjectPage.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  metaData: PropTypes.object.isRequired,
   // dispatch: PropTypes.func.isRequired,
 };
 

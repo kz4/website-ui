@@ -6,7 +6,7 @@
 
 import {
   FETCH_PROJECT_ACTION,
-  FETCH_PROJECT_SUCCESS_ACTION
+  FETCH_PROJECT_SUCCESS_ACTION,
 } from './constants';
 
 export function makeFetchProjectAction(projectId) {

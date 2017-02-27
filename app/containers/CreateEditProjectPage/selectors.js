@@ -58,5 +58,3 @@ export const makeSelectSaveErrorMsg = () => createSelector(
   selectCreateEditProjectPageDomain(),
   (substate) => substate.get('saveErrorMsg')
 );
-
-

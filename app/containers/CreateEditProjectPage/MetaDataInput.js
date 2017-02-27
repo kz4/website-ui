@@ -3,7 +3,7 @@
  * Created by brian on 2/23/17.
  */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { FormControl } from 'react-bootstrap';
 
 const MetaDataInput = (props) => {
@@ -18,5 +18,10 @@ const MetaDataInput = (props) => {
       onChange={onComponentMetaDataChange}
     />);
 };
+
+MetaDataInput.propTypes = {
+  metaData: PropTypes.object.isRequired,
+  onMetaDataUpdated: PropTypes.func.isRequired,
+}
 
 export default MetaDataInput;

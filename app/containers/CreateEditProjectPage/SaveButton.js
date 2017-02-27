@@ -9,7 +9,8 @@ import messages from './messages';
 const SaveButton = (props) => (
   <Button
     bsStyle="primary"
-    onClick={props.onDoSave}>
+    onClick={props.onDoSave}
+  >
     <FormattedMessage {...messages.saveButton} />
   </Button>
 );

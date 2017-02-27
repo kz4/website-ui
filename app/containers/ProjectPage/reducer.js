@@ -19,9 +19,9 @@ const initialState = fromJS({
       key4: 'nested1Value1',
       key5: 'nested1Value2',
       key6: {
-        key7: 'nested2Value1'
-      }
-    }
+        key7: 'nested2Value1',
+      },
+    },
   },
   dataset: {
   },
@@ -30,10 +30,11 @@ const initialState = fromJS({
 function projectPageReducer(state = initialState, action) {
   console.log('reducer called', state.toJS(), action);
   switch (action.type) {
-    case FETCH_PROJECT_SUCCESS_ACTION:
+    case FETCH_PROJECT_SUCCESS_ACTION: {
       const newState = state.merge(action.project);
       console.log('profilePage newState', newState.toJS());
       return newState;
+    }
     default:
       return state;
   }
