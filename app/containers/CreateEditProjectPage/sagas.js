@@ -16,7 +16,13 @@ import { onSaveSuccessAction, onSaveErrorAction, makeFetchProjectSuccessAction }
  */
 export function* getSaveResponse() {
   const saveProject = yield select(makeSelectSaveProject());
-  const requestURL = paths.api.project.updateById(saveProject.get('projectID'));
+  const projectID = saveProject.get('projectID');
+  let requestURL;
+  if(projectID) {
+    requestURL = paths.api.project.updateById(projectID);
+  } else {
+    requestURL = paths.api.project.create();
+  }
   console.log('THE URL IS ', requestURL);
   try {
     const saveResponse = yield call(request, requestURL, {

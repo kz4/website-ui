@@ -23,4 +23,13 @@ router.get('/:projectId', (req, res) => {
   });
 });
 
+router.post('/update', (req, res) => {
+  res.json(req.body);
+});
+
+router.post('/create', (req, res) => {
+  req.body['project_id'] = '1';
+  res.json(req.body);
+});
+
 module.exports = router;

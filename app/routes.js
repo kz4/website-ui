@@ -141,6 +141,28 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/CreateProject',
+      name: 'Create project',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          // import('containers/CreateEditProjectPage/actions'),
+          import('containers/CreateEditProjectPage/reducer'),
+          import('containers/CreateEditProjectPage/sagas'),
+          import('containers/CreateEditProjectPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([/* actions, */ reducer, sagas, component]) => {
+          injectReducer('createEditProjectPage', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+          // store.dispatch(actions.makeFetchProjectAction(nextState.params.projectId));
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

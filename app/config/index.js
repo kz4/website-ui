@@ -40,6 +40,7 @@ const paths = {
       base: 'project',
       getById: (id) => makeApiPath(`${paths.api.project.base}/${id}`),
       updateById: (/* id */) => makeApiPath(`${paths.api.project.base}/update`),
+      create: () => makeApiPath(`${paths.api.project.base}/create`),
     },
   },
   appPaths: {
