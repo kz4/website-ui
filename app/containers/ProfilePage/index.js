@@ -50,7 +50,7 @@ export class ProfilePage extends React.PureComponent { // eslint-disable-line re
             />
 
             <div className="pull-right">
-              <UpdateButton onDoUpdate={this.props.onDoUpdate}/>
+              <UpdateButton onDoUpdate={this.props.onDoUpdate} />
             </div>
           </form>
         </Wrapper>

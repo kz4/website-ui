@@ -30,7 +30,7 @@ const paths = {
   },
   appPaths: {
     home: {
-      path: '/'
+      path: '/',
     },
     login: {
       path: '/login',

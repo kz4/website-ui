@@ -19,9 +19,7 @@ const makeUpdateFields = () => createSelector(
     ProfileFields.email = substate.get('email');
     ProfileFields.phone = substate.get('phone');
     return fromJS(ProfileFields);
-  }
-
-)
+  });
 export {
   makeSelectProfilePage,
   makeSelectProfileData,

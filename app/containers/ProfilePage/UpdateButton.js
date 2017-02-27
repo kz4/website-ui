@@ -4,11 +4,13 @@ import { Button } from 'react-bootstrap';
 const UpdateButton = (props) => (
   <Button
     bsStyle="primary"
-    onClick={props.onDoUpdate}>
+    onClick={props.onDoUpdate}
+  >
 
     Update
 
-  </Button>);
+  </Button>
+);
 
 UpdateButton.propTypes = {
   onDoUpdate: PropTypes.func.isRequired,
