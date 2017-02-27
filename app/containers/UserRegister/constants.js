@@ -13,4 +13,4 @@ export const REGISTER_SUCCESS = 'app/UserRegister/REGISTER_SUCCESS';
 export const USERNAME_UID = 'username';
 export const PASSWORD_UID = 'password';
 export const VERIFY_PASSWORD_UID = 'verify-password';
-export const ADDING_EMAIL = 'email';
+export const EMAIL_UID = 'email';

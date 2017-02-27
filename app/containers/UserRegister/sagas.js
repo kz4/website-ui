@@ -12,8 +12,10 @@ import { onRegisterSuccessAction } from './actions';
  */
 export function* getRegisterResponse() {
   // Select username from store
+  console.log('Pre make select credentials');
   const registerCred = yield select(makeSelectRegisterCredentials());
   const requestURL = paths.api.user.REGISTER;
+
 
   try {
     // Call our request helper (see 'utils/request')
@@ -22,8 +24,9 @@ export function* getRegisterResponse() {
       body: {
         username: registerCred.get('username'),
         password: registerCred.get('password'),
-        verifyPassword: registerCred.get('verifyPassword'),
-        email: registerCred.get('email')
+        email: registerCred.get('email'),
+        first_name: registerCred.get('firstName'),
+        last_name: registerCred.get('lastName'),
       },
     });
     // browserHistory.push(paths.appPaths.user.path);

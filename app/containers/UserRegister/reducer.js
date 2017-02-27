@@ -12,7 +12,14 @@ import {
   CHANGE_EMAIL,
 } from './constants';
 
-const initialState = fromJS({});
+const initialState = fromJS({
+  username: '',
+  password: '',
+  verifyPassword: '',
+  email: '',
+  firstName: 'Vy',
+  lastName: 'N',
+});
 function userRegisterReducer(state = initialState, action) {
   console.log('userRegisterReducer', state.toJS());
   switch (action.type) {
