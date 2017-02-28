@@ -20,7 +20,7 @@ import {
   makeSelectSaveError,
   makeSelectSaveErrorMsg,
 } from './selectors';
-import { makeMetaDataUpdatedAction, onSaveAction } from './actions';
+import { makeMetaDataUpdatedAction, onSaveAction, makeSimpleInputChangeAction } from './actions';
 import SaveButton from './SaveButton';
 import SaveErrorMessage from './SaveErrorMessage';
 
@@ -51,6 +51,7 @@ export class CreateEditProjectPage extends React.PureComponent { // eslint-disab
               <FormControl
                 type="text"
                 value={this.props.image}
+                onChange={this.props.onSimpleInputUpdated('image')}
               />
             </FormGroup>
 
@@ -58,12 +59,17 @@ export class CreateEditProjectPage extends React.PureComponent { // eslint-disab
               <ControlLabel>Project Title</ControlLabel>
               <FormControl
                 type="text"
-                value={this.props.projectTitle}>
-              </FormControl>
+                value={this.props.projectTitle}
+                onChange={this.props.onSimpleInputUpdated('projectTitle')}
+              />
 
               <FormGroup>
                 <ControlLabel>Project Description</ControlLabel>
-                <FormControl componentClass="textarea" value={this.props.projectDescription}></FormControl>
+                <FormControl
+                  componentClass="textarea"
+                  value={this.props.projectDescription}
+                  onChange={this.props.onSimpleInputUpdated('projectDescription')}
+                />
               </FormGroup>
             </FormGroup>
             <SaveErrorMessage
@@ -79,13 +85,13 @@ export class CreateEditProjectPage extends React.PureComponent { // eslint-disab
 }
 
 CreateEditProjectPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   onDoSave: PropTypes.func.isRequired,
   metaData: PropTypes.object.isRequired,
   image: PropTypes.string.isRequired,
   projectTitle: PropTypes.string.isRequired,
   saveError: PropTypes.bool.isRequired,
   saveErrorMsg: PropTypes.string.isRequired,
+  onSimpleInputUpdated: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -99,9 +105,9 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
     metaDataUpdated: (newMetaData) => dispatch(makeMetaDataUpdatedAction(newMetaData)),
     onDoSave: () => dispatch(onSaveAction()),
+    onSimpleInputUpdated: (inputName) => (evt) => dispatch(makeSimpleInputChangeAction(inputName, evt.target.value))
   };
 }
 

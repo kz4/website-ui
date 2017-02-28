@@ -7,9 +7,11 @@
 import { fromJS } from 'immutable';
 import {
   FETCH_PROJECT_SUCCESS_ACTION,
+  FETCH_PROJECT_ACTION,
 } from './constants';
 
 const initialState = fromJS({
+  projectId: '',
   title: 'project title',
   description: 'project Description',
   metadata: {
@@ -35,6 +37,8 @@ function projectPageReducer(state = initialState, action) {
       console.log('profilePage newState', newState.toJS());
       return newState;
     }
+    case FETCH_PROJECT_ACTION:
+      return state.set('projectId', action.projectId);
     default:
       return state;
   }

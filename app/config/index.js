@@ -60,8 +60,9 @@ const paths = {
       path: '/project/update',
     },
     project: {
-      base: 'projects',
+      base: '/projects',
       getById: (id) => `${paths.appPaths.project.base}/${id}`,
+      editById: (id) => `/EditProject/${id}`,
     },
   },
 };

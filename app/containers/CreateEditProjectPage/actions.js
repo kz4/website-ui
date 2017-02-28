@@ -12,6 +12,7 @@ import {
   SAVE_ERROR_ACTION,
   FETCH_PROJECT_ACTION,
   FETCH_PROJECT_SUCCESS_ACTION,
+  SIMPLE_INPUT_CHANGE_ACTION,
 } from './constants';
 
 export function defaultAction() {
@@ -60,5 +61,13 @@ export function makeFetchProjectSuccessAction(project) {
   return {
     type: FETCH_PROJECT_SUCCESS_ACTION,
     project,
+  };
+}
+
+export function makeSimpleInputChangeAction(inputName, inputValue) {
+  return {
+    type: SIMPLE_INPUT_CHANGE_ACTION,
+    inputName,
+    inputValue,
   };
 }

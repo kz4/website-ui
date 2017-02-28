@@ -22,6 +22,11 @@ export const makeSelectProjectPageDescription = () => createSelector(
   (substore) => substore.get('description')
 );
 
+export const makeSelectProjectPageId = () => createSelector(
+  selectProjectPageDomain(),
+  (substore) => substore.get('projectId')
+);
+
 export const makeSelectProjectPageMetaData = () => createSelector(
   selectProjectPageDomain(),
   (substore) => substore.get('metadata').toJS()
