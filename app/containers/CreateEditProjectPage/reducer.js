@@ -26,7 +26,6 @@ const initialState = fromJS({
   projectOwner: 'velo',
   saveError: false,
   saveErrorMsg: SAVE_ERROR_MESSAGE_DEFAULT,
-
 });
 
 function createEditProjectPageReducer(state = initialState, action) {
@@ -36,7 +35,7 @@ function createEditProjectPageReducer(state = initialState, action) {
     case ON_SAVE_ACTION:
       return state.set('saveError', false);
     case FETCH_PROJECT_SUCCESS_ACTION: {
-      const newState = state.merge(action.project)
+      const newState = state.merge(action.project);
       console.log('newState', newState);
       return newState;
     }
