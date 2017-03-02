@@ -16,6 +16,12 @@ import { Col } from 'react-bootstrap';import makeSelectProjectList from './selec
 export class ProjectList extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
+
+    const cellEdit = {
+      mode: 'click',
+      blurToSave: true
+    };
+
     return (
       <div>
         <Helmet
@@ -29,7 +35,10 @@ export class ProjectList extends React.PureComponent { // eslint-disable-line re
         />
         <h2>Your Projects:</h2>
         <Col xs={9}>
-          <BootstrapTable data={this.props.projects} striped hover condensed>
+          <BootstrapTable
+            data={this.props.projects}
+            cellEdit={ cellEdit }
+            striped hover condensed>
             <TableHeaderColumn dataField="name" isKey>Project Name</TableHeaderColumn>
             <TableHeaderColumn dataField="description">Description</TableHeaderColumn>
           </BootstrapTable>
