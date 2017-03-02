@@ -24,7 +24,7 @@ function getServerBase(env = trueEnv) {
 }
 
 function makeApiPath(path) {
-  console.log('makeAPI env', trueEnv);
+  // console.log('makeAPI env', trueEnv);
   const serverBase = getServerBase();
   return `${serverBase}/${path}`;
 }
@@ -48,6 +48,9 @@ const paths = {
     },
     user: {
       path: '/user',
+    },
+    dashboard: {
+      path: '/dashboard',
     },
   },
 };
