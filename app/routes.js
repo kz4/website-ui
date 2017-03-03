@@ -98,7 +98,14 @@ export default function createRoutes(store) {
           import('containers/UserDashboard/sagas'),
           import('containers/UserDashboard'),
         ]);
-
+      path: '/verify',
+      name: 'verifyAccount',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+        import('containers/VerifyAccount/reducer'),
+        import('containers/VerifyAccount/sagas'),
+        import('containers/VerifyAccount'),
+      ]);
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
@@ -194,6 +201,14 @@ export default function createRoutes(store) {
       ],
 
     }, {
+          injectReducer('verifyAccount', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+        importModules.catch(errorLoading);
+      }
+      ,
+    },{
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
