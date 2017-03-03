@@ -15,7 +15,7 @@ const loadModule = (cb) => (componentModule) => {
 
 export default function createRoutes(store) {
   // create reusable async injectors using getAsyncInjectors factory
-  const { injectReducer, injectSagas } = getAsyncInjectors(store);
+  const { injectReducer, injectSagas, injectReducerForced } = getAsyncInjectors(store);
 
   return [
     {
@@ -90,8 +90,34 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/project/:projectId/dashboard',
+      name: 'project dashboard',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/ProjectDashboardPage/actions'),
+          import('containers/ProjectDashboardPage/reducer'),
+          import('containers/ProjectDashboardPage/sagas'),
+          import('containers/ProjectDashboardPage/dynamicContainersManager'),
+          import('containers/ProjectDashboardPage'),
+        ]);
 
-      path: '/projects/:projectId',
+        const renderRoute = loadModule(cb);
+        importModules.then(([actions, reducer, sagas, dynamicContainers, component]) => {
+          injectReducer('projectDashboardPage', reducer.default);
+          injectSagas(sagas.default);
+          dynamicContainers.default({
+            injectReducerForced,
+            injectReducerName: 'projectPage:containers',
+            injectSagas,
+          });
+          renderRoute(component);
+          // we can save this for later
+          store.dispatch(actions.makeFetchProjectDashboardAction(nextState.params.projectId));
+        });
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/project/:projectId',
       name: 'projects',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
@@ -100,7 +126,7 @@ export default function createRoutes(store) {
           import('containers/ProjectPage/sagas'),
           import('containers/ProjectPage'),
         ]);
-        
+
         const renderRoute = loadModule(cb);
         importModules.then(([actions, reducer, sagas, component]) => {
           injectReducer('project', reducer.default);
@@ -110,7 +136,7 @@ export default function createRoutes(store) {
         });
         importModules.catch(errorLoading);
       },
-    },{
+    }, {
       path: '/viewData',
       name: 'view data',
       getComponent(nextState, cb) {
@@ -153,7 +179,7 @@ export default function createRoutes(store) {
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([/* actions, */ reducer, sagas, component]) => {
+        importModules.then(([/* actions, */reducer, sagas, component]) => {
           injectReducer('createEditProjectPage', reducer.default);
           injectSagas(sagas.default);
           renderRoute(component);
