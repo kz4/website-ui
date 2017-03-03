@@ -31,8 +31,8 @@ export class TestContainerA extends React.PureComponent { // eslint-disable-line
 }
 
 TestContainerA.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  testSaga: PropTypes.fun.isRequired,
+  // dispatch: PropTypes.func.isRequired,
+  testSaga: PropTypes.func.isRequired,
 };
 
 
@@ -43,7 +43,7 @@ export default (props) => {
 
   function mapDispatchToProps(dispatch) {
     return {
-      dispatch,
+      // dispatch,
       testSaga: () => dispatch(defaultAction()),
     };
   }

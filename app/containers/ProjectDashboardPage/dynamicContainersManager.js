@@ -16,7 +16,8 @@ function getContainerSagas(container) {
   }
 }
 
-export default ({ /* injectReducerForced, */ injectSagas /*, injectReducerName */ }) => {
+export default ({ injectSagas }) => {
+  // export default ({ /* injectReducerForced, */ injectSagas /*, injectReducerName */ }) => {
   function* addContainerSaga(action) {
     const container = action.container;
     yield put(makeAddNewContainerAction(container));
