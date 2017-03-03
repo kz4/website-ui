@@ -23,7 +23,7 @@ const initialState = fromJS({
   loginErrorMsg: LOGIN_ERROR_MSG_DEFAULT,
 });
 function userLoginReducer(state = initialState, action) {
-  console.log('pre userLoginReducer', state.toJS(), 'action', action);
+  // console.log('pre userLoginReducer', state.toJS(), 'action', action);
   switch (action.type) {
     case CHANGE_USERNAME_ACTION:
       return state.set('username', action.username);

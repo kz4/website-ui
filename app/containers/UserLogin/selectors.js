@@ -4,7 +4,6 @@ import { fromJS } from 'immutable';
  * Direct selector to the userLogin state domain
  */
 const makeSelectUserLoginSubstate = () => (state) => {
-  console.log('selectUserLogin', state.toJS());
   return state.get('login').get('userLogin');
 };
 

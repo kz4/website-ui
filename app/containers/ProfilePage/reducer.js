@@ -16,7 +16,6 @@ function profilePageReducer(state = initialState, action) {
     case PROFILE_FORM_UPDATED: {
       // TODO Should this be state.profile[action.formElement] = value (but immutable style)
       const newState = state.set(action.storeName, action.value);
-      console.log('profilePage newState', newState.toJS());
       return newState;
     }
     default: {

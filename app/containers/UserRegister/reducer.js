@@ -21,7 +21,7 @@ const initialState = fromJS({
   lastName: 'N',
 });
 function userRegisterReducer(state = initialState, action) {
-  console.log('userRegisterReducer', state.toJS());
+  // console.log('userRegisterReducer', state.toJS());
   switch (action.type) {
     case CHANGE_USERNAME:
       return state.set('username', action.username);
