@@ -23,9 +23,9 @@ export default function createRoutes(store) {
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/HomePage/reducer'),
-          import('containers/HomePage/sagas'),
-          import('containers/HomePage'),
+            import('containers/HomePage/reducer'),
+            import('containers/HomePage/sagas'),
+            import('containers/HomePage'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -43,9 +43,9 @@ export default function createRoutes(store) {
       name: 'login',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/LoginPage/reducer'),
-          import('containers/LoginPage/sagas'),
-          import('containers/LoginPage'),
+            import('containers/LoginPage/reducer'),
+            import('containers/LoginPage/sagas'),
+            import('containers/LoginPage'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -65,9 +65,9 @@ export default function createRoutes(store) {
       name: 'register',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/RegisterPage/reducer'),
-          import('containers/RegisterPage/sagas'),
-          import('containers/RegisterPage'),
+            import('containers/RegisterPage/reducer'),
+            import('containers/RegisterPage/sagas'),
+            import('containers/RegisterPage'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -78,18 +78,39 @@ export default function createRoutes(store) {
 
           renderRoute(component);
         });
-
         importModules.catch(errorLoading);
       },
     }, {
       path: '/features',
       name: 'features',
       getComponent(nextState, cb) {
-        import('containers/FeaturePage')
+        import
+        ('containers/FeaturePage')
           .then(loadModule(cb))
           .catch(errorLoading);
-      },
+      }
     }, {
+      path: '/verify',
+      name: 'verifyAccount',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/VerifyAccount/reducer'),
+          import('containers/VerifyAccount/sagas'),
+          import('containers/VerifyAccount'),
+      ]);
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('userConsole', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
+
+    {
       path: '/dashboard',
       name: 'dashboard',
       getComponent(nextState, cb) {
@@ -97,15 +118,8 @@ export default function createRoutes(store) {
           import('containers/UserDashboard/reducer'),
           import('containers/UserDashboard/sagas'),
           import('containers/UserDashboard'),
-        ]);
-      path: '/verify',
-      name: 'verifyAccount',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-        import('containers/VerifyAccount/reducer'),
-        import('containers/VerifyAccount/sagas'),
-        import('containers/VerifyAccount'),
       ]);
+
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
@@ -126,7 +140,7 @@ export default function createRoutes(store) {
               import('containers/ProfilePage/reducer'),
               import('containers/ProfilePage/sagas'),
               import('containers/ProfilePage'),
-            ]);
+          ]);
 
             const renderRoute = loadModule(cb);
 
@@ -146,7 +160,7 @@ export default function createRoutes(store) {
               import('containers/Dogs/reducer'),
               import('containers/Dogs/sagas'),
               import('containers/Dogs'),
-            ]);
+          ]);
 
             const renderRoute = loadModule(cb);
 
@@ -166,7 +180,7 @@ export default function createRoutes(store) {
               import('containers/Cats/reducer'),
               import('containers/Cats/sagas'),
               import('containers/Cats'),
-            ]);
+          ]);
 
             const renderRoute = loadModule(cb);
 
@@ -186,7 +200,7 @@ export default function createRoutes(store) {
               import('containers/ProjectList/reducer'),
               import('containers/ProjectList/sagas'),
               import('containers/ProjectList'),
-            ]);
+          ]);
 
             const renderRoute = loadModule(cb);
 
@@ -200,15 +214,10 @@ export default function createRoutes(store) {
         },
       ],
 
-    }, {
-          injectReducer('verifyAccount', reducer.default);
-          injectSagas(sagas.default);
-          renderRoute(component);
-        });
-        importModules.catch(errorLoading);
-      }
-      ,
-    },{
+    },
+
+
+    {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
