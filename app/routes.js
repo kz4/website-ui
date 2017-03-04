@@ -193,7 +193,7 @@ export default function createRoutes(store) {
           },
         },
         {
-          path: '/dashboard/projects',
+          path: '/dashboard/project',
           name: 'projects',
           getComponent(nextState, cb) {
             const importModules = Promise.all([

@@ -13,10 +13,13 @@ export const PROD_ROOT = LOCAL_DEV_ROOT;
 function getServerBase(env = trueEnv) {
   switch (env) {
     case (envs.DEVELOPMENT):
+      console.log("DEVELOPMENT");
       return LOCAL_DEV_ROOT;
     case (envs.TESTING):
+      console.log("TESTING");
       return LOCAL_DEV_ROOT;
     case (envs.BACKEND_DEVELOPMENT):
+      console.log("BACKEND_DEVELOPMENT");
       return BACKEND_DEV_ROOT;
     default:
       return PROD_ROOT;
@@ -38,6 +41,9 @@ const paths = {
     user: {
       VERIFY: makeApiPath('users/validate'),
       REGISTER: makeApiPath('users/signup'),
+    },
+    projects: {
+      GET: makeApiPath('project/user/'),
     }
   },
   appPaths: {

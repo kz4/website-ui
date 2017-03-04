@@ -1,14 +1,15 @@
 import request from 'utils/request';
+import { paths } from 'config';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { take, call, cancel, put, takeLatest } from 'redux-saga/effects';
 import { GET_PROJECTS_ACTION } from './constants';
 import { makeGetProjectsAction, makeGetProjectsSuccessAction } from './actions';
 
 /*
- * Call API to retrieve user's list of projects
+ * Call API to retrieve user's list of project
  */
 export function* getProjects() {
-  const requestURL = '/api/auth/projects';
+  const requestURL = paths.api.projects.GET;
   try {
     const result = yield call(request, requestURL);
     const getProjectSuccessAction = makeGetProjectsSuccessAction(result);

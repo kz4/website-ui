@@ -9,7 +9,7 @@
 //     <ProjectList/>
 //   );
 //
-//   it('should have a table of projects', () => {
+//   it('should have a table of project', () => {
 //     expect(renderedComp.contains(<BootstrapTable/>)).toEqual(true);
 //   });
 // });
