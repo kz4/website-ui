@@ -19,8 +19,11 @@ export const makeSelectProjectDashboardPage = () => createSelector(
   (substate) => substate.toJS()
 );
 
-export const makeSelectContainers = () => createSelector(
+export const makeSelectContainersArray = () => createSelector(
   makeSelectProjectDashboardPageDomain(),
-  (substate) => substate.get('containers').toJS()
+  (substate) => {
+    const containersObj = substate.get('containers').toJS();
+    return Object.keys(containersObj).map((key) => containersObj[key]);
+  }
 );
 

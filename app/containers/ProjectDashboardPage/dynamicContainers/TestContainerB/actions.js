@@ -8,8 +8,9 @@ import {
   DEFAULT_ACTION,
 } from './constants';
 
-export function defaultAction() {
+export function defaultAction({ frontendId }) {
   return {
     type: DEFAULT_ACTION,
+    frontendId,
   };
 }

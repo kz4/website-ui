@@ -3,7 +3,12 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the testContainerB state domain
  */
-const selectTestContainerBDomain = () => (state) => state.get('testContainerB');
+const makeSelectTestContainerBDomain =
+  (frontendId) => (state) =>
+    state
+      .get('projectDashboardPageContainers')
+      .get('testContainerB')
+      .get(frontendId);
 
 /**
  * Other specific selectors
@@ -14,12 +19,12 @@ const selectTestContainerBDomain = () => (state) => state.get('testContainerB');
  * Default selector used by TestContainerB
  */
 
-const makeSelectTestContainerB = () => createSelector(
-  selectTestContainerBDomain(),
-  (substate) => substate ? substate.toJS() : {}
+const makeSelectTestContainerB = (frontendId) => createSelector(
+  makeSelectTestContainerBDomain(frontendId),
+  (substate) => substate.toJS()
 );
 
 export default makeSelectTestContainerB;
 export {
-  selectTestContainerBDomain,
+  makeSelectTestContainerBDomain,
 };

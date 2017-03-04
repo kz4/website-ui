@@ -10,14 +10,14 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { Button } from 'react-bootstrap';
-import { makeSelectContainers } from './selectors';
+import { makeSelectContainersArray } from './selectors';
 import messages from './messages';
 import { makeNewContainerAction } from './actions';
 import makeTestContainerA from './dynamicContainers/TestContainerA';
 import makeTestContainerB from './dynamicContainers/TestContainerB';
 
 const getContainerFromType = (containerData) => {
-  containerData.key = containerData.locationInStore; // eslint-disable-line no-param-reassign
+  containerData.key = containerData.frontendId; // eslint-disable-line no-param-reassign
   switch (containerData.type) {
     case 'TestContainerA':
       return makeTestContainerA(containerData);
@@ -40,11 +40,6 @@ export class ProjectDashboardPage extends React.PureComponent { // eslint-disabl
         />
         <FormattedMessage {...messages.header} />
         <Button onClick={this.props.makeNewComponent}> Make New TestContainerB </Button>
-        <div>
-          {
-            JSON.stringify(this.props.containers)
-          }
-        </div>
         {this.props.containers.map(getContainerFromType)}
       </div>
     );
@@ -57,7 +52,7 @@ ProjectDashboardPage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  containers: makeSelectContainers(),
+  containers: makeSelectContainersArray(),
 });
 
 function mapDispatchToProps(dispatch) {

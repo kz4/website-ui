@@ -15,7 +15,7 @@ const loadModule = (cb) => (componentModule) => {
 
 export default function createRoutes(store) {
   // create reusable async injectors using getAsyncInjectors factory
-  const { injectReducer, injectSagas, injectReducerForced } = getAsyncInjectors(store);
+  const { injectReducer, injectSagas } = getAsyncInjectors(store);
 
   return [
     {
@@ -106,8 +106,7 @@ export default function createRoutes(store) {
           injectReducer('projectDashboardPage', reducer.default);
           injectSagas(sagas.default);
           dynamicContainers.default({
-            injectReducerForced,
-            injectReducerName: 'projectPage:containers',
+            injectReducer,
             injectSagas,
           });
           renderRoute(component);

@@ -10,24 +10,17 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-  containers: [],
+  containers: {},
 });
 
-// const getUniqId = (() => {
-//   let currentId = 0;
-//   return () => {
-//     currentId++;
-//     return currentId;
-//   }
-// })();
 
 function projectDashboardPageReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_NEW_CONTAINER_ACTION: {
+      const newContainer = fromJS(action.container);
+      const containerId = newContainer.get('frontendId');
       const oldContainers = state.get('containers');
-      let newContainer = fromJS(action.container);
-      newContainer = newContainer.set('locationInStore', oldContainers.size);
-      const newContainers = oldContainers.push(newContainer);
+      const newContainers = oldContainers.set(containerId, newContainer);
       return state.set('containers', newContainers);
     }
     default:
