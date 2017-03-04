@@ -212,6 +212,26 @@ export default function createRoutes(store) {
             importModules.catch(errorLoading);
           },
         },
+        {
+          path: '/dashboard/elephants',
+          name: 'elephants',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+            import('containers/Elephants/reducer'),
+            import('containers/Elephants/sagas'),
+            import('containers/Elephants'),
+          ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, sagas, component]) => {
+              injectReducer('elephants', reducer.default);
+              injectSagas(sagas.default);
+              renderRoute(component);
+            });
+            importModules.catch(errorLoading);
+          },
+        },
       ],
 
     },
