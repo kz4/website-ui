@@ -2,15 +2,15 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import AuthPage from 'components/auth/AuthPage';
 import { FormattedMessage } from 'react-intl';
-import UserLogin from 'containers/UserLogin';
-import { Login, mapDispatchToProps } from '../index';
+import UserRegister from 'containers/UserRegister';
+import { Register, mapDispatchToProps } from '../index';
 import messages from '../messages';
 
-describe('<Login />', () => {
-  const renderedComp = shallow(<Login />);
+describe('<Register />', () => {
+  const renderedComp = shallow(<Register />);
   it('should have AuthPage with User Login', () => {
     const titleMsg = (<FormattedMessage {...messages.header} />);
-    expect(renderedComp.contains(<AuthPage title={titleMsg}><UserLogin /></AuthPage>)).toEqual(true);
+    expect(renderedComp.contains(<AuthPage title={titleMsg}><UserRegister /></AuthPage>)).toEqual(true);
   });
 
   describe('mapDispatchToProps', () => {

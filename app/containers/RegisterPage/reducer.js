@@ -1,16 +1,16 @@
 /*
  *
- * Login reducer
+ * Register reducer
  *
  */
 
 import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
-import userLoginReducer from 'containers/UserLogin/reducer';
+import userRegisterReducer from 'containers/UserRegister/reducer';
 
 const initialState = fromJS({});
 
-export function loginReducer(state = initialState, action) {
+export function registerReducer(state = initialState, action) {
   switch (action.type) {
     default:
       return state;
@@ -18,8 +18,8 @@ export function loginReducer(state = initialState, action) {
 }
 
 const allReducers = combineReducers({
-  loginPage: loginReducer,
-  userLogin: userLoginReducer,
+  registerPage: registerReducer,
+  userRegister: userRegisterReducer,
 });
 
 export default allReducers;

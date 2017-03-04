@@ -6,6 +6,10 @@ router.post('/login', (req, res) => {
   res.json(user);
 });
 
+router.post('/login_reject', (req, res) => {
+  res.status(403).json({});
+});
+
 router.post('/logout', (req, res) => {
   res.send();
 });

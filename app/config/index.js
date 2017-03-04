@@ -24,7 +24,6 @@ function getServerBase(env = trueEnv) {
 }
 
 function makeApiPath(path) {
-  // console.log('makeAPI env', trueEnv);
   const serverBase = getServerBase();
   return `${serverBase}/${path}`;
 }
@@ -34,6 +33,7 @@ const paths = {
     auth: {
       LOGIN: makeApiPath('auth/login'),
       PROFILE: makeApiPath('auth/profile'),
+      REGISTER: makeApiPath('auth/register'),
     },
   },
   appPaths: {
@@ -42,6 +42,13 @@ const paths = {
     },
     login: {
       path: '/login',
+    },
+    register: {
+      path: '/register',
+    },
+    user: {
+      path: '/user',
+      PROFILE: makeApiPath('auth/profile'),
     },
     profile: {
       path: '/profile',
