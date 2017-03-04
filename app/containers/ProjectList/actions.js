@@ -16,6 +16,8 @@ export function makeGetProjectsAction() {
 }
 
 export function makeGetProjectsSuccessAction(projects) {
+  console.log("makeGetProjectsSuccessAction");
+  console.log(projects);
   return {
     type: GET_PROJECTS_SUCCESS_ACTION,
     projects,

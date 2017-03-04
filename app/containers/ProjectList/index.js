@@ -34,13 +34,15 @@ export class ProjectList extends React.PureComponent { // eslint-disable-line re
           ]}
         />
         <h2>Your Projects:</h2>
+        <p>{this.props.projects}</p>
         <Col xs={9}>
           <BootstrapTable
             data={this.props.projects}
             cellEdit={ cellEdit }
             striped hover condensed>
-            <TableHeaderColumn dataField="name" isKey>Project Name</TableHeaderColumn>
-            <TableHeaderColumn dataField="description">Description</TableHeaderColumn>
+            <TableHeaderColumn dataField="project_id" isKey>ID</TableHeaderColumn>
+            <TableHeaderColumn dataField="project_name">Project Name</TableHeaderColumn>
+            <TableHeaderColumn dataField="project_description">Description</TableHeaderColumn>
           </BootstrapTable>
         </Col>
       </div>
@@ -49,7 +51,7 @@ export class ProjectList extends React.PureComponent { // eslint-disable-line re
 }
 
 ProjectList.propTypes = {
-  projects: PropTypes.array,
+  // projects: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -10,8 +10,11 @@ import { makeGetProjectsAction, makeGetProjectsSuccessAction } from './actions';
  */
 export function* getProjects() {
   const requestURL = paths.api.projects.GET;
+  console.log("Get projects saga URL:");
+  console.log(requestURL);
   try {
     const result = yield call(request, requestURL);
+    console.log(result.toJS());
     const getProjectSuccessAction = makeGetProjectsSuccessAction(result);
     yield put(getProjectSuccessAction);
   } catch (err) {
