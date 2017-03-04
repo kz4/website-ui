@@ -29,16 +29,18 @@ export function* getSaveResponse() {
       method: 'POST',
       body: {
         project_id: saveProject.get('projectID'),
-        projectTitle: saveProject.get('projectTitle'),
+        project_name: saveProject.get('projectTitle'),
         metaData: saveProject.get('metaData'),
         image: saveProject.get('image'),
-        projectDescription: saveProject.get('projectDescription'),
+        project_description: saveProject.get('projectDescription'),
+        project_owner: saveProject.get('projectOwner'),
       },
     });
 
     console.log('the response is ', saveResponse);
+    // QUICK FIX, using old projectID if it exists
     const changedResponse = {
-      projectID: saveResponse.project_id,
+      projectID: projectID ? projectID : saveResponse.project_id,
       projectTitle: saveResponse.project_name,
       projectDescription: saveResponse.project_description,
       projectOwner: saveResponse.project_owner,
@@ -59,8 +61,9 @@ export function* getSaveResponse() {
 
 export function* changeToProjectPage(action) {
   console.log('changeToProjectPath', action);
-
-  browserHistory.push(paths.appPaths.project.getById(action.saveResponse.projectID));
+  const newURL = paths.appPaths.project.getById(action.saveResponse.projectID);
+  console.log('newUrl', newURL);
+  browserHistory.push(newURL);
 }
 
 /**

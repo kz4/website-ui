@@ -14,6 +14,7 @@ import {
   makeSelectProjectPageDescription,
   makeSelectProjectPageMetaData,
   makeSelectProjectPageTitle,
+  makeSelectProjectPageId,
 } from './selectors';
 import Heading from './Heading';
 import MetaDataDisplay from './MetaDataDisplay';
@@ -31,7 +32,7 @@ export class ProjectPage extends React.PureComponent { // eslint-disable-line re
         <Grid fluid>
           <Row className="show-grid page-header">
             <Col md={12}>
-              <Heading title={this.props.title} />
+              <Heading title={this.props.title} projectId={this.props.projectId} />
             </Col>
           </Row>
           <Row className="show-grid">
@@ -66,18 +67,17 @@ ProjectPage.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   metaData: PropTypes.object.isRequired,
-  // dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
   title: makeSelectProjectPageTitle(),
   description: makeSelectProjectPageDescription(),
   metaData: makeSelectProjectPageMetaData(),
+  projectId: makeSelectProjectPageId(),
 });
 
 function mapDispatchToProps(/* dispatch */) {
   return {
-    // dispatch,
   };
 }
 

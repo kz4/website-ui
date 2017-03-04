@@ -45,6 +45,7 @@ export const makeSelectSaveProject = () => createSelector(
     saveProject.metaData = substate.get('metaData');
     saveProject.image = substate.get('image');
     saveProject.projectDescription = substate.get('projectDescription');
+    saveProject.projectOwner = substate.get('projectOwner');
     return fromJS(saveProject);
   }
 );
