@@ -13,6 +13,14 @@ const initialState = fromJS({
   containers: [],
 });
 
+const getUniqId = (() => {
+  let currentId = 0;
+  return () => {
+    currentId++;
+    return currentId;
+  }
+})();
+
 function projectDashboardPageReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_NEW_CONTAINER_ACTION: {
