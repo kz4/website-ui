@@ -33,11 +33,11 @@ TestContainerB.propTypes = {
   testContainerB: PropTypes.object.isRequired,
 };
 
-export default (props) => {
-  const frontendId = props.frontendId;
+const getTestContainerB = (passedProps) => {
+  const frontendId = passedProps.frontendId;
   // assert we have frontendId
   if (!frontendId) {
-    throw new Error(`no frontendId for: ${JSON.stringify(props)}`);
+    throw new Error(`no frontendId for: ${JSON.stringify(passedProps)}`);
   }
 
   const mapStateToProps = createStructuredSelector({
@@ -53,5 +53,7 @@ export default (props) => {
 
   const DynamicTestContainerB = connect(mapStateToProps, mapDispatchToProps)(TestContainerB);
 
-  return (<DynamicTestContainerB {...props} />);
+  return (<DynamicTestContainerB {...passedProps} />);
 };
+
+export default getTestContainerB;
